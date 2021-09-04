@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,12 +16,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        username = (EditText) findViewById(R.id.username);
-        password = (EditText) findViewById(R.id.password);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
     }
 
-    public void imprimir(View view){
+    public void registrarse(View view){
 
-        System.out.println(username.getText() + " " + password.getText());
+        Intent siguiente = new Intent(this, RegisterActivity.class);
+        startActivity(siguiente);
     }
 }

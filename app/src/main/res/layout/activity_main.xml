@@ -6,25 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="414dp"
-        android:layout_height="725dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/login" />
-
     <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="412dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="340dp"
         android:ems="10"
-        android:hint="Usuario"
+        android:hint="@string/username"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,10 +23,10 @@
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="@string/paswword"
         android:inputType="textPassword"
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,15 +34,15 @@
 
     <Button
         android:id="@+id/btn_login"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="146dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="36dp"
         android:background="#F44336"
         android:backgroundTint="#F44336"
         android:foregroundTint="#F44336"
-        android:onClick="imprimir"
-        android:text="Iniciar Sesión"
+        android:onClick="registrarse"
+        android:text="@string/btn_login"
         app:iconTint="#F44336"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
@@ -61,11 +50,12 @@
 
     <Button
         android:id="@+id/btn_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
+        android:layout_width="139dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="44dp"
-        android:text="Registrarse"
+        android:onClick="registrarse"
+        android:text="@string/btn_register"
         app:layout_constraintStart_toEndOf="@+id/btn_login"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 </androidx.constraintlayout.widget.ConstraintLayout>
