@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">EATSDelivery</string>
-    <string name="paswword">Contraseña</string>
+    <string name="password">Contraseña</string>
     <string name="btn_login">Iniciar sesión</string>
     <string name="btn_register">Registrarse</string>
     <string name="username">Usuario</string>
     <string name="Registrarse">Registrarse</string>
+
+
+    <string name="confPass">Confirmar contraseña</string>
+    <string name="phone">Telefono</string>
+    <string name="email">Email</string>
+    <string name="direction">Direccion</string>
+    <string name="name">Nombre completo</string>
+    <string name="direccion">Direccion</string>
 
 </resources>

@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
+        username = findViewById(R.id.username_log);
+        password = findViewById(R.id.password_log);
     }
 
     public void registrarse(View view){
