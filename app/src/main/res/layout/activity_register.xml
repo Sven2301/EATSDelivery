@@ -12,7 +12,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +36,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            tools:ignore="TextContrastCheck" />
 
         <EditText
             android:id="@+id/phone_reg"
@@ -43,7 +46,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/phone"
-            android:inputType="number" />
+            android:inputType="number"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/email_reg"
@@ -51,7 +55,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/username_reg"
@@ -59,7 +64,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/username"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/password_reg"
@@ -67,7 +73,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/password"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            tools:ignore="TextContrastCheck" />
 
         <EditText
             android:id="@+id/confpass_reg"
@@ -75,7 +83,9 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/confPass"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            tools:ignore="TextContrastCheck" />
 
         <EditText
             android:id="@+id/direction_reg"
@@ -85,5 +95,18 @@
             android:gravity="start|top"
             android:hint="@string/direction"
             android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="addPaymentMethod"
+            android:text="@string/paymethod" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

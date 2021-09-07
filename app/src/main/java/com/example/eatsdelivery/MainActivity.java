@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void registrarse(View view){
 
-        Intent siguiente = new Intent(this, RegisterActivity.class);
-        startActivity(siguiente);
+        Intent next = new Intent(this, RegisterActivity.class);
+        startActivity(next);
     }
 }

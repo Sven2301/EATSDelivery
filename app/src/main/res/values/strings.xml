@@ -13,5 +13,14 @@
     <string name="direction">Direccion</string>
     <string name="name">Nombre completo</string>
     <string name="direccion">Direccion</string>
+    <string name="paymethod">Agregar metodo de pago</string>
+    <string name="confirm">Confirmar</string>
+    <string name="cardnumber">Numero de tarjeta</string>
+    <string name="cardholder">NNombre del propietario</string>
+
+    <string name="cvc">CVC</string>
+    <string name="expiredate">Fecha de expiracion</string>
+    <string name="back">Volver</string>
+
 
 </resources>
