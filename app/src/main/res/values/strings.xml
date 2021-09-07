@@ -16,8 +16,8 @@
     <string name="paymethod">Agregar metodo de pago</string>
     <string name="confirm">Confirmar</string>
     <string name="cardnumber">Numero de tarjeta</string>
-    <string name="cardholder">NNombre del propietario</string>
-
+    <string name="cardholder">Nombre del propietario</string>
+    <string name="back">Volver</string>
     <string name="cvc">CVC</string>
     <string name="expiredate">Fecha de expiracion</string>
     <string name="history">Historial pedidos</string>
@@ -26,6 +26,7 @@
     <string name="seeRest">Ver restaurantes</string>
     <string name="editProfile">Editar perfil</string>
     <string name="quit">Salir</string>
+    <string name="cart">Ver carrito</string>
 
 
 </resources>
