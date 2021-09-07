@@ -20,8 +20,12 @@
 
     <string name="cvc">CVC</string>
     <string name="expiredate">Fecha de expiracion</string>
-    <string name="back">Volver</string>
+    <string name="history">Historial pedidos</string>
+    <string name="config">Configuraciones</string>
+    <string name="adminDirec">Administrar direcciones</string>
+    <string name="seeRest">Ver restaurantes</string>
+    <string name="editProfile">Editar perfil</string>
+    <string name="quit">Salir</string>
 
 
-    <string name="selecciona_un_restaurante">Selecciona un restaurante:</string>
 </resources>

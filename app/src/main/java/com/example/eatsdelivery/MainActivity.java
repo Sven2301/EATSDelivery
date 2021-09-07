@@ -3,13 +3,15 @@ package com.example.eatsdelivery;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity<button2> extends AppCompatActivity{
 
     private EditText username;
     private EditText password;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,4 +27,12 @@ public class MainActivity extends AppCompatActivity {
         Intent next = new Intent(this, RegisterActivity.class);
         startActivity(next);
     }
+
+    public void login(View view){
+
+        Intent next = new Intent(this, MainMenu.class);
+        startActivity(next);
+    }
+
+
 }
