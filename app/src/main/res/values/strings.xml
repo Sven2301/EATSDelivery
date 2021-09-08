@@ -28,6 +28,12 @@
     <string name="quit">Salir</string>
     <string name="cart">Ver carrito</string>
     <string name="slogan">Buena comida para buenos momentos!</string>
+    <string name="productNameTemp">Nombre del producto</string>
+    <string name="productInfoTemp">Esta es la informacion del producto</string>
+    <string name="price">$9.99</string>
+    <string name="number">117</string>
+    <string name="plus">+</string>
+    <string name="less">-</string>
 
 
 

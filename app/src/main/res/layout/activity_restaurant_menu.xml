@@ -33,6 +33,7 @@
                 android:id="@+id/button26"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="seeProductInfo"
                 android:text="Button" />
 
             <Button

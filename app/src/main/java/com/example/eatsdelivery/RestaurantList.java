@@ -19,4 +19,10 @@ public class RestaurantList extends AppCompatActivity {
         Intent next = new Intent(this, MainMenu.class);
         startActivity(next);
     }
+
+    public void seeRestaurant(View view){
+
+        Intent next = new Intent(this, RestaurantMenu.class);
+        startActivity(next);
+    }
 }

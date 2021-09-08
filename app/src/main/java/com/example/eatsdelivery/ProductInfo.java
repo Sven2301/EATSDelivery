@@ -6,17 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class RestaurantMenu extends AppCompatActivity {
+public class ProductInfo extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_restaurant_menu);
+        setContentView(R.layout.activity_product_info);
     }
 
-    public void seeProductInfo(View view){
+    public void back(View view){
 
-        Intent next = new Intent(this, ProductInfo.class);
+        Intent next = new Intent(this, RestaurantMenu.class);
         startActivity(next);
     }
 }
