@@ -49,10 +49,10 @@
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="91dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="192dp"
-        android:layout_marginTop="52dp"
+        android:layout_width="144dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="164dp"
+        android:layout_marginTop="44dp"
         android:text="@string/editProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button8" />
@@ -63,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="192dp"
         android:layout_marginTop="52dp"
+        android:onClick="quit"
         android:text="@string/quit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button9" />
