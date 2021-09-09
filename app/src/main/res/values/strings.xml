@@ -35,6 +35,8 @@
     <string name="plus">+</string>
     <string name="less">-</string>
     <string name="orderDetail">Los detalles de la compra se encuentran aqui</string>
+    <string name="orderStatusMsg">Su pedido esta en proceso de preparacion y entrega :)</string>
+
 
 
 </resources>
