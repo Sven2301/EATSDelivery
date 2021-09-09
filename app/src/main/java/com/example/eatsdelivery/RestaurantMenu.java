@@ -19,4 +19,10 @@ public class RestaurantMenu extends AppCompatActivity {
         Intent next = new Intent(this, ProductInfo.class);
         startActivity(next);
     }
+
+    public void seeCart(View view){
+
+        Intent next = new Intent(this, Cart.class);
+        startActivity(next);
+    }
 }
