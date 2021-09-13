@@ -9,6 +9,7 @@ public class DBManager extends SQLiteOpenHelper{
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "EATSDelivery.db";
+    //Un coment para hacer commit
 
     public DBManager (Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
