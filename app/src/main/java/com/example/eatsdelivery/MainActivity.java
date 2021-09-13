@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
+import android.widget.Toast;
+
 
 public class MainActivity<button2> extends AppCompatActivity{
 
     private EditText username;
     private EditText password;
-
+    private Object conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,9 @@ public class MainActivity<button2> extends AppCompatActivity{
 
         username = findViewById(R.id.username_log);
         password = findViewById(R.id.password_log);
+        //manager.openOrCreateDB();
+        //Toast.makeText(this, "Start done", Toast.LENGTH_SHORT).show();
+
     }
 
     public void registrarse(View view){
