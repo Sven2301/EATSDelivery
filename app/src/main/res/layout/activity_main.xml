@@ -12,12 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:background="@drawable/box"
         android:ems="10"
+        android:gravity="center"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:gravity="center"
-        android:background="@drawable/box"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,18 +27,17 @@
         android:id="@+id/username_log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="392dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/box"
-        android:gravity="center"
         android:ems="10"
 
+        android:gravity="center"
         android:hint="@string/username"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <Button
         android:id="@+id/btn_login"
@@ -60,9 +59,9 @@
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_marginTop="4dp"
+        android:background="@drawable/custom_button"
         android:onClick="registrarse"
         android:text="@string/btn_register"
-        android:background="@drawable/custom_button"
         android:textAllCaps="false"
         android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,26 +73,22 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="282dp"
-        app:layout_constraintBottom_toTopOf="@+id/username_log"
+        android:layout_width="396dp"
+        android:layout_height="271dp"
+        android:layout_marginTop="88dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714"
-        tools:srcCompat="@drawable/papas_hamb" />
+        android:src="@drawable/papas_hamb" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="314dp"
         android:layout_height="62dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/t1" />
 
     <TextView

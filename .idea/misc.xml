@@ -6,8 +6,11 @@
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/drawable/box.xml" value="0.2786458333333333" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/drawable/custom_button.xml" value="0.30833333333333335" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/drawable/divider_empty.xml" value="0.30833333333333335" />
+        <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/drawable/squarebox.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_main_menu.xml" value="0.25" />
+        <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_order_info.xml" value="0.278125" />
+        <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_order_wait_screen.xml" value="0.278125" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_register.xml" value="0.2921875" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/EATSDelivery/app/src/main/res/layout/activity_add_payment_method.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/EATSDelivery/app/src/main/res/layout/activity_cart.xml" value="0.25416666666666665" />
