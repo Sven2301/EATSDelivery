@@ -42,7 +42,7 @@
     <Button
         android:id="@+id/btn_login"
         android:layout_width="124dp"
-        android:layout_height="55dp"
+        android:layout_height="37dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/custom_button"
         android:onClick="login"
@@ -56,20 +56,20 @@
 
     <Button
         android:id="@+id/btn_register"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="118dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/custom_button"
         android:onClick="registrarse"
         android:text="@string/btn_register"
         android:textAllCaps="false"
         android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login"
 
 
-        />
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
     <ImageView
         android:id="@+id/imageView2"
