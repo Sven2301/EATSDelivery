@@ -23,12 +23,20 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="700dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
+        android:showDividers="middle"
+        android:divider="@drawable/divider_empty"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/t1" />
 
         <EditText
             android:id="@+id/name_reg"
@@ -37,11 +45,15 @@
             android:ems="10"
             android:hint="@string/name"
             android:inputType="textPersonName"
+            android:background="@drawable/box"
+            android:gravity="center"
             android:minHeight="48dp"
             tools:ignore="TextContrastCheck" />
 
         <EditText
             android:id="@+id/phone_reg"
+            android:background="@drawable/box"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -53,6 +65,8 @@
             android:id="@+id/email_reg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/box"
+            android:gravity="center"
             android:ems="10"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
@@ -62,6 +76,8 @@
             android:id="@+id/username_reg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/box"
+            android:gravity="center"
             android:ems="10"
             android:hint="@string/username"
             android:inputType="textPersonName"
@@ -72,6 +88,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:background="@drawable/box"
+            android:gravity="center"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:minHeight="48dp"
@@ -79,6 +97,8 @@
 
         <EditText
             android:id="@+id/confpass_reg"
+            android:background="@drawable/box"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -89,24 +109,32 @@
 
         <EditText
             android:id="@+id/direction_reg"
+            android:background="@drawable/box"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="190dp"
             android:ems="10"
-            android:gravity="start|top"
+
             android:hint="@string/direction"
             android:inputType="textMultiLine" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
+            android:background="@drawable/custom_button"
             android:onClick="addPaymentMethod"
-            android:text="@string/paymethod" />
+            android:text="@string/paymethod"
+            android:textAllCaps="false"
+            android:textColor="#FFFF" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/confirm" />
+            android:layout_height="37dp"
+            android:background="@drawable/custom_button"
+            android:text="@string/confirm"
+            android:textAllCaps="false"
+            android:textColor="#FFFF" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
