@@ -1,6 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/detalles_pedido2"
+        android:layout_width="367dp"
+        android:layout_height="379dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/squarebox"
+        android:gravity="center_horizontal"
+        android:text="Detalles...."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="133dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="24dp"
+        android:text="Detalles del Pedido:"
+        android:textColor="@color/Button"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/back_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custom_button"
+        android:text="Volver"
+        android:textAllCaps="false"
+        android:textColor="#ffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/devol_order" />
+
+    <Button
+        android:id="@+id/cancel_order"
+        android:layout_width="187dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_button"
+        android:text="Cancelar Pedido"
+        android:textAllCaps="false"
+        android:textColor="#ffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detalles_pedido2" />
+
+    <Button
+        android:id="@+id/devol_order"
+        android:layout_width="187dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/custom_button"
+        android:text="Devolución de Pedido"
+        android:textAllCaps="false"
+        android:textColor="#ffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cancel_order" />
 </androidx.constraintlayout.widget.ConstraintLayout>

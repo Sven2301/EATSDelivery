@@ -16,13 +16,12 @@
         app:srcCompat="@drawable/squarebox" />
 
     <Button
-        android:id="@+id/button61"
+        android:id="@+id/confirm"
         android:layout_width="198dp"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
         android:background="@drawable/custom_button"
-        android:onClick="quit"
-        android:text="@string/quit"
+        android:text="Confirmar Producto"
         android:textAllCaps="false"
         android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
