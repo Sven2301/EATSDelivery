@@ -1,16 +1,16 @@
-package com.example.eatsdelivery.SQLite;
+package com.example.eatsdelivery.SQLite.Tables;
 
 public class TipoDeAcceso {
 
-    private String id, descripcion, tipo;
+    private String tipoAccesoID, descripcion, tipo;
 
 
-    public String getId() {
-        return id;
+    public String getTipoAccesoID() {
+        return tipoAccesoID;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTipoAccesoID(String tipoAccesoID) {
+        this.tipoAccesoID = tipoAccesoID;
     }
 
     public String getDescripcion() {

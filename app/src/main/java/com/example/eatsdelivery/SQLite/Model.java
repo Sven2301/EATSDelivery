@@ -3,6 +3,8 @@ package com.example.eatsdelivery.SQLite;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.eatsdelivery.SQLite.Tables.TipoDeAcceso;
+
 public class Model {
 
     public static final int VERSION = 1;
@@ -16,7 +18,7 @@ public class Model {
 
     public int insertTipoAcceso(Context context, TipoDeAcceso tda){
         int res = 0;
-        String sql = "INSERT INTO TipoDeAcceso (id, Descripcion, Tipo) VALUES ('"+tda.getId()+"', '"+tda.getDescripcion()+"', '"+tda.getTipo()+"')";
+        String sql = "INSERT INTO TipoDeAcceso (id, Descripcion, Tipo) VALUES ('"+tda.getTipoAccesoID()+"', '"+tda.getDescripcion()+"', '"+tda.getTipo()+"')";
         SQLiteDatabase db = this.getConn(context);
         try {
             db.execSQL(sql);
