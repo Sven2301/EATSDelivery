@@ -4,7 +4,6 @@ public class TipoDeAcceso {
 
     private String tipoAccesoID, descripcion, tipo;
 
-
     public String getTipoAccesoID() {
         return tipoAccesoID;
     }

@@ -10,9 +10,9 @@ import com.example.eatsdelivery.SQLite.Tables.TipoDeAcceso;
 public class Model {
 
     public static final int VERSION = 1;
-    public static final String DB_NAME = "DBEATSDelivery";
+    public static final String DB_NAME = "EATSDelivery.db";
 
-    public SQLiteDatabase getConn(Context context){
+    public SQLiteDatabase getConnWrite(Context context){
         ConexionSQLite conn = new ConexionSQLite(context, DB_NAME, null, VERSION);
         SQLiteDatabase db = conn.getWritableDatabase();
         return db;
@@ -27,7 +27,7 @@ public class Model {
     public int insertTipoAcceso(Context context, TipoDeAcceso tda){
         int res = 0;
         String sql = "INSERT INTO TipoDeAcceso (id, Descripcion, Tipo) VALUES ('"+tda.getTipoAccesoID()+"', '"+tda.getDescripcion()+"', '"+tda.getTipo()+"')";
-        SQLiteDatabase db = this.getConn(context);
+        SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
             res = 1;

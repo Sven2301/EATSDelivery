@@ -8,6 +8,10 @@ import android.view.View;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.content.Intent;
+import android.widget.Toast;
+
+import com.example.eatsdelivery.SQLite.Model;
+import com.example.eatsdelivery.SQLite.Tables.TipoDeAcceso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +33,9 @@ public class MainActivity<button2> extends AppCompatActivity{
 
 
         Model model = new Model();
-        /*
+
         TipoDeAcceso tda = new TipoDeAcceso();
-        tda.setId("1");
+        tda.setTipoAccesoID("1");
         tda.setDescripcion("Cliente");
         tda.setTipo("1");
         int resInsert = model.insertTipoAcceso(this, tda);
@@ -42,7 +46,7 @@ public class MainActivity<button2> extends AppCompatActivity{
         else{
             Toast.makeText(this, "Insercion fallida", Toast.LENGTH_SHORT).show();
         }
-        */
+
 
         /*
         List data = new ArrayList();
@@ -58,11 +62,6 @@ public class MainActivity<button2> extends AppCompatActivity{
             Toast.makeText(this, "Not found", Toast.LENGTH_SHORT).show();
         }
         */
-
-
-
-
-
 
     }
 
