@@ -41,7 +41,20 @@
         android:textAllCaps="false"
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_encargado" />
+
+    <Button
+        android:id="@+id/select_encargado"
+        android:layout_width="290dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_button"
+        android:text="Seleccionar encargado del restaurante"
+        android:textAllCaps="false"
+        android:textColor="#ffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress2" />
 
@@ -152,8 +165,8 @@
 
     <EditText
         android:id="@+id/editTextTextPostalAddress2"
-        android:layout_width="359dp"
-        android:layout_height="149dp"
+        android:layout_width="357dp"
+        android:layout_height="94dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/box"
         android:ems="10"
@@ -165,4 +178,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView32"
         tools:ignore="SpeakableTextPresentCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
