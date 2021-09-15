@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MainMenu">
 
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="401dp"
+        android:layout_height="700dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/box" />
+
     <Button
         android:id="@+id/button8"
         android:layout_width="123dp"
@@ -109,15 +119,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/papas_hamb" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="401dp"
-        android:layout_height="700dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/box" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
