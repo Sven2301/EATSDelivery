@@ -10,6 +10,51 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EATSDelivery">
         <activity
+            android:name=".RestInfoGerente"
+            android:exported="true" />
+        <activity
+            android:name=".RequestManageGerente"
+            android:exported="true" />
+        <activity
+            android:name=".OrderManageEncargado"
+            android:exported="true" />
+        <activity
+            android:name=".MenuGerente"
+            android:exported="true" />
+        <activity
+            android:name=".MenuEncargado"
+            android:exported="true" />
+        <activity
+            android:name=".OrderDetailsEncargado"
+            android:exported="true" />
+        <activity
+            android:name=".EditInfoRestEncargado"
+            android:exported="true" />
+        <activity
+            android:name=".EditMenuEncargado"
+            android:exported="true" />
+        <activity
+            android:name=".SelectOrdersDriver"
+            android:exported="true" />
+        <activity
+            android:name=".OrderStateDriver"
+            android:exported="true" />
+        <activity
+            android:name=".OrderDetailsDriver"
+            android:exported="true" />
+        <activity
+            android:name=".DeleteRequestEncargado"
+            android:exported="true" />
+        <activity
+            android:name=".ConfirmRequestGerente"
+            android:exported="true" />
+        <activity
+            android:name=".AddRestGerente"
+            android:exported="true" />
+        <activity
+            android:name=".AddDishEncargado"
+            android:exported="true" />
+        <activity
             android:name=".OrderWaitScreen"
             android:exported="true" />
         <activity

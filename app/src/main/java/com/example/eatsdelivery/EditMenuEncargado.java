@@ -9,6 +9,6 @@ public class EditMenuEncargado extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_menu_encargado2);
+        setContentView(R.layout.activity_edit_menu_encargado);
     }
 }
