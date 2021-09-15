@@ -2,18 +2,14 @@ package com.example.eatsdelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.provider.BaseColumns;
 import android.view.View;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.eatsdelivery.SQLite.Model;
+import com.example.eatsdelivery.SQLite.TipoDeAcceso;
 
 
 public class MainActivity<button2> extends AppCompatActivity{
@@ -29,6 +25,24 @@ public class MainActivity<button2> extends AppCompatActivity{
 
         username = findViewById(R.id.username_log);
         password = findViewById(R.id.password_log);
+
+        /*
+        Model model = new Model();
+        TipoDeAcceso tda = new TipoDeAcceso();
+        tda.setId("1");
+        tda.setDescripcion("Cliente");
+        tda.setTipo("1");
+        int resInsert = model.insertTipoAcceso(this, tda);
+
+        if(resInsert == 1){
+            Toast.makeText(this, "Insercion con exito", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "Insercion fallida", Toast.LENGTH_SHORT).show();
+        }
+        */
+
+
     }
 
     public void registrarse(View view){
