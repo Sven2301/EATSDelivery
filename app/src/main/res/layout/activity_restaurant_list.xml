@@ -7,6 +7,7 @@
     tools:context=".RestaurantList">
 
     <TextView
+
         android:id="@+id/slogan_resList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,6 +15,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/slogan"
         android:textSize="20sp"
+        android:textColor="@color/Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -21,10 +23,13 @@
         android:id="@+id/btn_salir_resList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
         android:layout_marginTop="40dp"
         android:onClick="quit"
         android:text="@string/quit"
+        android:background="@color/Button"
+        android:textColor="#ffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 

@@ -36,7 +36,8 @@
     <string name="less">-</string>
     <string name="orderDetail">Los detalles de la compra se encuentran aqui</string>
     <string name="orderStatusMsg">Su pedido esta en proceso de preparacion y entrega :)</string>
-
+    <string name="salir">Salir</string>
+    <string name="selecciona_una_opci_n">Selecciona una opción:</string>
 
 
 </resources>
