@@ -9,25 +9,13 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Selecciona un pedido:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageView11"
-        android:layout_width="194dp"
-        android:layout_height="137dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/Repartidor" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="157dp" />
 
     <Button
         android:id="@+id/button58"
