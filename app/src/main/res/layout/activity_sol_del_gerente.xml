@@ -6,11 +6,11 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/back"
+        android:id="@+id/back_btn3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/custom_button"
         android:text="Volver"
         android:textAllCaps="false"
@@ -19,17 +19,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sol_deletion"
+        app:layout_constraintTop_toBottomOf="@+id/realizarPedido_btn"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView18"
-        android:layout_width="189dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="60dp"
-        android:text="Pedidos Disponibles"
-        android:textAlignment="center"
+        android:id="@+id/textView33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Selecciona una solicitud de eliminación:"
         android:textColor="@color/Button"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
