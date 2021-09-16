@@ -28,7 +28,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
             " FOREIGN KEY(RestauranteID) REFERENCES Restaurante(id), FOREIGN KEY(InfoUsuarioID) REFERENCES InfoUsuario(id))";
 
 
-
+//
     public ConexionSQLite(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
