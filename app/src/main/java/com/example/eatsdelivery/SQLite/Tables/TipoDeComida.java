@@ -1,6 +1,6 @@
 package com.example.eatsdelivery.SQLite.Tables;
 
-public class TipoComida {
+public class TipoDeComida {
 
     private String tipoComidaID, descripccion;
 

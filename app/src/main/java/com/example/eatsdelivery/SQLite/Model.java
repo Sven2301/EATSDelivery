@@ -3,9 +3,20 @@ package com.example.eatsdelivery.SQLite;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.BaseColumns;
 
+import com.example.eatsdelivery.SQLite.Tables.Direccion;
+import com.example.eatsdelivery.SQLite.Tables.DireccionXCliente;
+import com.example.eatsdelivery.SQLite.Tables.InfoUsuario;
+import com.example.eatsdelivery.SQLite.Tables.LineaFactura;
+import com.example.eatsdelivery.SQLite.Tables.Menu;
+import com.example.eatsdelivery.SQLite.Tables.Orden;
+import com.example.eatsdelivery.SQLite.Tables.Plato;
+import com.example.eatsdelivery.SQLite.Tables.Restaurante;
+import com.example.eatsdelivery.SQLite.Tables.RestauranteXGerente;
+import com.example.eatsdelivery.SQLite.Tables.Tarjeta;
+import com.example.eatsdelivery.SQLite.Tables.TipoDeComida;
 import com.example.eatsdelivery.SQLite.Tables.TipoDeAcceso;
+import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
 public class Model {
 
@@ -26,14 +37,170 @@ public class Model {
 
     public int insertTipoAcceso(Context context, TipoDeAcceso tda){
         int res = 0;
-        String sql = "INSERT INTO TipoDeAcceso (id, Descripcion, Tipo) VALUES ('"+tda.getTipoAccesoID()+"', '"+tda.getDescripcion()+"', '"+tda.getTipo()+"')";
+        String sql = "INSERT INTO TipoDeAcceso (Descripcion, Tipo) VALUES ('"+"', '"+tda.getDescripcion()+"', '"+tda.getTipo()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
             res = 1;
         }
         catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
 
+    public int insertDireccion(Context context, Direccion d) {
+        int res = 0;
+        String sql = "INSERT INTO Direccion (Nombre, Descripcion, DireccionExacta) VALUES ('"+"', '"+d.getNombre()+"', '"+d.getDescripcion()+"', '"+d.getDireccionExacta()+"')";
+        SQLiteDatabase db = this.getConnWrite(context);
+        try {
+            db.execSQL(sql);
+            res = 1;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
+    public int insertDireccionXCliente(Context context, DireccionXCliente dxc) {
+        int res = 0;
+        String sql = "INSERT INTO DireccionXCliente (DireccionID, InfoUsuarioID) VALUES ('"+"', '"+dxc.getDireccionID()+"', '"+dxc.getInfoUsuarioID()+"')";
+        SQLiteDatabase db = this.getConnWrite(context);
+        try {
+            db.execSQL(sql);
+            res = 1;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
+    public int insertInfoUsuario(Context context, InfoUsuario iu) {
+        int res = 0;
+        String sql = "INSERT INTO InfoUsuario(UsuarioID, TarjetaID, Nombre, Telefono, Correo, PlacaVehiculo) VALUES ('"+"', '"+iu.getUsuarioID()+"', '"+iu.getTarjetaID()+"', '"+iu.getNombre()+"', '"+iu.getTelefono()+"', '"+iu.getCorreo()+"', '"+iu.getPlacaVehiculo()+"')";
+        SQLiteDatabase db = this.getConnWrite(context);
+        try {
+            db.execSQL(sql);
+            res = 1;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
+    public int insertLineaFactura(Context context, LineaFactura lf) {
+        int res = 0;
+        String sql = "INSERT INTO LineaFactura(PlatoID, OrdenID, Cantidad) VALUES ('"+"', '"+lf.getPlatoID()+"', '"+lf.getOrdenID()+"', '"+lf.getCantidad()+"')";
+        SQLiteDatabase db = this.getConnWrite(context);
+        try {
+            db.execSQL(sql);
+            res = 1;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
+    public int insertMenu(Context context, Menu m) {
+        int res = 0;
+        String sql = "INSERT INTO Menu(RestauranteID, PlatoID, CantidadDisponible) VALUES ('"+"', '"+m.getRestauranteID()+"', '"+m.getPlatoID()+"', '"+m.getCantidadDisponible()+"')";
+        SQLiteDatabase db = this.getConnWrite(context);
+        try {
+            db.execSQL(sql);
+            res = 1;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
+    public int insertOrden(Context context, Orden o) {
+        int res = 0;
+        String sql = "INSERT INTO Orden(ClienteID, RepartidorID, RestauranteID, DireccionID, costoTotal) VALUES ('"+"', '"+o.getClienteID()+"', '"+o.getRepartidorID()+"', '"+o.getRestauranteID()+"', '"+o.getDireccionID()+"', '"+o.getCostoTotal()+"')";
+        SQLiteDatabase db = this.getConnWrite(context);
+        try {
+            db.execSQL(sql);
+            res = 1;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
+    public int insertPlato(Context context, Plato p) {
+        int res = 0;
+        String sql = "INSERT INTO Plato(Nombre, Costo, Descripccion) VALUES ('"+"', '"+p.getNombre()+"', '"+p.getCosto()+"', '"+p.getDescripcion()+"')";
+        SQLiteDatabase db = this.getConnWrite(context);
+        try {
+            db.execSQL(sql);
+            res = 1;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
+    public int insertRestaurante(Context context, Restaurante r) {
+        int res = 0;
+        String sql = "INSERT INTO Restaurante(DireccionID, TipoComidaID, Nombre, Activo) VALUES ('"+r.getDireccionID()+"', '"+r.getTipoComidaID()+"', '"+r.getNombre()+"', '"+r.getDeshabilitar()+"')";
+        SQLiteDatabase db = this.getConnWrite(context);
+        try {
+            db.execSQL(sql);
+            res = 1;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
+    public int insertRestauranteXGerente(Context context, RestauranteXGerente rxg) {
+        int res = 0;
+        String sql = "INSERT INTO RestauranteXGerente(RestauranteID, InfoUsuarioID) VALUES ('"+rxg.getRestauranteID()+"', '"+rxg.getInfoUsuarioID()+"')";
+        SQLiteDatabase db = this.getConnWrite(context);
+        try {
+            db.execSQL(sql);
+            res = 1;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
+    public int insertTarjeta(Context context, Tarjeta t) {
+        int res = 0;
+        String sql = "INSERT INTO Tarjeta(NombrePropietario, NumeroTarjeta, CCV, FechaVencimiento) VALUES ('"+t.getNombrePropietario()+"', '"+t.getNumero()+"', '"+t.getCcv()+"', '"+t.getFechaVencimiento()+"')";
+        SQLiteDatabase db = this.getConnWrite(context);
+        try {
+            db.execSQL(sql);
+            res = 1;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
+    public int insertTipoDeComida(Context context, TipoDeComida tdc) {
+        int res = 0;
+        String sql = "INSERT INTO TipoDeComida(Descripcion) VALUES ('"+tdc.getDescripccion()+"')";
+        SQLiteDatabase db = this.getConnWrite(context);
+        try {
+            db.execSQL(sql);
+            res = 1;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return res;
+    }
+
+    public int insertUsuario(Context context, Usuario u) {
+        int res = 0;
+        String sql = "INSERT INTO Usuario(TipoAccesoID, Usuario, Contrasenha) Values ('"+u.getTipoAccesoID()+"', '"+u.getUsuario()+"', '"+u.getContrasenha()+"')";
+        SQLiteDatabase db = this.getConnWrite(context);
+        try {
+            db.execSQL(sql);
+            res = 1;
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
         return res;
     }

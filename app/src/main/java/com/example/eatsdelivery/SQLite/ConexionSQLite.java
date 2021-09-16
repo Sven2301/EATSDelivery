@@ -10,7 +10,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
 
 
     final String SQL_CREATE_TipoAcceso = "CREATE TABLE TipoDeAcceso (id INTEGER PRIMARY KEY AUTOINCREMENT, Descripcion TEXT, Tipo INTEGER)";
-    final String SQL_CREATE_Usuario    = "CREATE TABLE Usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, TipoAccesoID INTEGER, Usuario TEXT, Nombre TEXT," +
+    final String SQL_CREATE_Usuario    = "CREATE TABLE Usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, TipoAccesoID INTEGER, Usuario TEXT, Contrasenha TEXT," +
             "FOREIGN KEY(TipoAccesoID) REFERENCES TipoDeAcceso(id))";
     final String SQL_CREATE_TipoComida = "CREATE TABLE TipoDeComida (id INTEGER PRIMARY KEY AUTOINCREMENT, Descripcion TEXT)";
     final String SQL_CREATE_Tarjeta = "CREATE TABLE Tarjeta (id INTEGER PRIMARY KEY AUTOINCREMENT, NombrePropiertario TEXT, " +
@@ -34,7 +34,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
             " PlatoID INTEGER, CantidadDisponible TEXT, FOREIGN KEY(RestauranteID) REFERENCES Restaurante(id)," +
             "FOREIGN KEY(PlatoID) REFERENCES Plato(id))";
     final String SQL_CREATE_LineaFactura = "CREATE TABLE LineaFactura (id INTEGER PRIMARY KEY AUTOINCREMENT, PlatoID INTEGER," +
-            " OrdenID INTEGER, Cantidad TEXT, FOREIGN KEY(OrdenID) REFERENCES Orden(id)," +
+            " OrdenID INTEGER, Cantidad INTEGER, FOREIGN KEY(OrdenID) REFERENCES Orden(id)," +
             "FOREIGN KEY(PlatoID) REFERENCES Plato(id))";
     final String SQL_CREATE_DirXClient = "CREATE TABLE DireccionXCliente (id INTEGER PRIMARY KEY AUTOINCREMENT, DireccionID INTEGER," +
             " InfoUsuarioID INTEGER, FOREIGN KEY(DireccionID) REFERENCES Direccion(id)," +
