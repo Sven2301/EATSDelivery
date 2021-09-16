@@ -2,7 +2,9 @@ package com.example.eatsdelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class AddRestGerente extends AppCompatActivity {
 
@@ -11,4 +13,10 @@ public class AddRestGerente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_rest_gerente);
     }
+
+    public void addEncargado(View view){
+        Intent next = new Intent(this, SelectEncargadoRest.class);
+        startActivity(next);
+    }
+
 }
