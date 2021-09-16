@@ -20,8 +20,25 @@ public class MainMenu extends AppCompatActivity {
         startActivity(next);
     }
 
-    public void quit(View view){
+    public void manageDirections(View view){
 
+        Intent next = new Intent(this, AddDirectionsClient.class);
+        startActivity(next);
+    }
+
+    public void editClientData(View view){
+
+        Intent next = new Intent(this, EditInfoClient.class);
+        startActivity(next);
+    }
+
+    public void checkHistory(View view){
+
+        Intent next = new Intent(this, CheckHistoryClient.class);
+        startActivity(next);
+    }
+
+    public void quit(View view){
         Intent next = new Intent(this, MainMenu.class);
         startActivity(next);
     }
