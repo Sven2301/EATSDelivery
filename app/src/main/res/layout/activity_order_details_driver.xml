@@ -7,11 +7,13 @@
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="133dp"
-        android:layout_height="38dp"
+        android:layout_width="238dp"
+        android:layout_height="40dp"
         android:layout_marginTop="32dp"
         android:text="Detalles del Pedido:"
         android:textColor="@color/Button"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.078"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,25 +33,9 @@
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <Button
-        android:id="@+id/back_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Volver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        android:background="@drawable/custom_button"
-        android:textColor="#ffff"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/realizarPedido_btn"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
         android:id="@+id/realizarPedido_btn"
         android:layout_width="187dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:background="@drawable/custom_button"
         android:text="Realizar Pedido"

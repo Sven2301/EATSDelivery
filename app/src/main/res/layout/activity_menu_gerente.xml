@@ -11,6 +11,7 @@
         android:layout_height="53dp"
         android:layout_marginTop="26dp"
         android:background="@drawable/custom_button"
+        android:onClick="seeRests"
         android:text="Ver restaurantes"
         android:textAllCaps="false"
         android:textColor="#ffff"

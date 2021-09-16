@@ -23,7 +23,7 @@ public class MenuGerente extends AppCompatActivity {
         startActivity(next);
     }
     public void seeRests(View view){
-        Intent next = new Intent(this, MainMenu.class);
+        Intent next = new Intent(this, RestListGerente.class);
         startActivity(next);
     }
     public void quit(View view){

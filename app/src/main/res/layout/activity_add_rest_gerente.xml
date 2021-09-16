@@ -6,29 +6,15 @@
 
     <ImageView
         android:id="@+id/imageView11"
-        android:layout_width="406dp"
-        android:layout_height="728dp"
+        android:layout_width="388dp"
+        android:layout_height="671dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.266"
         app:srcCompat="@drawable/squarebox" />
-
-    <Button
-        android:layout_width="142dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/custom_button"
-        android:onClick="goBack"
-        android:text="@string/back"
-        android:textAllCaps="false"
-        android:textColor="#ffff"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confir_add_rest"
-        app:layout_constraintVertical_bias="0.027" />
 
     <Button
         android:id="@+id/confir_add_rest"
@@ -39,9 +25,12 @@
         android:text="@string/confirm"
         android:textAllCaps="false"
         android:textColor="#ffff"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_encargado" />
+        app:layout_constraintTop_toBottomOf="@+id/select_encargado"
+        app:layout_constraintVertical_bias="0.108" />
 
     <Button
         android:id="@+id/select_encargado"
@@ -61,11 +50,12 @@
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="Agregar Información de Restaurante"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView11" />
 
