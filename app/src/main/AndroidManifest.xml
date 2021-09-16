@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EATSDelivery">
         <activity
+            android:name=".AddDirectionsClient"
+            android:exported="true" />
+        <activity
+            android:name=".CheckHistoryClient"
+            android:exported="true" />
+        <activity
+            android:name=".EditInfoClient"
+            android:exported="true" />
+        <activity
             android:name=".RestInfoGerente"
             android:exported="true" />
         <activity

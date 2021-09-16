@@ -10,6 +10,7 @@
         android:id="@+id/imageView8"
         android:layout_width="401dp"
         android:layout_height="700dp"
+        android:contentDescription="TODO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +39,7 @@
         android:layout_height="54dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/custom_button"
+        android:onClick="checkHistory"
         android:text="@string/history"
         android:textAllCaps="false"
         android:textColor="#FFFF"
@@ -46,44 +48,34 @@
         app:layout_constraintTop_toBottomOf="@+id/button9" />
 
     <Button
-        android:id="@+id/button6"
-        android:layout_width="121dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/custom_button"
-        android:text="@string/config"
-        android:textAllCaps="false"
-        android:textColor="#FFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
-
-    <Button
         android:id="@+id/button7"
         android:layout_width="175dp"
         android:layout_height="49dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/custom_button"
+        android:onClick="manageDirections"
         android:text="@string/adminDirec"
         android:textAllCaps="false"
         android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
+        app:layout_constraintTop_toBottomOf="@+id/button8"
+        tools:ignore="UsingOnClickInXml" />
 
     <Button
         android:id="@+id/button10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/custom_button"
         android:onClick="quit"
         android:text="@string/quit"
         android:textAllCaps="false"
         android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
 
     <Button
         android:id="@+id/button9"
@@ -91,13 +83,15 @@
         android:layout_height="53dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/custom_button"
+        android:onClick="editClientData"
         android:text="@string/editProfile"
         android:textAllCaps="false"
         android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7" />
+        app:layout_constraintTop_toBottomOf="@+id/button7"
+        tools:ignore="UsingOnClickInXml" />
 
     <TextView
         android:id="@+id/textView5"
@@ -118,6 +112,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/papas_hamb" />
+        app:srcCompat="@drawable/papas_hamb"
+        tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,9 @@ package com.example.eatsdelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class MenuGerente extends AppCompatActivity {
 
@@ -10,5 +12,22 @@ public class MenuGerente extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_gerente);
+    }
+
+    public void addRest(View view){
+        Intent next = new Intent(this, AddRestGerente.class);
+        startActivity(next);
+    }
+    public void seeDelRequests(View view){
+        Intent next = new Intent(this, RequestManageGerente.class);
+        startActivity(next);
+    }
+    public void seeRests(View view){
+        Intent next = new Intent(this, MainMenu.class);
+        startActivity(next);
+    }
+    public void quit(View view){
+        Intent next = new Intent(this, MainActivity.class);
+        startActivity(next);
     }
 }
