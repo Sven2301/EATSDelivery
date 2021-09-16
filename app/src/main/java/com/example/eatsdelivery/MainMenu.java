@@ -15,7 +15,6 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void seeRestaurantList(View view){
-
         Intent next = new Intent(this, RestaurantList.class);
         startActivity(next);
     }
@@ -27,19 +26,17 @@ public class MainMenu extends AppCompatActivity {
     }
 
     public void editClientData(View view){
-
         Intent next = new Intent(this, EditInfoClient.class);
         startActivity(next);
     }
 
     public void checkHistory(View view){
-
         Intent next = new Intent(this, CheckHistoryClient.class);
         startActivity(next);
     }
 
     public void quit(View view){
-        Intent next = new Intent(this, MainMenu.class);
+        Intent next = new Intent(this, MainActivity.class);
         startActivity(next);
     }
 }

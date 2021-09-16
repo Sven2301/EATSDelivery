@@ -31,7 +31,8 @@
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_dir"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="UsingOnClickInXml" />
 
     <ImageView
         android:id="@+id/imageView19"
@@ -48,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Direcciones"
+        android:text="@string/direcciones"
         android:textAlignment="textStart"
         android:textColor="@color/Button"
         android:textSize="16sp"
@@ -62,11 +63,22 @@
         android:layout_width="212dp"
         android:layout_height="48dp"
         android:background="@drawable/custom_button"
-        android:text="Agregar Dirección"
+        android:text="@string/agregar_direcci_n"
         android:textAllCaps="false"
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="556dp" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="357dp"
+        android:layout_height="411dp"
+        android:text="@string/lista_de_pedidos"
+        android:background="@drawable/squarebox"
+        app:layout_constraintBottom_toTopOf="@+id/add_dir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
 </androidx.constraintlayout.widget.ConstraintLayout>

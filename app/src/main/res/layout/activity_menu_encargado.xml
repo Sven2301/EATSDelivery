@@ -21,7 +21,7 @@
         android:layout_width="356dp"
         android:layout_height="53dp"
         android:layout_marginTop="16dp"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/todo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sol_deletion"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="UsingOnClickInXml" />
 
     <Button
         android:id="@+id/edit_menu"
@@ -53,13 +54,14 @@
         android:layout_marginTop="36dp"
         android:background="@drawable/custom_button"
         android:onClick="editMenuRest"
-        android:text="Editar menú restaurante"
+        android:text="@string/editar_men_restaurante"
         android:textAllCaps="false"
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14"
+        tools:ignore="UsingOnClickInXml" />
 
     <Button
         android:id="@+id/manage_orders"
@@ -68,13 +70,14 @@
         android:layout_marginTop="28dp"
         android:background="@drawable/custom_button"
         android:onClick="manageOrders"
-        android:text="Gestionar Pedidos"
+        android:text="@string/gestionar_pedidos"
         android:textAllCaps="false"
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_res_info" />
+        app:layout_constraintTop_toBottomOf="@+id/update_res_info"
+        tools:ignore="UsingOnClickInXml" />
 
     <Button
         android:id="@+id/sol_deletion"
@@ -83,13 +86,14 @@
         android:layout_marginTop="28dp"
         android:background="@drawable/custom_button"
         android:onClick="requestDeletetion"
-        android:text="Solicitud de cierre"
+        android:text="@string/solicitud_de_cierre"
         android:textAllCaps="false"
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manage_orders" />
+        app:layout_constraintTop_toBottomOf="@+id/manage_orders"
+        tools:ignore="UsingOnClickInXml" />
 
     <Button
         android:id="@+id/update_res_info"

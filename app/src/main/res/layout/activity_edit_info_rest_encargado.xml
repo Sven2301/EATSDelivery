@@ -7,41 +7,29 @@
 
     <ImageView
         android:id="@+id/imageView16"
-        android:layout_width="406dp"
-        android:layout_height="728dp"
+        android:layout_width="383dp"
+        android:layout_height="689dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.166"
         app:srcCompat="@drawable/squarebox" />
-
-    <Button
-        android:id="@+id/button62"
-        android:layout_width="142dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/custom_button"
-        android:onClick="goBack"
-        android:text="@string/back"
-        android:textAllCaps="false"
-        android:textColor="#ffff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quit_btn" />
 
     <Button
         android:id="@+id/quit_btn"
         android:layout_width="201dp"
         android:layout_height="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/custom_button"
         android:text="@string/confirm"
         android:textAllCaps="false"
         android:textColor="#ffff"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView22"
@@ -84,7 +72,7 @@
         android:id="@+id/textView25"
         android:layout_width="115dp"
         android:layout_height="21dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="Correo"
         android:textAlignment="center"
         android:textSize="14sp"
@@ -153,8 +141,8 @@
 
     <EditText
         android:id="@+id/editTextTextPostalAddress"
-        android:layout_width="332dp"
-        android:layout_height="150dp"
+        android:layout_width="336dp"
+        android:layout_height="189dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/box"
         android:ems="10"

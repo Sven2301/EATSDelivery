@@ -73,7 +73,7 @@ public class MainActivity<button2> extends AppCompatActivity{
 
     public void login(View view){
 
-        Intent next = new Intent(this, MainMenu.class);
+        Intent next = new Intent(this, MenuEncargado.class);
         startActivity(next);
     }
 

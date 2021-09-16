@@ -38,6 +38,14 @@
     <string name="orderStatusMsg">Su pedido esta en proceso de preparacion y entrega :)</string>
     <string name="salir">Salir</string>
     <string name="selecciona_una_opci_n">Selecciona una opción:</string>
+    <string name="todo">TODO</string>
+    <string name="editar_men_restaurante">Editar menú restaurante</string>
+    <string name="gestionar_pedidos">Gestionar Pedidos</string>
+    <string name="solicitud_de_cierre">Solicitud de cierre</string>
+    <string name="direcciones">Direcciones</string>
+    <string name="textview">TextView</string>
+    <string name="lista_de_pedidos">Lista de Pedidos</string>
+    <string name="agregar_direcci_n">Agregar Dirección</string>
 
 
 </resources>
