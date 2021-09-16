@@ -26,6 +26,20 @@ public class ConexionSQLite extends SQLiteOpenHelper {
     final String SQL_CREATE_ResxGer = "CREATE TABLE RestauranteXGerente (id INTEGER PRIMARY KEY AUTOINCREMENT, RestauranteID INTEGER," +
             " InfoUsuarioID INTEGER," +
             " FOREIGN KEY(RestauranteID) REFERENCES Restaurante(id), FOREIGN KEY(InfoUsuarioID) REFERENCES InfoUsuario(id))";
+    final String SQL_CREATE_Orden = "CREATE TABLE Orden (id INTEGER PRIMARY KEY AUTOINCREMENT, ClienteID INTEGER," +
+            " RepartidorID INTEGER, RestauranteID INTEGER, DireccionID INTEGER, costoTotal INTEGER," +
+            " FOREIGN KEY(ClienteID) REFERENCES Usuario(id), FOREIGN KEY(RepartidorID) REFERENCES Usuario(id)," +
+            "FOREIGN KEY(RestauranteID) REFERENCES Restaurante(id), FOREIGN KEY(DireccionID) REFERENCES Direccion(id))";
+    final String SQL_CREATE_Menu = "CREATE TABLE Menu (id INTEGER PRIMARY KEY AUTOINCREMENT, RestauranteID INTEGER," +
+            " PlatoID INTEGER, CantidadDisponible TEXT, FOREIGN KEY(RestauranteID) REFERENCES Restaurante(id)," +
+            "FOREIGN KEY(PlatoID) REFERENCES Plato(id))";
+    final String SQL_CREATE_LineaFactura = "CREATE TABLE LineaFactura (id INTEGER PRIMARY KEY AUTOINCREMENT, PlatoID INTEGER," +
+            " OrdenID INTEGER, Cantidad TEXT, FOREIGN KEY(OrdenID) REFERENCES Orden(id)," +
+            "FOREIGN KEY(PlatoID) REFERENCES Plato(id))";
+    final String SQL_CREATE_DirXClient = "CREATE TABLE DireccionXCliente (id INTEGER PRIMARY KEY AUTOINCREMENT, DireccionID INTEGER," +
+            " InfoUsuarioID INTEGER, FOREIGN KEY(DireccionID) REFERENCES Direccion(id)," +
+            "FOREIGN KEY(InfoUsuarioID) REFERENCES InfoUsuario(id))";
+
 
 
 //
@@ -44,7 +58,10 @@ public class ConexionSQLite extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_Direccion);
         sqLiteDatabase.execSQL(SQL_CREATE_Restaurante);
         sqLiteDatabase.execSQL(SQL_CREATE_ResxGer);
-
+        sqLiteDatabase.execSQL(SQL_CREATE_Orden);
+        sqLiteDatabase.execSQL(SQL_CREATE_Menu);
+        sqLiteDatabase.execSQL(SQL_CREATE_LineaFactura);
+        sqLiteDatabase.execSQL(SQL_CREATE_DirXClient);
 
 
     }
