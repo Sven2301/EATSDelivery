@@ -42,7 +42,6 @@ public class ConexionSQLite extends SQLiteOpenHelper {
 
 
 
-//
     public ConexionSQLite(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
@@ -62,7 +61,6 @@ public class ConexionSQLite extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_Menu);
         sqLiteDatabase.execSQL(SQL_CREATE_LineaFactura);
         sqLiteDatabase.execSQL(SQL_CREATE_DirXClient);
-
 
     }
 

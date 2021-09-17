@@ -37,7 +37,7 @@ public class Model {
 
     public int insertTipoAcceso(Context context, TipoDeAcceso tda){
         int res = 0;
-        String sql = "INSERT INTO TipoDeAcceso (Descripcion, Tipo) VALUES ('"+"', '"+tda.getDescripcion()+"', '"+tda.getTipo()+"')";
+        String sql = "INSERT INTO TipoDeAcceso (Descripcion, Tipo) VALUES ('"+tda.getDescripcion()+"', '"+tda.getTipo()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -51,7 +51,7 @@ public class Model {
 
     public int insertDireccion(Context context, Direccion d) {
         int res = 0;
-        String sql = "INSERT INTO Direccion (Nombre, Descripcion, DireccionExacta) VALUES ('"+"', '"+d.getNombre()+"', '"+d.getDescripcion()+"', '"+d.getDireccionExacta()+"')";
+        String sql = "INSERT INTO Direccion (Nombre, Descripcion, DireccionExacta) VALUES ('"+d.getNombre()+"', '"+d.getDescripcion()+"', '"+d.getDireccionExacta()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -64,7 +64,7 @@ public class Model {
 
     public int insertDireccionXCliente(Context context, DireccionXCliente dxc) {
         int res = 0;
-        String sql = "INSERT INTO DireccionXCliente (DireccionID, InfoUsuarioID) VALUES ('"+"', '"+dxc.getDireccionID()+"', '"+dxc.getInfoUsuarioID()+"')";
+        String sql = "INSERT INTO DireccionXCliente (DireccionID, InfoUsuarioID) VALUES ('"+dxc.getDireccionID()+"', '"+dxc.getInfoUsuarioID()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -77,7 +77,7 @@ public class Model {
 
     public int insertInfoUsuario(Context context, InfoUsuario iu) {
         int res = 0;
-        String sql = "INSERT INTO InfoUsuario(UsuarioID, TarjetaID, Nombre, Telefono, Correo, PlacaVehiculo) VALUES ('"+"', '"+iu.getUsuarioID()+"', '"+iu.getTarjetaID()+"', '"+iu.getNombre()+"', '"+iu.getTelefono()+"', '"+iu.getCorreo()+"', '"+iu.getPlacaVehiculo()+"')";
+        String sql = "INSERT INTO InfoUsuario(UsuarioID, TarjetaID, Nombre, Telefono, Correo, PlacaVehiculo) VALUES ('"+iu.getUsuarioID()+"', '"+iu.getTarjetaID()+"', '"+iu.getNombre()+"', '"+iu.getTelefono()+"', '"+iu.getCorreo()+"', '"+iu.getPlacaVehiculo()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -194,7 +194,7 @@ public class Model {
 
     public int insertUsuario(Context context, Usuario u) {
         int res = 0;
-        String sql = "INSERT INTO Usuario(TipoAccesoID, Usuario, Contrasenha) Values ('"+u.getTipoAccesoID()+"', '"+u.getUsuario()+"', '"+u.getContrasenha()+"')";
+        String sql = "INSERT INTO Usuario(TipoAccesoID, Usuario, Contrasenha) VALUES ('"+u.getTipoAccesoID()+"', '"+u.getUsuario()+"', '"+u.getContrasenna()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);

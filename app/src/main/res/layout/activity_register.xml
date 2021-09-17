@@ -121,7 +121,7 @@
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="48dp"
             android:background="@drawable/custom_button"
             android:onClick="addPaymentMethod"
             android:text="@string/paymethod"
@@ -131,7 +131,7 @@
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
-            android:layout_height="37dp"
+            android:layout_height="48dp"
             android:background="@drawable/custom_button"
             android:text="@string/confirm"
             android:textAllCaps="false"

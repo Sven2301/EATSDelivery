@@ -20,11 +20,11 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getContrasenha() {
+    public String getContrasenna() {
         return contrasenha;
     }
 
-    public void setContrasenha(String contrasenha) {
+    public void setContrasenna(String contrasenha) {
         this.contrasenha = contrasenha;
     }
 
@@ -43,4 +43,6 @@ public class Usuario {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
+
+
 }
