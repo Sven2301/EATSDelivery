@@ -2,7 +2,7 @@ package com.example.eatsdelivery.SQLite.Tables;
 
 public class Direccion {
 
-    private String direccionID, nombre, descripcion, direccionExacta;
+    private String direccionID, nombre, descripcion;
 
     public String getDireccionID() {
         return direccionID;
@@ -26,13 +26,5 @@ public class Direccion {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getDireccionExacta() {
-        return direccionExacta;
-    }
-
-    public void setDireccionExacta(String direccionExacta) {
-        this.direccionExacta = direccionExacta;
     }
 }

@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.eatsdelivery.SQLite.Tables.Direccion;
 import com.example.eatsdelivery.SQLite.Tables.DireccionXCliente;
-import com.example.eatsdelivery.SQLite.Tables.InfoUsuario;
 import com.example.eatsdelivery.SQLite.Tables.LineaFactura;
 import com.example.eatsdelivery.SQLite.Tables.Menu;
 import com.example.eatsdelivery.SQLite.Tables.Orden;
@@ -51,7 +50,7 @@ public class Model {
 
     public int insertDireccion(Context context, Direccion d) {
         int res = 0;
-        String sql = "INSERT INTO Direccion (Nombre, Descripcion, DireccionExacta) VALUES ('"+d.getNombre()+"', '"+d.getDescripcion()+"', '"+d.getDireccionExacta()+"')";
+        String sql = "INSERT INTO Direccion (Nombre, Descripcion, DireccionExacta) VALUES ('"+d.getNombre()+"', '"+d.getDescripcion()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -61,7 +60,7 @@ public class Model {
         }
         return res;
     }
-
+    /*
     public int insertDireccionXCliente(Context context, DireccionXCliente dxc) {
         int res = 0;
         String sql = "INSERT INTO DireccionXCliente (DireccionID, InfoUsuarioID) VALUES ('"+dxc.getDireccionID()+"', '"+dxc.getInfoUsuarioID()+"')";
@@ -74,19 +73,7 @@ public class Model {
         }
         return res;
     }
-
-    public int insertInfoUsuario(Context context, InfoUsuario iu) {
-        int res = 0;
-        String sql = "INSERT INTO InfoUsuario(UsuarioID, TarjetaID, Nombre, Telefono, Correo, PlacaVehiculo) VALUES ('"+iu.getUsuarioID()+"', '"+iu.getTarjetaID()+"', '"+iu.getNombre()+"', '"+iu.getTelefono()+"', '"+iu.getCorreo()+"', '"+iu.getPlacaVehiculo()+"')";
-        SQLiteDatabase db = this.getConnWrite(context);
-        try {
-            db.execSQL(sql);
-            res = 1;
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        return res;
-    }
+    */
 
     public int insertLineaFactura(Context context, LineaFactura lf) {
         int res = 0;
@@ -232,37 +219,45 @@ public class Model {
         return cursor;
     }
 
-    public InfoUsuario validarUsuario(Context context, String usuario, String contrasenha) {
+    public Usuario validarUsuario(Context context, String usuario, String contrasenha) {
         SQLiteDatabase db = getConnRead(context);
 
-        String query = "SELECT iu.* FROM InforUsuario iu INNER JOIN Usurio ON iu.UsuarioID = u.id WHERE u.Usuario = ? AND u.Contrasenha = ?";
+        String query = "SELECT * FROM Usuario u WHERE u.Usuario = ? AND u.Contrasenha = ?";
         Cursor cursor = db.rawQuery(query, new String[]{usuario, contrasenha});
 
-        InfoUsuario infoUsuario = null;
+        Usuario user = null;
 
         if (cursor != null && cursor.getCount() > 0) {
-            infoUsuario = new InfoUsuario();
+            user = new Usuario();
             int index;
 
             index = cursor.getColumnIndexOrThrow("id");
-            infoUsuario.setInfoUsuarioID(String.valueOf(cursor.getInt(index)));
-
-            index = cursor.getColumnIndexOrThrow("UsuarioID");
-            infoUsuario.setUsuarioID(String.valueOf(cursor.getInt(index)));
-
-            index = cursor.getColumnIndexOrThrow("TarjetaID");
-            infoUsuario.setTarjetaID(String.valueOf(cursor.getInt(index)));
+            user.setUsuarioID(String.valueOf(cursor.getInt(index)));
 
             index = cursor.getColumnIndexOrThrow("Nombre");
-            infoUsuario.setNombre(cursor.getString(index));
+            user.setNombre(cursor.getString(index));
+
+            index = cursor.getColumnIndexOrThrow("TipoAccesoID");
+            user.setTipoAccesoID(String.valueOf(cursor.getInt(index)));
+
+            index = cursor.getColumnIndexOrThrow("TarjetaID");
+            user.setTarjetaID(String.valueOf(cursor.getInt(index)));
 
             index = cursor.getColumnIndexOrThrow("Telefono");
-            infoUsuario.setTelefono(cursor.getString(index));
+            user.setTelefono(cursor.getString(index));
+
+            index = cursor.getColumnIndexOrThrow("Usuario");
+            user.setUsuario(String.valueOf(cursor.getInt(index)));
 
             index = cursor.getColumnIndexOrThrow("Correo");
-            infoUsuario.setCorreo(cursor.getString(index));
+            user.setCorreo(cursor.getString(index));
+
+            index = cursor.getColumnIndexOrThrow("Contrasenha");
+            user.setContrasenna(cursor.getString(index));
+
+
         }
-        return infoUsuario;
+        return user;
     }
 
 }

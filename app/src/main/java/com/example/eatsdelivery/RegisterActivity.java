@@ -12,7 +12,6 @@ import android.widget.Toast;
 import com.example.eatsdelivery.SQLite.Model;
 import com.example.eatsdelivery.SQLite.Tables.Direccion;
 import com.example.eatsdelivery.SQLite.Tables.DireccionXCliente;
-import com.example.eatsdelivery.SQLite.Tables.InfoUsuario;
 import com.example.eatsdelivery.SQLite.Tables.Tarjeta;
 import com.example.eatsdelivery.SQLite.Tables.TipoDeAcceso;
 import com.example.eatsdelivery.SQLite.Tables.Usuario;
@@ -31,7 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
     Direccion direccion;
     DireccionXCliente direccionXCliente;
     Usuario usuario;
-    InfoUsuario infoUsuario;
     Tarjeta tarjeta = null;
     Model model = MainActivity.model;
     Button addPayment_tbn;
@@ -52,8 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         direccionXCliente = new DireccionXCliente();
         // Crea un usuario
         usuario = new Usuario();
-        // Crea info de usuario
-        infoUsuario = new InfoUsuario();
+
 
         nameClient = (EditText)findViewById(R.id.name_reg);
         usernameClient = (EditText)findViewById(R.id.username_reg);
@@ -93,13 +90,10 @@ public class RegisterActivity extends AppCompatActivity {
                             usuario.setContrasenna(pass);
                             usuario.setTipoAccesoID(tda.getTipo());
                             // Objeto Info Usuario
-                            infoUsuario.setNombre(name);
-                            infoUsuario.setCorreo(mail);
-                            infoUsuario.setUsuarioID(usuario.getUsuarioID());
-                            infoUsuario.setTelefono(num);
+
                             // Objeto DireccionXUsuario
                             direccionXCliente.setDireccionID(direccion.getDireccionID());
-                            direccionXCliente.setInfoUsuarioID(infoUsuario.getInfoUsuarioID());
+
 
 
                         }
