@@ -2,7 +2,7 @@ package com.example.eatsdelivery.SQLite.Tables;
 
 public class Usuario {
 
-    private String usuarioID, usuario, contrasenha, nombre, tipoAccesoID;
+    private String usuarioID, usuario, contrasenha, tipoAccesoID;
 
     public String getUsuarioID() {
         return usuarioID;
@@ -10,14 +10,6 @@ public class Usuario {
 
     public void setUsuarioID(String usuarioID) {
         this.usuarioID = usuarioID;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getContrasenna() {

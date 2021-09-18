@@ -209,6 +209,7 @@ public class Model {
 
         SQLiteDatabase db = getConnRead(context);
 
+
         // Define a projection that specifies which columns from the database
         // you will actually use after this query.
         String[] projection = {
@@ -230,4 +231,38 @@ public class Model {
 
         return cursor;
     }
+
+    public InfoUsuario validarUsuario(Context context, String usuario, String contrasenha) {
+        SQLiteDatabase db = getConnRead(context);
+
+        String query = "SELECT iu.* FROM InforUsuario iu INNER JOIN Usurio ON iu.UsuarioID = u.id WHERE u.Usuario = ? AND u.Contrasenha = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{usuario, contrasenha});
+
+        InfoUsuario infoUsuario = null;
+
+        if (cursor != null && cursor.getCount() > 0) {
+            infoUsuario = new InfoUsuario();
+            int index;
+
+            index = cursor.getColumnIndexOrThrow("id");
+            infoUsuario.setInfoUsuarioID(String.valueOf(cursor.getInt(index)));
+
+            index = cursor.getColumnIndexOrThrow("UsuarioID");
+            infoUsuario.setUsuarioID(String.valueOf(cursor.getInt(index)));
+
+            index = cursor.getColumnIndexOrThrow("TarjetaID");
+            infoUsuario.setTarjetaID(String.valueOf(cursor.getInt(index)));
+
+            index = cursor.getColumnIndexOrThrow("Nombre");
+            infoUsuario.setNombre(cursor.getString(index));
+
+            index = cursor.getColumnIndexOrThrow("Telefono");
+            infoUsuario.setTelefono(cursor.getString(index));
+
+            index = cursor.getColumnIndexOrThrow("Correo");
+            infoUsuario.setCorreo(cursor.getString(index));
+        }
+        return infoUsuario;
+    }
+
 }

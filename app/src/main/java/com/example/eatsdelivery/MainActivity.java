@@ -2,10 +2,13 @@ package com.example.eatsdelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.Display;
 import android.view.View;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 import android.widget.Toast;
@@ -21,10 +24,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity<button2> extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity{
 
+    public static InfoUsuario userChecked = null;
     private EditText username;
     private EditText password;
+    public Button btn_login, btn_register;
+    public static Model model;
     private Object conn;
 
     @Override
@@ -32,10 +38,46 @@ public class MainActivity<button2> extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        username = findViewById(R.id.username_log);
-        password = findViewById(R.id.password_log);
+        username = (EditText) findViewById(R.id.username_log);
+        password =  (EditText) findViewById(R.id.password_log);
+        btn_login = (Button) findViewById(R.id.btn_login);
+        btn_register = (Button) findViewById(R.id.btn_register);
+        model = new Model();
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String user = username.getText().toString();
+                String pass = password.getText().toString();
 
 
+                if (user.equals("") && pass.equals("")) {
+                    Toast.makeText(MainActivity.this,"No has llenado los espacios",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    InfoUsuario checker = model.validarUsuario(MainActivity.this, user, pass);
+
+                    if (checker != null){
+                        userChecked = checker;
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this,"El usuario no existe. Debes registrarte",Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+
+            }
+        });
+
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+        /*
         Model model = new Model();
 
         TipoDeAcceso tda = new TipoDeAcceso();
@@ -145,7 +187,7 @@ public class MainActivity<button2> extends AppCompatActivity{
     }
 
     public void login(View view){
-        Intent next = new Intent(this, MenuGerente.class);
+        Intent next = new Intent(this, MainMenu.class);
         startActivity(next);
     }
 

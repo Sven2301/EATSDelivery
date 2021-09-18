@@ -108,18 +108,30 @@
             tools:ignore="TextContrastCheck" />
 
         <EditText
-            android:id="@+id/direction_reg"
-            android:background="@drawable/box"
-            android:gravity="center"
+            android:id="@+id/nameDir"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box"
             android:ems="10"
+            android:gravity="center"
+            android:hint="Nombre de Dirección"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/direction_reg"
+            android:layout_width="match_parent"
+            android:layout_height="124dp"
+            android:background="@drawable/box"
+            android:ems="10"
+            android:gravity="center"
 
             android:hint="@string/direction"
             android:inputType="textMultiLine" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/addPayment_tbn"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/custom_button"
@@ -129,7 +141,7 @@
             android:textColor="#FFFF" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/confirm_btn"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/custom_button"
