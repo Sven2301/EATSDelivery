@@ -111,7 +111,9 @@ public class MainActivity extends AppCompatActivity{
         card.setFechaVencimiento("20/10/24");
         card.setNombrePropietario("Thorfinn");
         card.setNumero("123456789");
-        model.insertTarjeta(this, card);
+        int status = model.insertTarjeta(this, card);
+
+
 
         Usuario user = new Usuario();
         user.setNombre("Thorfinn");

@@ -3,6 +3,7 @@ package com.example.eatsdelivery.SQLite;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Tables.Direccion;
 import com.example.eatsdelivery.SQLite.Tables.DireccionXCliente;
@@ -162,6 +163,7 @@ public class Model {
             res = 1;
         } catch (Exception e){
             System.out.println(e.getMessage());
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
         }
         return res;
     }
