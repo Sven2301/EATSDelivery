@@ -181,7 +181,8 @@ public class Model {
 
     public int insertUsuario(Context context, Usuario u) {
         int res = 0;
-        String sql = "INSERT INTO Usuario(TipoAccesoID, Usuario, Contrasenha) VALUES ('"+u.getTipoAccesoID()+"', '"+u.getUsuario()+"', '"+u.getContrasenna()+"')";
+        String sql = "INSERT INTO Usuario(TipoAccesoID, Usuario, Contrasenha, Nombre, Apellido, Correo, Telefono, TarjetaID) VALUES ('"+u.getTipoAccesoID()+"', '"+u.getUsuario()+"', '"+u.getContrasenha()+"', " +
+                "'"+u.getNombre()+"', '"+u.getApellido()+"', '"+u.getCorreo()+"', '"+u.getTelefono()+"', '"+u.getTarjetaID()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -253,7 +254,7 @@ public class Model {
             user.setCorreo(cursor.getString(index));
 
             index = cursor.getColumnIndexOrThrow("Contrasenha");
-            user.setContrasenna(cursor.getString(index));
+            user.setContrasenha(cursor.getString(index));
 
 
         }

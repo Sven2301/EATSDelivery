@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Model;
+import com.example.eatsdelivery.SQLite.Tables.Tarjeta;
 import com.example.eatsdelivery.SQLite.Tables.TipoDeAcceso;
 import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
@@ -28,19 +29,12 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         username = (EditText) findViewById(R.id.username_log);
         password =  (EditText) findViewById(R.id.password_log);
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_register = (Button) findViewById(R.id.btn_register);
-        model = new Model();
 
-        TipoDeAcceso tda = new TipoDeAcceso();
-        tda.setDescripcion("Cliente");
-        tda.setTipo("1");
-        model.insertTipoAcceso(this, tda);
-
+        createDB();
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,6 +78,51 @@ public class MainActivity extends AppCompatActivity{
     public void login(View view){
         Intent next = new Intent(this, MainMenu.class);
         startActivity(next);
+    }
+
+    public void createDB(){
+
+        model = new Model();
+
+        //AGREGA LOS TIPOS DE ACCESO
+        //TIPO ACCESO 1: CLIENTE
+        TipoDeAcceso tda = new TipoDeAcceso();
+        tda.setDescripcion("Cliente");
+        tda.setTipo("1");
+        model.insertTipoAcceso(this, tda);
+
+        //TIPO ACCESO 2: REPARTIDOR
+        tda.setDescripcion("Repartidor");
+        tda.setTipo("2");
+        model.insertTipoAcceso(this, tda);
+
+        //TIPO ACCESO 3: GERENTE
+        tda.setDescripcion("Gerente");
+        tda.setTipo("3");
+        model.insertTipoAcceso(this, tda);
+
+        //TIPO ACCESO 4: ENCARGADO
+        tda.setDescripcion("Encargado");
+        tda.setTipo("4");
+        model.insertTipoAcceso(this, tda);
+
+        Tarjeta card = new Tarjeta();
+        card.setCcv("123");
+        card.setFechaVencimiento("20/10/24");
+        card.setNombrePropietario("Thorfinn");
+        card.setNumero("123456789");
+        model.insertTarjeta(this, card);
+
+        Usuario user = new Usuario();
+        user.setNombre("Thorfinn");
+        user.setApellido("Mora");
+        user.setUsuario("Thor");
+        user.setContrasenha("1234");
+        user.setCorreo("thorfinn@fakemail.com");
+        user.setTelefono("8888888888");
+        user.setTipoAccesoID("1");
+        user.setTarjetaID("1");
+        model.insertUsuario(this, user);
     }
 
 

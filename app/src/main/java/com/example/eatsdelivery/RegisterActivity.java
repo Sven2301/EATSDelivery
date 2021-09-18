@@ -87,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
                             direccion.setDescripcion(dir);
                             // Objeto Usuario
                             usuario.setUsuario(user);
-                            usuario.setContrasenna(pass);
+                            usuario.setContrasenha(pass);
                             usuario.setTipoAccesoID(tda.getTipo());
                             // Objeto Info Usuario
 

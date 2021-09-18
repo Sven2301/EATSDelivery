@@ -12,14 +12,6 @@ public class Usuario {
         this.usuarioID = usuarioID;
     }
 
-    public String getContrasenna() {
-        return contrasenha;
-    }
-
-    public void setContrasenna(String contrasenha) {
-        this.contrasenha = contrasenha;
-    }
-
     public String getTipoAccesoID() {
         return tipoAccesoID;
     }
