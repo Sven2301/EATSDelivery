@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/box" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/editTextCardNumber"
         android:layout_width="293dp"
         android:layout_height="53dp"
         android:layout_marginTop="156dp"
@@ -44,10 +44,10 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCardNumber" />
 
     <EditText
-        android:id="@+id/editTextNumber2"
+        android:id="@+id/editTextCCV"
         android:layout_width="142dp"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
@@ -83,14 +83,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/confirm"
-        app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/custom_button"
+        android:onClick="confirm"
+        android:text="@string/confirm"
         android:textAllCaps="false"
         android:textColor="#ffff"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextCCV" />
 
     <Button
         android:id="@+id/button4"

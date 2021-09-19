@@ -2,7 +2,7 @@ package com.example.eatsdelivery.SQLite.Tables;
 
 public class DireccionXCliente {
 
-    private String dc_ID, direccionID, infoUsuarioID;
+    private String dc_ID, direccionID, usuarioID;
 
     public String getDc_ID() {
         return dc_ID;
@@ -20,11 +20,11 @@ public class DireccionXCliente {
         this.direccionID = direccionID;
     }
 
-    public String getInfoUsuarioID() {
-        return infoUsuarioID;
+    public String getUsuarioID() {
+        return usuarioID;
     }
 
-    public void setInfoUsuarioID(String infoUsuarioID) {
-        this.infoUsuarioID = infoUsuarioID;
+    public void setUsuarioID(String usuarioID) {
+        this.usuarioID = usuarioID;
     }
 }

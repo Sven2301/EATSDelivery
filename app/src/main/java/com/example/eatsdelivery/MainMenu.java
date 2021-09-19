@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.eatsdelivery.SQLite.Tables.Usuario;
+
 public class MainMenu extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,11 @@ public class MainMenu extends AppCompatActivity {
 
     public void checkHistory(View view){
         Intent next = new Intent(this, CheckHistoryClient.class);
+        startActivity(next);
+    }
+
+    public void checkDirections(View view){
+        Intent next = new Intent(this, VerDirecciones.class);
         startActivity(next);
     }
 

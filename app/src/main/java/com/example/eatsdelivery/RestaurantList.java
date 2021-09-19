@@ -8,6 +8,9 @@ import android.view.View;
 
 public class RestaurantList extends AppCompatActivity {
 
+    //Array de restaurantes
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
