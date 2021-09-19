@@ -20,8 +20,6 @@ public class AddPaymentMethodActivity extends AppCompatActivity {
     private EditText ccv;
     public Button btn_Confirm;
 
-    private Tarjeta tarjeta;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,14 +51,25 @@ public class AddPaymentMethodActivity extends AppCompatActivity {
                 card.setNombrePropietario(cardHolder);
                 int status = model.insertTarjeta(view.getContext(), card);
 
-                Toast.makeText(view.getContext(), String.valueOf(status), Toast.LENGTH_SHORT).show();
+                if (status == 1){
+                    Toast.makeText(view.getContext(), "Metodo de pago agregado con exito", Toast.LENGTH_LONG).show();
+                    Intent next = new Intent(view.getContext(), RegisterActivity.class);
+                    next.putExtra("numero", number);
+                    startActivity(next);
+
+                }
+                else{
+
+                    Toast.makeText(view.getContext(), "Error al agregar metodo de pago", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }
 
     public void goBack(View view){
 
-        Intent next = new Intent(this, RegisterActivity.class);
+        Intent next = new Intent(this, MainActivity.class);
         startActivity(next);
     }
 

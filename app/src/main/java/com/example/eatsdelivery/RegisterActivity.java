@@ -60,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
         confirmPass = (EditText)findViewById(R.id.confpass_reg);
         directionClient = (EditText)findViewById(R.id.direction_reg);
         nameDir = (EditText)findViewById(R.id.nameDir);
+        confirm_btn = (Button)findViewById(R.id.confirm_btn_register);
 
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,37 +74,47 @@ public class RegisterActivity extends AppCompatActivity {
                 String dir = directionClient.getText().toString();
                 String nombreDir = nameDir.getText().toString();
                 String num = numberClient.getText().toString();
+                model = new Model();
 
                 // Verifica que todos los textview esten llenos
                 if (user.equals("") && pass.equals("") && passConfirmed.equals("") && name.equals("") && mail.equals("") && dir.equals("")){
-                    Toast.makeText(RegisterActivity.this,"No has llenado los espacios",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(),"No has llenado los espacios",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     if (pass.equals(passConfirmed)) {
-                        //Verifica que haya agregado tipo de pago
-                        if (tarjeta != null) {
+
                             // Objeto direccion
                             direccion.setNombre(nombreDir);
                             direccion.setDescripcion(dir);
                             // Objeto Usuario
                             usuario.setUsuario(user);
                             usuario.setContrasenha(pass);
+                            usuario.setCorreo(mail);
+                            usuario.setTelefono(num);
                             usuario.setTipoAccesoID(tda.getTipo());
-                            // Objeto Info Usuario
-
+                            usuario.setTarjetaID(getIntent().getStringExtra("numero"));
                             // Objeto DireccionXUsuario
-                            direccionXCliente.setDireccionID(direccion.getDireccionID());
+                            //direccionXCliente.setDireccionID(direccion.getDireccionID());
+                            int status = model.insertUsuario(view.getContext(), usuario);
 
+                            if (status == 1){
+                                Toast.makeText(view.getContext(), "Usuario agregado con éxito", Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                Toast.makeText(view.getContext(), "Error al agregar usuario", Toast.LENGTH_SHORT).show();
+                            }
+                            status = model.insertDireccion(view.getContext(), direccion);
 
-
+                        if (status == 1){
+                            Toast.makeText(view.getContext(), "Direccion agregada con éxito", Toast.LENGTH_SHORT).show();
                         }
-                        else{
-                            Toast.makeText(RegisterActivity.this,"Debes agregar un método de pago",Toast.LENGTH_SHORT).show();
+                        else {
+                            Toast.makeText(view.getContext(), "Error al agregar direccion", Toast.LENGTH_SHORT).show();
                         }
 
                     }
                     else{
-                        Toast.makeText(RegisterActivity.this,"Tus contraseñas no son iguales. Deben serlo.",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this,"Tus contraseñas no coinciden",Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -111,44 +122,5 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-
-
-    }
-
-
-    public void addPaymentMethod(View view){
-
-        Intent next = new Intent(this, AddPaymentMethodActivity.class);
-        startActivity(next);
-    }
-
-
-
-    public EditText getNameClient() {
-        return nameClient;
-    }
-
-    public EditText getUsernameClient() {
-        return usernameClient;
-    }
-
-    public EditText getNumberClient() {
-        return numberClient;
-    }
-
-    public EditText getMailClient() {
-        return mailClient;
-    }
-
-    public EditText getPasswordClient() {
-        return passwordClient;
-    }
-
-    public EditText getConfirmPass() {
-        return confirmPass;
-    }
-
-    public EditText getDirectionClient() {
-        return directionClient;
-    }
+        }
 }

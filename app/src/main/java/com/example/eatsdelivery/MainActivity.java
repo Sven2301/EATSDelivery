@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity{
 
     public void registrarse(View view){
 
-        Intent next = new Intent(this, AddPaymentMethodActivity.class);
+        Intent next = new Intent(this, RegisterActivity.class);
         startActivity(next);
     }
 

@@ -135,13 +135,12 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/custom_button"
-            android:onClick="addPaymentMethod"
             android:text="@string/paymethod"
             android:textAllCaps="false"
             android:textColor="#FFFF" />
 
         <Button
-            android:id="@+id/confirm_btn"
+            android:id="@+id/confirm_btn_register"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/custom_button"
