@@ -3,6 +3,7 @@ package com.example.eatsdelivery.SQLite;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Tables.Direccion;
 import com.example.eatsdelivery.SQLite.Tables.DireccionXCliente;
@@ -161,7 +162,7 @@ public class Model {
             db.execSQL(sql);
             res = 1;
         } catch (Exception e){
-            System.out.println(e.getMessage());
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
         }
         return res;
     }
@@ -261,4 +262,37 @@ public class Model {
         return user;
     }
 
+    // 2 Activo 1 Solicitud Pendinete 0 Inactivo
+
+    public Cursor selectRestaurantes(Context context) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Restaurante WHERE Activo > 0";
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor selectSolicitudesEliminacion(Context context) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Restaurante WHERE Activo = 1";
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor selectRestaurantesXGerente(Context context, String idGerente) {   // Probar INNER JOIN
+        SQLiteDatabase db = getConnRead(context);
+        String query =
+                "SELECT r.* FROM Restaurante r " +
+                "INNER JOIN RestauranteXGerente rxg ON r.id = rxg.RestauranteID " +
+                "WHERE rxg.UsuarioID = ?";
+        return db.rawQuery(query, new String[]{idGerente});
+    }
+
+    public Cursor selectPedidosDeRestaurante(Context context, String idRestaurante) {
+        SQLiteDatabase db = getConnRead(context);
+        String query =
+                "SELECT lf.*, u.Nombre FROM LineaFactura lf " +
+                "INNER JOIN Orden o ON o.id = lf.OrdenID " +
+                "INNER JOIN Usuario u ON u.id = o.ClienteID " +
+                "WHERE o.RestauranteID = ?";
+        return db.rawQuery(query, new String[]{idRestaurante});
+    }
+    
 }
