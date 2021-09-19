@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity{
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_register = (Button) findViewById(R.id.btn_register);
 
-        createDB();
+        //createDB();
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +63,8 @@ public class MainActivity extends AppCompatActivity{
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent next = new Intent(view.getContext(), AddPaymentMethodActivity.class);
+                startActivity(next);
             }
         });
 
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity{
 
     public void registrarse(View view){
 
-        Intent next = new Intent(this, RegisterActivity.class);
+        Intent next = new Intent(this, AddPaymentMethodActivity.class);
         startActivity(next);
     }
 

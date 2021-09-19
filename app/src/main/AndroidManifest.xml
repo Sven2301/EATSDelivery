@@ -91,6 +91,9 @@
             android:name=".MainMenu"
             android:exported="true" />
         <activity
+            android:name=".AddPaymentMethodActivity"
+            android:exported="true" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="true" />
         <activity
