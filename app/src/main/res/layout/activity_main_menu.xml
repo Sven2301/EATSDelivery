@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/box" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/verRest"
         android:layout_width="123dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
@@ -37,60 +37,78 @@
         android:id="@+id/button5"
         android:layout_width="123dp"
         android:layout_height="54dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/custom_button"
         android:onClick="checkHistory"
         android:text="@string/history"
         android:textAllCaps="false"
         android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button9" />
+        app:layout_constraintTop_toBottomOf="@+id/editPerfil" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/editPerfil"
+        android:layout_width="123dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/custom_button"
+        android:onClick="editClientData"
+        android:text="Editar Perfil"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Ver_direcciones" />
+
+    <Button
+        android:id="@+id/agregarDir"
         android:layout_width="175dp"
         android:layout_height="49dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/custom_button"
         android:onClick="manageDirections"
-        android:text="@string/adminDirec"
+        android:text="Agregar Dirección"
         android:textAllCaps="false"
         android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button8"
+        app:layout_constraintTop_toBottomOf="@+id/verRest"
         tools:ignore="UsingOnClickInXml" />
 
     <Button
         android:id="@+id/button10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/custom_button"
         android:onClick="quit"
         android:text="@string/quit"
         android:textAllCaps="false"
         android:textColor="#FFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/button5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/Ver_direcciones"
         android:layout_width="144dp"
         android:layout_height="53dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/custom_button"
-        android:onClick="editClientData"
-        android:text="@string/editProfile"
+        android:onClick="checkDirections"
+        android:text="Ver direcciones"
         android:textAllCaps="false"
         android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7"
+        app:layout_constraintTop_toBottomOf="@+id/agregarDir"
         tools:ignore="UsingOnClickInXml" />
 
     <TextView

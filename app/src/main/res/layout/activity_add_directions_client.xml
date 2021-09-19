@@ -12,8 +12,10 @@
         android:layout_height="726dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
         app:srcCompat="@drawable/squarebox" />
 
     <Button
@@ -49,7 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="@string/direcciones"
+        android:text="Agrega direcciones:"
+
         android:textAlignment="textStart"
         android:textColor="@color/Button"
         android:textSize="16sp"
@@ -71,14 +74,34 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="556dp" />
 
-    <TextView
-        android:id="@+id/textView43"
-        android:layout_width="357dp"
-        android:layout_height="411dp"
-        android:text="@string/lista_de_pedidos"
+    <EditText
+        android:id="@+id/descripDir"
+        android:layout_width="332dp"
+        android:layout_height="307dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/squarebox"
-        app:layout_constraintBottom_toTopOf="@+id/add_dir"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Descripción"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="@+id/imageView16"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dir_name1" />
+
+    <EditText
+        android:id="@+id/dir_name1"
+        android:layout_width="245dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/squarebox"
+        android:ems="10"
+        android:hint="Nombre de Dirección"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

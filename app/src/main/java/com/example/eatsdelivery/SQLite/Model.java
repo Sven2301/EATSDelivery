@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
+import com.example.eatsdelivery.MainActivity;
 import com.example.eatsdelivery.SQLite.Tables.Direccion;
 import com.example.eatsdelivery.SQLite.Tables.DireccionXCliente;
 import com.example.eatsdelivery.SQLite.Tables.LineaFactura;
@@ -61,10 +62,10 @@ public class Model {
         }
         return res;
     }
-    /*
+
     public int insertDireccionXCliente(Context context, DireccionXCliente dxc) {
         int res = 0;
-        String sql = "INSERT INTO DireccionXCliente (DireccionID, InfoUsuarioID) VALUES ('"+dxc.getDireccionID()+"', '"+dxc.getInfoUsuarioID()+"')";
+        String sql = "INSERT INTO DireccionXCliente (DireccionID, InfoUsuarioID) VALUES ('"+dxc.getDireccionID()+"', '"+dxc.getUsuarioID()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -74,7 +75,7 @@ public class Model {
         }
         return res;
     }
-    */
+
 
     public int insertLineaFactura(Context context, LineaFactura lf) {
         int res = 0;
@@ -231,6 +232,7 @@ public class Model {
         Usuario user = null;
 
         if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
             user = new Usuario();
             int index;
 
@@ -260,6 +262,8 @@ public class Model {
 
 
         }
+
+        Toast.makeText(context,"Ha salido",Toast.LENGTH_SHORT).show();
         return user;
     }
 

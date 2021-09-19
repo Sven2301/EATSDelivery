@@ -108,16 +108,15 @@
             tools:ignore="TextContrastCheck" />
 
         <EditText
-            android:id="@+id/nameDir"
+            android:id="@+id/dir_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/box"
             android:ems="10"
             android:gravity="center"
             android:hint="Nombre de Dirección"
-            android:inputType="textPassword"
-            android:minHeight="48dp"
-            tools:ignore="TextContrastCheck" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/direction_reg"

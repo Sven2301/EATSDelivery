@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         passwordClient = (EditText)findViewById(R.id.password_reg);
         confirmPass = (EditText)findViewById(R.id.confpass_reg);
         directionClient = (EditText)findViewById(R.id.direction_reg);
-        nameDir = (EditText)findViewById(R.id.nameDir);
+        nameDir = (EditText)findViewById(R.id.dir_name);
         confirm_btn = (Button)findViewById(R.id.confirm_btn_register);
 
         confirm_btn.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             if (status == 1){
                                 Toast.makeText(view.getContext(), "Usuario agregado con éxito", Toast.LENGTH_SHORT).show();
+
                             }
                             else{
                                 Toast.makeText(view.getContext(), "Error al agregar usuario", Toast.LENGTH_SHORT).show();
