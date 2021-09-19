@@ -30,10 +30,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/direccion" />
+        app:layout_constraintTop_toBottomOf="@+id/direccion_state" />
 
     <TextView
-        android:id="@+id/direccion"
+        android:id="@+id/direccion_state"
         android:layout_width="364dp"
         android:layout_height="272dp"
         android:layout_marginTop="16dp"
@@ -49,13 +49,13 @@
         android:id="@+id/confirm_order"
         android:layout_width="292dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="144dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/custom_button"
         android:text="Confirmar Entrega"
         android:textAllCaps="false"
         android:textColor="#ffff"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 

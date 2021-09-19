@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity{
     private EditText username;
     private EditText password;
     public Button btn_login, btn_register;
-    public static Model model;
+    public static Model model = new Model();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity{
 
         Usuario user = new Usuario();
         user.setNombre("Thorfinn");
-        user.setApellido("Mora");
+        user.setApellido("Vestegard");
         user.setUsuario("Thor");
         user.setContrasenha("1234");
         user.setCorreo("thorfinn@fakemail.com");
@@ -154,11 +154,11 @@ public class MainActivity extends AppCompatActivity{
         Usuario user2 = new Usuario();
         user2.setNombre("Arthur");
         user2.setApellido("Shelby");
-        user2.setUsuario("arthur");
+        user2.setUsuario("2");
         user2.setContrasenha("1234");
         user2.setCorreo("arthShell@gmail.com");
         user2.setTelefono("8888696");
-        user2.setTipoAccesoID("1");
+        user2.setTipoAccesoID("2");
         user2.setTarjetaID("2");
         model.insertUsuario(this, user2);
 
@@ -174,11 +174,11 @@ public class MainActivity extends AppCompatActivity{
         Usuario user3 = new Usuario();
         user3.setNombre("Nathan");
         user3.setApellido("Stockton");
-        user3.setUsuario("nathanstock");
+        user3.setUsuario("3");
         user3.setContrasenha("1234");
         user3.setCorreo("nathan@gmail.com");
         user3.setTelefono("8787556933");
-        user3.setTipoAccesoID("1");
+        user3.setTipoAccesoID("3");
         user3.setTarjetaID("3");
         model.insertUsuario(this, user3);
 
@@ -193,11 +193,11 @@ public class MainActivity extends AppCompatActivity{
         Usuario user4 = new Usuario();
         user4.setNombre("Thomas");
         user4.setApellido("Shelby");
-        user4.setUsuario("thomas");
+        user4.setUsuario("4");
         user4.setContrasenha("1234");
         user4.setCorreo("thom@gmail.com");
         user4.setTelefono("777788855");
-        user4.setTipoAccesoID("1");
+        user4.setTipoAccesoID("4");
         user4.setTarjetaID("4");
         model.insertUsuario(this, user4);
 
