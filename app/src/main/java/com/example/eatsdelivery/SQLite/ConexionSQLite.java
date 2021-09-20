@@ -18,7 +18,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
             "NumeroTarjeta INTEGER, CCV INTEGER, FechaVencimiento TEXT)";
     final String SQL_CREATE_Plato = "CREATE TABLE Plato (id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT, Costo INTEGER, Descripcion TEXT, TipoComidaID INTEGER," +
             "FOREIGN KEY(TipoComidaID) REFERENCES TipoComida(id))";
-    final String SQL_CREATE_Direccion = "CREATE TABLE Direccion (id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT, Descripcion TEXT)";
+    final String SQL_CREATE_Direccion = "CREATE TABLE Direccion (id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT, Descripcion TEXT, Activo TEXT)";
     final String SQL_CREATE_Restaurante = "CREATE TABLE Restaurante (id INTEGER PRIMARY KEY AUTOINCREMENT, DireccionID INTEGER," +
             " Nombre TEXT, Activo INTEGER, FOREIGN KEY(DireccionID) REFERENCES Direccion(id))";
     final String SQL_CREATE_ResxGer = "CREATE TABLE RestauranteXGerente (id INTEGER PRIMARY KEY AUTOINCREMENT, RestauranteID INTEGER," +

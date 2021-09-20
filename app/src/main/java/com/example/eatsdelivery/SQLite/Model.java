@@ -53,7 +53,7 @@ public class Model {
 
     public int insertDireccion(Context context, Direccion d) {
         int res = 0;
-        String sql = "INSERT INTO Direccion (Nombre, Descripcion) VALUES ('"+d.getNombre()+"', '"+d.getDescripcion()+"')";
+        String sql = "INSERT INTO Direccion (Nombre, Descripcion) VALUES ('"+d.getNombre()+"', '"+d.getDescripcion()+"', '"+d.getActivo()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);

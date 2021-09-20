@@ -17,7 +17,7 @@ import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
 public class AddDirectionsClient extends AppCompatActivity {
 
-    Usuario user;
+    Object userID;
     private EditText nameDir;
     private EditText descripDir;
     public Button add_dir;
@@ -26,7 +26,8 @@ public class AddDirectionsClient extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_directions_client);
-        user = MainActivity.userChecked;
+
+        userID = getIntent().getStringExtra("userID");
 
         nameDir = (EditText) findViewById(R.id.dir_name1);
         descripDir =  (EditText) findViewById(R.id.descripDir);
@@ -50,7 +51,7 @@ public class AddDirectionsClient extends AppCompatActivity {
                     int statusDir = model.insertDireccion(view.getContext(), newDir);
                     // Crea la relacion entre direccion y usuario (Falta)
                     DireccionXCliente newDirC = new DireccionXCliente();
-                    newDirC.setUsuarioID(user.getUsuarioID());
+                    newDirC.setUsuarioID(userID.toString());
                     //newDirC.setDireccionID();
                     int statusDirCli = model.insertDireccionXCliente(view.getContext(), newDirC);
 

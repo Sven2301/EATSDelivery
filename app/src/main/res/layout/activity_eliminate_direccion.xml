@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EliminateDireccion">
+
+    <ImageView
+        android:id="@+id/imageView25"
+        android:layout_width="406dp"
+        android:layout_height="726dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/squarebox" />
+
+    <TextView
+        android:id="@+id/detalles_pedidoElim"
+        android:layout_width="373dp"
+        android:layout_height="338dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/squarebox"
+        android:gravity="center_horizontal"
+        android:text="Detalles...."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <ImageView
+        android:id="@+id/imageView26"
+        android:layout_width="379dp"
+        android:layout_height="46dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView25"
+        app:srcCompat="@drawable/t1" />
+
+    <Button
+        android:id="@+id/eli_dir"
+        android:layout_width="212dp"
+        android:layout_height="48dp"
+        android:background="@drawable/custom_button"
+        android:text="Eliminar Dirección"
+        android:textAllCaps="false"
+        android:textColor="#ffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="536dp" />
+
+    <TextView
+        android:id="@+id/textView46"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        android:text="Tu dirección:"
+        android:textAlignment="textStart"
+        android:textColor="@color/Button"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView26" />
+
+    <Button
+        android:id="@+id/quit_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/custom_button"
+        android:onClick="quit"
+        android:text="@string/quit"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eli_dir"
+        tools:ignore="UsingOnClickInXml" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="221dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="36dp"
+        android:text="Nombre de Direccion"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView46" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

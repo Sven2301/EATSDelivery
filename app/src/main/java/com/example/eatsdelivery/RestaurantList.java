@@ -23,6 +23,7 @@ import java.util.List;
 
 public class RestaurantList extends AppCompatActivity {
 
+    Object userID;
     private List botones = new ArrayList();
     private ArrayList<Restaurante> restaurantes = new ArrayList();
     private ArrayList<Button> listaBotones = new ArrayList();
@@ -33,6 +34,9 @@ public class RestaurantList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_list);
+
+        userID = getIntent().getStringExtra("userID");
+
         model = new Model();
         Cursor cursor = model.selectRestaurantes(this);
         if (cursor.getCount() > 0){

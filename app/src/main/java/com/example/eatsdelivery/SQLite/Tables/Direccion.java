@@ -2,7 +2,19 @@ package com.example.eatsdelivery.SQLite.Tables;
 
 public class Direccion {
 
-    private String direccionID, nombre, descripcion;
+    private String direccionID;
+    private String nombre;
+    private String descripcion;
+
+    public String getActivo() {
+        return activo;
+    }
+
+    public void setActivo(String activo) {
+        this.activo = activo;
+    }
+
+    private String activo;
 
     public String getDireccionID() {
         return direccionID;

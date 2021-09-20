@@ -55,21 +55,26 @@ public class MainActivity extends AppCompatActivity{
                         //Detecta si el usuario es un cliente
                         if (checker.getTipoAccesoID().equals("1")){
                             Intent next = new Intent(getApplicationContext(), MainMenu.class);
+                            next.putExtra("userID",checker.getUsuarioID().toString());
                             startActivity(next);
+
                         }
                         //Detecta si el usuario es un repartidor
                         if (checker.getTipoAccesoID().equals("2")){
                             Intent next = new Intent(getApplicationContext(), SelectOrdersDriver.class);
+                            next.putExtra("userID",checker.getUsuarioID().toString());
                             startActivity(next);
                         }
                         //Detecta si el usuario es un gerente
                         if (checker.getTipoAccesoID().equals("3")){
                             Intent next = new Intent(getApplicationContext(), MenuGerente.class);
+                            next.putExtra("userID",checker.getUsuarioID().toString());
                             startActivity(next);
                         }
                         //Detecta si el usuario es un encargado
                         if (checker.getTipoAccesoID().equals("4")){
                             Intent next = new Intent(getApplicationContext(), MenuEncargado.class);
+                            next.putExtra("userID",checker.getUsuarioID().toString());
                             startActivity(next);
                         }
 
