@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.eatsdelivery.SQLite.Model;
+
 public class OrderDetailsDriver extends AppCompatActivity {
 
+    private Model model = new Model();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,7 @@ public class OrderDetailsDriver extends AppCompatActivity {
 
                 Intent next = new Intent(getApplicationContext(), OrderStateDriver.class);
                 next.putExtra("direc", direc.toString());
+
                 startActivity(next);
             }
         });

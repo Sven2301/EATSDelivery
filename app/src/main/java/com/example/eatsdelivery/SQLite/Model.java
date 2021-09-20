@@ -1,5 +1,6 @@
 package com.example.eatsdelivery.SQLite;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -310,6 +311,27 @@ public class Model {
                 "INNER JOIN Usuario u ON u.id = o.ClienteID " +
                 "WHERE o.RestauranteID = ?";
         return db.rawQuery(query, new String[]{idRestaurante});
+    }
+
+    public int updateOrdenEnCamino(Context context, String value, String id){
+
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Descripcion", value);
+
+    // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = { id };
+
+        int count = db.update(
+                "Direccion",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
     }
     
 }
