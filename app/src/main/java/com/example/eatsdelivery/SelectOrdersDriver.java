@@ -3,6 +3,7 @@ package com.example.eatsdelivery;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.eatsdelivery.SQLite.Model;
 import com.example.eatsdelivery.SQLite.Tables.Orden;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ import java.util.List;
 public class SelectOrdersDriver extends AppCompatActivity {
 
     private List botones = new ArrayList();
-    private List ordenes = new ArrayList();
+    private ArrayList<Orden> ordenes = new ArrayList();
     private ArrayList<Button> listaBotones = new ArrayList();
     private LinearLayout lista;
 
@@ -26,21 +28,54 @@ public class SelectOrdersDriver extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_orders_driver);
+        Model model = new Model();
 
-        ordenes.add("Pedido 1");
-        ordenes.add("Pedido 2");
-        ordenes.add("Pedido 3");
+        Cursor cursor = model.selectOrdenesPendientes(this);
+        if (cursor.getCount() > 0){
+            Toast.makeText(this, "Hay ordenes", Toast.LENGTH_SHORT).show();
+        }
+        cursor.moveToFirst();
+
+
+
+        while (!cursor.isAfterLast()){
+
+            Orden orden = new Orden();
+            int index;
+
+            index = cursor.getColumnIndexOrThrow("RestauranteID");
+            orden.setRestauranteID(String.valueOf(cursor.getInt(index)));
+
+            index = cursor.getColumnIndexOrThrow("DireccionID");
+            orden.setDireccionID(String.valueOf(cursor.getInt(index)));
+
+            index = cursor.getColumnIndexOrThrow("ClienteID");
+            orden.setClienteID(String.valueOf(cursor.getInt(index)));
+
+            index = cursor.getColumnIndexOrThrow("costoTotal");
+            orden.setCostoTotal(String.valueOf(cursor.getInt(index)));
+
+            index = cursor.getColumnIndexOrThrow("id");
+            orden.setOrdenID(String.valueOf(cursor.getInt(index)));
+
+            ordenes.add(orden);
+            cursor.moveToNext();
+        }
+
+        System.out.println(ordenes.size());
 
         lista = (LinearLayout) findViewById(R.id.orders_list);
 
-        for (Object orden : ordenes){
+        for (Orden o : ordenes){
 
             Button button = new Button(this);
-            button.setText("Nuevo boton");
+            button.setText("Orden " + o.getOrdenID());
             lista.addView(button);
             listaBotones.add(button);
 
         }
+
+
 
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
@@ -48,9 +83,14 @@ public class SelectOrdersDriver extends AppCompatActivity {
 
                 int index = listaBotones.indexOf(v);
                 Intent next = new Intent(getApplicationContext(), OrderDetailsDriver.class);
-                Object info = ordenes.get(index);
-                Toast.makeText(getApplicationContext(), info.toString(), Toast.LENGTH_SHORT).show();
-                next.putExtra("info", info.toString());
+                Orden orden = ordenes.get(index);
+
+                Cursor cur = model.selectDireccion(getApplicationContext(), orden.getDireccionID());
+                cur.moveToFirst();
+                int idx = cur.getColumnIndexOrThrow("Descripcion");
+
+                next.putExtra("info", orden.getCostoTotal());
+                next.putExtra("direc", cur.getString(idx));
                 startActivity(next);
                 }
             };
@@ -58,5 +98,7 @@ public class SelectOrdersDriver extends AppCompatActivity {
         for (Button b : listaBotones) {
             b.setOnClickListener(listener);
         }
+
+
     }
 }

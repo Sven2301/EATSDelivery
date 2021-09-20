@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Model;
 import com.example.eatsdelivery.SQLite.Tables.Direccion;
+import com.example.eatsdelivery.SQLite.Tables.Orden;
 import com.example.eatsdelivery.SQLite.Tables.Restaurante;
 import com.example.eatsdelivery.SQLite.Tables.Tarjeta;
 import com.example.eatsdelivery.SQLite.Tables.TipoDeAcceso;
@@ -169,7 +170,7 @@ public class MainActivity extends AppCompatActivity{
         card3.setFechaVencimiento("20/09/22");
         card3.setNombrePropietario("Nathan Stockton");
         card3.setNumero("6969656521");
-        int statusClient3 = model.insertTarjeta(this, card2);
+        int statusClient3 = model.insertTarjeta(this, card3);
 
         Usuario user3 = new Usuario();
         user3.setNombre("Nathan");
@@ -230,6 +231,14 @@ public class MainActivity extends AppCompatActivity{
         dirRest6.setNombre("EATS Coyol");
         dirRest6.setDescripcion("100 mts sur del hotel de paso Eros, carretera Coyol.");
 
+        Direccion dirClient = new Direccion();
+        dirClient.setNombre("Mi casa");
+        dirClient.setDescripcion("250 mts sur del salon Azteca, Buenos Aires.");
+
+        Direccion dirClient2 = new Direccion();
+        dirClient2.setNombre("Acilo");
+        dirClient2.setDescripcion("50 mts norte de la escuela Holanda.");
+
         //Agrega direcciones
         model.insertDireccion(this, dirRest1);
         model.insertDireccion(this, dirRest2);
@@ -237,6 +246,9 @@ public class MainActivity extends AppCompatActivity{
         model.insertDireccion(this, dirRest4);
         model.insertDireccion(this, dirRest5);
         model.insertDireccion(this, dirRest6);
+        model.insertDireccion(this, dirClient);
+        model.insertDireccion(this, dirClient2);
+
 
         //Agregar Restaurantes
 
@@ -278,7 +290,20 @@ public class MainActivity extends AppCompatActivity{
         model.insertRestaurante(this, rest5);
         model.insertRestaurante(this, rest6);
 
+        Orden orden = new Orden();
+        orden.setClienteID("1");
+        orden.setCostoTotal("3500");
+        orden.setDireccionID("7");
+        orden.setRestauranteID("1");
+        orden.setEnCamino("0");
+        model.insertOrden(this, orden);
 
+        orden.setClienteID("1");
+        orden.setCostoTotal("3000");
+        orden.setDireccionID("8");
+        orden.setRestauranteID("2");
+        orden.setEnCamino("0");
+        model.insertOrden(this, orden);
     }
 
 

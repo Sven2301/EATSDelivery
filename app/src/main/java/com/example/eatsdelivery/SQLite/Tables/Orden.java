@@ -2,7 +2,7 @@ package com.example.eatsdelivery.SQLite.Tables;
 
 public class Orden {
 
-    private String ordenID, clienteID, repartidorID, restauranteID, direccionID, costoTotal;
+    private String ordenID, clienteID, repartidorID, restauranteID, direccionID, costoTotal, enCamino;
 
     public String getOrdenID() {
         return ordenID;
@@ -50,5 +50,13 @@ public class Orden {
 
     public void setCostoTotal(String costoTotal) {
         this.costoTotal = costoTotal;
+    }
+
+    public String getEnCamino() {
+        return enCamino;
+    }
+
+    public void setEnCamino(String enCamino) {
+        this.enCamino = enCamino;
     }
 }

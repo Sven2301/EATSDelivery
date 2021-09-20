@@ -15,16 +15,17 @@ public class OrderDetailsDriver extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_details_driver);
         Object info = getIntent().getStringExtra("info");
+        Object direc = getIntent().getStringExtra("direc");
         TextView detalles = (TextView) findViewById(R.id.detalles_pedido);
         Button confirm = (Button) findViewById(R.id.realizarPedido_btn);
-        detalles.setText(info.toString());
+        detalles.setText(info.toString() + direc.toString());
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent next = new Intent(getApplicationContext(), OrderStateDriver.class);
-                next.putExtra("info", info.toString());
+                next.putExtra("direc", direc.toString());
                 startActivity(next);
             }
         });

@@ -79,7 +79,7 @@ public class Model {
 
     public int insertLineaFactura(Context context, LineaFactura lf) {
         int res = 0;
-        String sql = "INSERT INTO LineaFactura(PlatoID, OrdenID, Cantidad) VALUES ('"+"', '"+lf.getPlatoID()+"', '"+lf.getOrdenID()+"', '"+lf.getCantidad()+"')";
+        String sql = "INSERT INTO LineaFactura(PlatoID, OrdenID, Cantidad) VALUES ('"+lf.getPlatoID()+"', '"+lf.getOrdenID()+"', '"+lf.getCantidad()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -105,7 +105,7 @@ public class Model {
 
     public int insertOrden(Context context, Orden o) {
         int res = 0;
-        String sql = "INSERT INTO Orden(ClienteID, RepartidorID, RestauranteID, DireccionID, costoTotal) VALUES ('"+"', '"+o.getClienteID()+"', '"+o.getRepartidorID()+"', '"+o.getRestauranteID()+"', '"+o.getDireccionID()+"', '"+o.getCostoTotal()+"')";
+        String sql = "INSERT INTO Orden(ClienteID, RepartidorID, RestauranteID, DireccionID, costoTotal, enCamino) VALUES ('"+o.getClienteID()+"', '"+o.getRepartidorID()+"', '"+o.getRestauranteID()+"', '"+o.getDireccionID()+"', '"+o.getCostoTotal()+"', '"+o.getEnCamino()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -131,7 +131,7 @@ public class Model {
 
     public int insertRestaurante(Context context, Restaurante r) {
         int res = 0;
-        String sql = "INSERT INTO Restaurante(DireccionID, TipoComidaID, Nombre, Activo) VALUES ('"+r.getDireccionID()+"', '"+r.getTipoComidaID()+"', '"+r.getNombre()+"', '"+r.getDeshabilitar()+"')";
+        String sql = "INSERT INTO Restaurante(DireccionID, Nombre, Activo) VALUES ('"+r.getDireccionID()+"', '"+r.getNombre()+"', '"+r.getDeshabilitar()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -273,6 +273,18 @@ public class Model {
         SQLiteDatabase db = getConnRead(context);
         String query = "SELECT * FROM Restaurante WHERE Activo > 0";
         return db.rawQuery(query, null);
+    }
+
+    public Cursor selectOrdenesPendientes(Context context) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Orden WHERE enCamino == 0";
+        return db.rawQuery(query, null);
+    }
+
+    public Cursor selectDireccion(Context context, String id) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Direccion WHERE id == ?";
+        return db.rawQuery(query, new String[]{id});
     }
 
     public Cursor selectSolicitudesEliminacion(Context context) {
