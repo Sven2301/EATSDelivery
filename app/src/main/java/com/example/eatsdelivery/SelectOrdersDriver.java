@@ -1,9 +1,14 @@
 package com.example.eatsdelivery;
 
+import static android.graphics.Color.alpha;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +37,7 @@ public class SelectOrdersDriver extends AppCompatActivity {
 
         Cursor cursor = model.selectOrdenesPendientes(this);
         if (cursor.getCount() > 0){
-            Toast.makeText(this, "Hay ordenes", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Lista de Ordenes Disponibles", Toast.LENGTH_SHORT).show();
         }
         cursor.moveToFirst();
 
@@ -69,6 +74,7 @@ public class SelectOrdersDriver extends AppCompatActivity {
         for (Orden o : ordenes){
 
             Button button = new Button(this);
+
             button.setText("Orden " + o.getOrdenID());
             lista.addView(button);
             listaBotones.add(button);
@@ -97,6 +103,8 @@ public class SelectOrdersDriver extends AppCompatActivity {
 
         for (Button b : listaBotones) {
             b.setOnClickListener(listener);
+            b.setBackground(getResources().getDrawable(R.drawable.custom_button));
+            b.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
         }
 
 

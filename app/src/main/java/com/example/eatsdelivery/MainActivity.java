@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity{
                 }
                 else{
                     Usuario checker = model.validarUsuario(MainActivity.this, user, pass);
+
                     if (checker != null){
 
                         //Iguala usuario general

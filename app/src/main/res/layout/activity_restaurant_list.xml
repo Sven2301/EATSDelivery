@@ -11,44 +11,55 @@
         android:id="@+id/slogan_resList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
         android:text="@string/slogan"
-        android:textSize="20sp"
         android:textColor="@color/Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_salir_resList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:onClick="quit"
-        android:text="@string/quit"
-        android:background="@color/Button"
-        android:textColor="#ffff"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.977" />
+
+    <TextView
+
+        android:id="@+id/slogan_resList2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Selecciona un restaurante:"
+        android:textColor="@color/Button"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView23" />
+
+    <ImageView
+        android:id="@+id/imageView23"
+        android:layout_width="367dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/t1" />
 
     <ScrollView
-        android:id="@+id/scrollView3"
-        android:layout_width="411dp"
-        android:layout_height="430dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="400dp"
+        android:layout_height="493dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slogan_resList">
+        app:layout_constraintTop_toBottomOf="@+id/slogan_resList2"
+        tools:ignore="SpeakableTextPresentCheck">
 
         <LinearLayout
+            android:id="@+id/restList_LL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-
-
-
-        </LinearLayout>
+            android:divider="@drawable/divider_empty"
+            android:orientation="vertical"
+            android:showDividers="middle" />
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
