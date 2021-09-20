@@ -275,15 +275,21 @@ public class Model {
         return db.rawQuery(query, null);
     }
 
+    public Cursor selectRestauranteID(Context context, String id) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Restaurante WHERE id = ? AND Activo > 0";
+        return db.rawQuery(query, new String[]{id});
+    }
+
     public Cursor selectOrdenesPendientes(Context context) {
         SQLiteDatabase db = getConnRead(context);
-        String query = "SELECT * FROM Orden WHERE enCamino == 0";
+        String query = "SELECT * FROM Orden WHERE enCamino = 0";
         return db.rawQuery(query, null);
     }
 
     public Cursor selectDireccion(Context context, String id) {
         SQLiteDatabase db = getConnRead(context);
-        String query = "SELECT * FROM Direccion WHERE id == ?";
+        String query = "SELECT * FROM Direccion WHERE id = ?";
         return db.rawQuery(query, new String[]{id});
     }
 
