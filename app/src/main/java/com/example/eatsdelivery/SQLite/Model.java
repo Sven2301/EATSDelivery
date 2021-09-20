@@ -53,7 +53,7 @@ public class Model {
 
     public int insertDireccion(Context context, Direccion d) {
         int res = 0;
-        String sql = "INSERT INTO Direccion (Nombre, Descripcion) VALUES ('"+d.getNombre()+"', '"+d.getDescripcion()+"', '"+d.getActivo()+"')";
+        String sql = "INSERT INTO Direccion (Nombre, Descripcion, Activo) VALUES ('"+d.getNombre()+"', '"+d.getDescripcion()+"', '"+1+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -264,7 +264,6 @@ public class Model {
 
         }
 
-        Toast.makeText(context,"Ha salido",Toast.LENGTH_SHORT).show();
         return user;
     }
 
@@ -282,9 +281,15 @@ public class Model {
         return db.rawQuery(query, new String[]{id});
     }
 
+    public Cursor selectUsuarioID(Context context, String id) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Usuario WHERE id = ?";
+        return db.rawQuery(query, new String[]{id});
+    }
+
     public Cursor selectOrdenesPendientes(Context context) {
         SQLiteDatabase db = getConnRead(context);
-        String query = "SELECT * FROM Orden WHERE enCamino = 0";
+        String query = "SELECT * FROM Orden WHERE enCamino < 2";
         return db.rawQuery(query, null);
     }
 
@@ -325,14 +330,14 @@ public class Model {
 
         // New value for one column
         ContentValues values = new ContentValues();
-        values.put("Descripcion", value);
+        values.put("enCamino", value);
 
     // Which row to update, based on the title
         String selection = "id = ?";
         String[] selectionArgs = { id };
 
         int count = db.update(
-                "Direccion",
+                "Orden",
                 values,
                 selection,
                 selectionArgs);

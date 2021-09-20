@@ -95,8 +95,20 @@ public class SelectOrdersDriver extends AppCompatActivity {
                 cur.moveToFirst();
                 int idx = cur.getColumnIndexOrThrow("Descripcion");
 
-                next.putExtra("info", orden.getCostoTotal());
+                Cursor cur2 = model.selectUsuarioID(getApplicationContext(), orden.getClienteID());
+                cur2.moveToFirst();
+                int idx2 = cur2.getColumnIndexOrThrow("Nombre");
+
+                Cursor cur3 = model.selectRestauranteID(getApplicationContext(), orden.getRestauranteID());
+                cur3.moveToFirst();
+                int idx3 = cur3.getColumnIndexOrThrow("Nombre");
+
+                String detalles = "\n\nOrden # " + orden.getOrdenID() + "\n\nCliente: " + cur2.getString(idx2) +
+                        "\n\nRestaurante: " + cur3.getString(idx3) + "\n\nCosto total: " + orden.getCostoTotal() +
+                        "\n\nDireccion de entrega: " + cur.getString(idx);
+                next.putExtra("detail", detalles);
                 next.putExtra("direc", cur.getString(idx));
+                next.putExtra("orden", orden.getOrdenID());
                 startActivity(next);
                 }
             };

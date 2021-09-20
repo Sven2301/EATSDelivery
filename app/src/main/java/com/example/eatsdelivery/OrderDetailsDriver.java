@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Model;
 
@@ -15,21 +16,29 @@ public class OrderDetailsDriver extends AppCompatActivity {
     private Model model = new Model();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_details_driver);
-        Object info = getIntent().getStringExtra("info");
-        Object direc = getIntent().getStringExtra("direc");
+
         TextView detalles = (TextView) findViewById(R.id.detalles_pedido);
         Button confirm = (Button) findViewById(R.id.realizarPedido_btn);
-        detalles.setText(info.toString() + direc.toString());
+
+        Object info = getIntent().getStringExtra("detail");
+        Object direc = getIntent().getStringExtra("direc");
+        Object ordenid = getIntent().getStringExtra("orden");
+
+        detalles.setText(info.toString());
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                model.updateOrdenEnCamino(getApplicationContext(), "1", ordenid.toString());
+
                 Intent next = new Intent(getApplicationContext(), OrderStateDriver.class);
                 next.putExtra("direc", direc.toString());
-
+                next.putExtra("orden", ordenid.toString());
+                Toast.makeText(getApplicationContext(), "Confirmado", Toast.LENGTH_SHORT).show();
                 startActivity(next);
             }
         });
