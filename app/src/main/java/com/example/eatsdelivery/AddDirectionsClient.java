@@ -49,16 +49,18 @@ public class AddDirectionsClient extends AppCompatActivity {
                     newDir.setNombre(name);
                     newDir.setDescripcion(descrip);
                     int statusDir = model.insertDireccion(view.getContext(), newDir);
+                    int idDir = model.getLastID(view.getContext(), "Direccion");
                     // Crea la relacion entre direccion y usuario (Falta)
                     DireccionXCliente newDirC = new DireccionXCliente();
                     newDirC.setUsuarioID(userID.toString());
-                    //newDirC.setDireccionID();
+                    newDirC.setDireccionID(String.valueOf(idDir));
+
                     int statusDirCli = model.insertDireccionXCliente(view.getContext(), newDirC);
 
                     if (statusDir == 1 && statusDirCli == 1)
-                        Toast.makeText(AddDirectionsClient.this,"No se ha insertado correctamente la dirección",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddDirectionsClient.this,"Se ha insertado correctamente la dirección",Toast.LENGTH_SHORT).show();
                     else {
-                        Toast.makeText(AddDirectionsClient.this, "Dirección insertada correctamente", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddDirectionsClient.this, "No se ha insertado la direccion hubo un error", Toast.LENGTH_SHORT).show();
                         Intent next = new Intent(getApplicationContext(), MainMenu.class);
                         startActivity(next);
                     }

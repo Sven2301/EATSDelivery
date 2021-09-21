@@ -39,7 +39,7 @@ public class VerDirecciones extends AppCompatActivity {
 
 
         //Agregar select de direccionXcliente
-        Cursor cursor = model.selectDireccion(this,"1");
+        Cursor cursor = model.selectDireccionXCliente(this,userID.toString());
         if (cursor.getCount() > 0){
             Toast.makeText(this, "Direcciones registradas", Toast.LENGTH_SHORT).show();
         }
@@ -87,7 +87,7 @@ public class VerDirecciones extends AppCompatActivity {
                 Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
                 Direccion dir = direccions.get(index);
                 // Agregar select
-                Cursor cur = model.selectDireccion(getApplicationContext(),"");
+                Cursor cur = model.selectDireccionXCliente(getApplicationContext(),userID.toString());
 
                 cur.moveToFirst();
                 int nameIndex = cur.getColumnIndexOrThrow("Nombre");
