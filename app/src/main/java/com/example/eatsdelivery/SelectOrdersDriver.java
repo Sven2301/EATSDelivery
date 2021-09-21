@@ -67,8 +67,6 @@ public class SelectOrdersDriver extends AppCompatActivity {
             cursor.moveToNext();
         }
 
-        System.out.println(ordenes.size());
-
         lista = (LinearLayout) findViewById(R.id.orders_list);
 
         for (Orden o : ordenes){
@@ -103,12 +101,15 @@ public class SelectOrdersDriver extends AppCompatActivity {
                 cur3.moveToFirst();
                 int idx3 = cur3.getColumnIndexOrThrow("Nombre");
 
+                Object repartidor = getIntent().getStringExtra("userID");
+
                 String detalles = "\n\nOrden # " + orden.getOrdenID() + "\n\nCliente: " + cur2.getString(idx2) +
                         "\n\nRestaurante: " + cur3.getString(idx3) + "\n\nCosto total: " + orden.getCostoTotal() +
                         "\n\nDireccion de entrega: " + cur.getString(idx);
                 next.putExtra("detail", detalles);
                 next.putExtra("direc", cur.getString(idx));
                 next.putExtra("orden", orden.getOrdenID());
+                next.putExtra("repartidor", repartidor.toString());
                 startActivity(next);
                 }
             };

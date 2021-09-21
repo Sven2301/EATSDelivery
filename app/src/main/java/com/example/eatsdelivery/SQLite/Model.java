@@ -132,7 +132,7 @@ public class Model {
 
     public int insertRestaurante(Context context, Restaurante r) {
         int res = 0;
-        String sql = "INSERT INTO Restaurante(DireccionID, Nombre, Activo) VALUES ('"+r.getDireccionID()+"', '"+r.getNombre()+"', '"+r.getDeshabilitar()+"')";
+        String sql = "INSERT INTO Restaurante(DireccionID, Nombre, Activo) VALUES ('"+r.getDireccionID()+"', '"+r.getNombre()+"', '"+1+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -145,7 +145,7 @@ public class Model {
 
     public int insertRestauranteXGerente(Context context, RestauranteXGerente rxg) {
         int res = 0;
-        String sql = "INSERT INTO RestauranteXGerente(RestauranteID, InfoUsuarioID) VALUES ('"+rxg.getRestauranteID()+"', '"+rxg.getInfoUsuarioID()+"')";
+        String sql = "INSERT INTO RestauranteXGerente(RestauranteID, UsuarioID) VALUES ('"+rxg.getRestauranteID()+"', '"+rxg.getUsuarioID()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -281,6 +281,12 @@ public class Model {
         return db.rawQuery(query, new String[]{id});
     }
 
+    public Cursor selectRestauranteNom(Context context, String name) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Restaurante WHERE Nombre = ?";
+        return db.rawQuery(query, new String[]{name});
+    }
+
     public Cursor selectUsuarioID(Context context, String id) {
         SQLiteDatabase db = getConnRead(context);
         String query = "SELECT * FROM Usuario WHERE id = ?";
@@ -293,10 +299,22 @@ public class Model {
         return db.rawQuery(query, null);
     }
 
+    public Cursor selectEncargados(Context context) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Usuario WHERE TipoAccesoID = 4";
+        return db.rawQuery(query, null);
+    }
+
     public Cursor selectDireccion(Context context, String id) {
         SQLiteDatabase db = getConnRead(context);
         String query = "SELECT * FROM Direccion WHERE id = ?";
         return db.rawQuery(query, new String[]{id});
+    }
+
+    public Cursor selectDireccionNom(Context context, String name) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Direccion WHERE Nombre = ?";
+        return db.rawQuery(query, new String[]{name});
     }
 
     public Cursor selectSolicitudesEliminacion(Context context) {
@@ -335,6 +353,27 @@ public class Model {
     // Which row to update, based on the title
         String selection = "id = ?";
         String[] selectionArgs = { id };
+
+        int count = db.update(
+                "Orden",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
+    public int updateOrdenRepartidorID(Context context, String value, String ordenid){
+
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("RepartidorID", value);
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = { ordenid };
 
         int count = db.update(
                 "Orden",

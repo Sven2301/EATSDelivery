@@ -26,6 +26,7 @@ public class OrderDetailsDriver extends AppCompatActivity {
         Object info = getIntent().getStringExtra("detail");
         Object direc = getIntent().getStringExtra("direc");
         Object ordenid = getIntent().getStringExtra("orden");
+        Object  repartidorid = getIntent().getStringExtra("repartidor");
 
         detalles.setText(info.toString());
 
@@ -34,6 +35,7 @@ public class OrderDetailsDriver extends AppCompatActivity {
             public void onClick(View view) {
 
                 model.updateOrdenEnCamino(getApplicationContext(), "1", ordenid.toString());
+                model.updateOrdenRepartidorID(getApplicationContext(), repartidorid.toString(), ordenid.toString());
 
                 Intent next = new Intent(getApplicationContext(), OrderStateDriver.class);
                 next.putExtra("direc", direc.toString());

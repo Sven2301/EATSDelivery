@@ -12,10 +12,15 @@ public class MenuGerente extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_gerente);
+
     }
 
+
+
     public void addRest(View view){
-        Intent next = new Intent(this, AddRestGerente.class);
+        Object  gerenteid = getIntent().getStringExtra("userID");
+        Intent next = new Intent(this, SelectEncargadoRest.class);
+        next.putExtra("gerente", gerenteid.toString());
         startActivity(next);
     }
     public void seeDelRequests(View view){
