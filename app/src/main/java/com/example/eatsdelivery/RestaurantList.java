@@ -85,7 +85,9 @@ public class RestaurantList extends AppCompatActivity {
                 int index = listaBotones.indexOf(v);
                 Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
                 Restaurante rest = restaurantes.get(index);
+
                 Cursor cur = model.selectRestauranteID(getApplicationContext(), rest.getRestauranteID());
+
                 cur.moveToFirst();
                 int nameIndex = cur.getColumnIndexOrThrow("Nombre");
                 int dirIndex = cur.getColumnIndexOrThrow("DireccionID");

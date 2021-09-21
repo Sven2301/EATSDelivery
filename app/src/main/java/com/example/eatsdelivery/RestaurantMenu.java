@@ -33,7 +33,6 @@ public class RestaurantMenu extends AppCompatActivity {
         //Create data
         ArrayList<Plato> platos = new ArrayList<>();
 
-
         //Agregar select
         Cursor cursor = model.selectProductosXRestaurante(this, idRest.toString());
 
@@ -41,6 +40,7 @@ public class RestaurantMenu extends AppCompatActivity {
         cursor.moveToFirst();
 
         while(!cursor.isAfterLast()){
+
             Plato plato = new Plato();
 
             int index;
@@ -74,7 +74,9 @@ public class RestaurantMenu extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Intent next = new Intent(getApplicationContext(), ProductInfo.class);
+
                 next.putExtra("PlatoID", platos.get(i).getPlatoID());
+
                 startActivity(next);
 
             }

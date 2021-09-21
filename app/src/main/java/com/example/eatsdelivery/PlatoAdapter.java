@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import  android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,7 +46,7 @@ public class PlatoAdapter extends ArrayAdapter<Plato> {
         TextView textDescrip = convertView.findViewById(R.id.txtSub);
 
 
-        int idD = mContext.getResources().getIdentifier("drawable/"+getItem(position).getImage(),null, null);
+        int idD = mContext.getResources().getIdentifier(getItem(position).getImage(),"drawable",mContext.getPackageName());
 
         imageView.setImageResource(idD);
 

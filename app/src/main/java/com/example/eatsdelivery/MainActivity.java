@@ -334,7 +334,7 @@ public class MainActivity extends AppCompatActivity{
         p1.setNombre("Hamburguesa");
         p1.setCosto("3000");
         p1.setDescripcion("Hamburguesa angus de 1/4 de libre con queso. Hecha a la plancha y servida con queso de la casa y salsa especial");
-        p1.setImage("hamburguesa.jpg");
+        p1.setImage("hamburguesa");
         p1.setTipoComidaID("1");
         model.insertPlato(this,p1);
 
