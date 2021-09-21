@@ -93,7 +93,7 @@ public class Model {
 
     public int insertMenu(Context context, Menu m) {
         int res = 0;
-        String sql = "INSERT INTO Menu(RestauranteID, PlatoID, CantidadDisponible) VALUES ('"+"', '"+m.getRestauranteID()+"', '"+m.getPlatoID()+"', '"+m.getCantidadDisponible()+"')";
+        String sql = "INSERT INTO Menu(RestauranteID, PlatoID, CantidadDisponible) VALUES ('"+m.getRestauranteID()+"', '"+m.getPlatoID()+"', '"+m.getCantidadDisponible()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -119,7 +119,7 @@ public class Model {
 
     public int insertPlato(Context context, Plato p) {
         int res = 0;
-        String sql = "INSERT INTO Plato(Nombre, Costo, Descripccion) VALUES ('"+"', '"+p.getNombre()+"', '"+p.getCosto()+"', '"+p.getDescripcion()+"')";
+        String sql = "INSERT INTO Plato(Nombre, Costo, Descripcion, TipoComidaID, ImagenID) VALUES ('"+p.getNombre()+"', '"+p.getCosto()+"','"+p.getDescripcion()+"', '"+p.getTipoComidaID()+"','"+p.getImage()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -295,6 +295,12 @@ public class Model {
         return db.rawQuery(query, new String[]{id});
     }
 
+    public Cursor selectDishID(Context context, String id) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Plato WHERE id = ?";
+        return db.rawQuery(query, new String[]{id});
+    }
+
     public Cursor selectOrdenesPendientes(Context context) {
         SQLiteDatabase db = getConnRead(context);
         String query = "SELECT * FROM Orden WHERE enCamino < 2";
@@ -417,6 +423,8 @@ public class Model {
         return count;
     }
 
+
+
     public Cursor selectDireccionXCliente(Context context, String idCliente) {
         SQLiteDatabase db = getConnRead(context);
         String query =
@@ -447,6 +455,16 @@ public class Model {
                         "WHERE u.id = ?";
         return db.rawQuery(query, new String[]{idCliente});
 
+    }
+
+    public Cursor selectProductosXRestaurante(Context context, String idRestaurante) {
+        SQLiteDatabase db = getConnRead(context);
+        String query =
+                "SELECT p.* FROM Menu m " +
+                        "INNER JOIN Plato p ON p.id = m.PlatoID " +
+                        "INNER JOIN Restaurante r ON r.id = m.RestauranteID " +
+                        "WHERE r.id = ?";
+        return db.rawQuery(query, new String[]{idRestaurante});
     }
     
 }

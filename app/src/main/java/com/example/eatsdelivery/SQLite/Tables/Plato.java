@@ -2,7 +2,30 @@ package com.example.eatsdelivery.SQLite.Tables;
 
 public class Plato {
 
-    private String platoID, nombre, costo, descripcion;
+    private String platoID;
+    private String nombre;
+    private String costo;
+    private String descripcion;
+
+    public String getTipoComidaID() {
+        return tipoComidaID;
+    }
+
+    public void setTipoComidaID(String tipoComidaID) {
+        this.tipoComidaID = tipoComidaID;
+    }
+
+    private String tipoComidaID;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    private String image;
 
     public String getPlatoID() {
         return platoID;
