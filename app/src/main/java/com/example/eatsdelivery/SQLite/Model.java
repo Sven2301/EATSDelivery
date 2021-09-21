@@ -374,6 +374,27 @@ public class Model {
         return count;
     }
 
+    public int updateRestActive(Context context, String value, String id){
+
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Activo", value);
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = { id };
+
+        int count = db.update(
+                "Restaurante",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
 
     public int updateOrdenRepartidorID(Context context, String value, String ordenid) {
 

@@ -88,6 +88,7 @@ public class RequestManageGerente extends AppCompatActivity {
                 int idx3 = cur2.getColumnIndexOrThrow("Apellido");
 
                 next.putExtra("name", rest.getNombre());
+                next.putExtra("idrest", rest.getRestauranteID());
                 next.putExtra("phone", rest.getTelefono());
                 next.putExtra("email", rest.getCorreo());
                 next.putExtra("nameEnc", cur2.getString(idx2));
