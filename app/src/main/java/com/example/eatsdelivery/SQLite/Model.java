@@ -364,7 +364,7 @@ public class Model {
     }
 
 
-    public int updateOrdenRepartidorID(Context context, String value, String ordenid){
+    public int updateOrdenRepartidorID(Context context, String value, String ordenid) {
 
         SQLiteDatabase db = getConnRead(context);
 
@@ -374,7 +374,7 @@ public class Model {
 
         // Which row to update, based on the title
         String selection = "id = ?";
-        String[] selectionArgs = { ordenid };
+        String[] selectionArgs = {ordenid};
 
         int count = db.update(
                 "Orden",
@@ -383,6 +383,7 @@ public class Model {
                 selectionArgs);
 
         return count;
+    }
 
     public Cursor selectDireccionXCliente(Context context, String idCliente) {
         SQLiteDatabase db = getConnRead(context);
