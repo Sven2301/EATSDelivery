@@ -11,10 +11,13 @@ import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Model;
 import com.example.eatsdelivery.SQLite.Tables.Direccion;
+import com.example.eatsdelivery.SQLite.Tables.Menu;
 import com.example.eatsdelivery.SQLite.Tables.Orden;
+import com.example.eatsdelivery.SQLite.Tables.Plato;
 import com.example.eatsdelivery.SQLite.Tables.Restaurante;
 import com.example.eatsdelivery.SQLite.Tables.Tarjeta;
 import com.example.eatsdelivery.SQLite.Tables.TipoDeAcceso;
+import com.example.eatsdelivery.SQLite.Tables.TipoDeComida;
 import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
 
@@ -322,6 +325,64 @@ public class MainActivity extends AppCompatActivity{
         orden.setRestauranteID("2");
         orden.setEnCamino("0");
         model.insertOrden(this, orden);
+
+        TipoDeComida tdc = new TipoDeComida();
+        tdc.setDescripccion("Fast Food");
+        model.insertTipoDeComida(this,tdc);
+
+        Plato p1 = new Plato();
+        p1.setNombre("Hamburguesa");
+        p1.setCosto("3000");
+        p1.setDescripcion("Hamburguesa angus de 1/4 de libre con queso. Hecha a la plancha y servida con queso de la casa y salsa especial");
+        p1.setImage("hamburguesa.jpg");
+        p1.setTipoComidaID("1");
+        model.insertPlato(this,p1);
+
+        Plato p2 = new Plato();
+        p2.setNombre("Papas Supremas");
+        p2.setCosto("2500");
+        p2.setDescripcion("Papas a la francesa, fritas con nuestro aceite especial y servidas con nuestras deliciosas salsas y queso.");
+        p2.setImage("papas.png");
+        p2.setTipoComidaID("1");
+        model.insertPlato(this,p2);
+
+        Plato p3 = new Plato();
+        p3.setNombre("Quesadilla de la Casa");
+        p3.setCosto("3500");
+        p3.setImage("quesadilla.jpg");
+        p3.setTipoComidaID("1");
+        p3.setDescripcion("Quesadilla hecha de una combinacion de quesos especiales y acompañada de una salsa de queso de la casa.");
+        model.insertPlato(this,p3);
+
+        Plato p4 = new Plato();
+        p4.setNombre("Sandwich de la Casa");
+        p4.setCosto("3500");
+        p4.setDescripcion("Emparedado de pollo frito especial de la casa acompañado de nuestra mayonesa especial.");
+        p4.setImage("sandwich.jpg");
+        p4.setTipoComidaID("1");
+        model.insertPlato(this,p4);
+
+        Plato p5 = new Plato();
+        p5.setNombre("Perro de la Casa");
+        p5.setCosto("3500");
+        p5.setDescripcion("Perro caliente con salchicha frita especial de la casa acompañado de nuestra mayonesa especial.");
+        p5.setImage("perro.jpg");
+        p5.setTipoComidaID("1");
+        model.insertPlato(this,p5);
+
+        Menu menu = new Menu();
+        menu.setRestauranteID("1");
+        menu.setPlatoID("1");
+        menu.setCantidadDisponible("100");
+        model.insertMenu(this,menu);
+
+        Menu menu2 = new Menu();
+        menu2.setRestauranteID("1");
+        menu2.setPlatoID("2");
+        menu2.setCantidadDisponible("100");
+        model.insertMenu(this,menu2);
+
+
     }
 
 
