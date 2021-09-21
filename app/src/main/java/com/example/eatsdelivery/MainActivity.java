@@ -261,33 +261,45 @@ public class MainActivity extends AppCompatActivity{
         Restaurante rest1 = new Restaurante();
         rest1.setNombre(dirRest1.getNombre());
         rest1.setDireccionID("1");
-        rest1.setDeshabilitar("1");
+        rest1.setEncargadoID("4");
+        rest1.setTelefono("888888888");
+        rest1.setCorreo("eats@gmail.com");
 
 
         Restaurante rest2 = new Restaurante();
         rest2.setNombre(dirRest2.getNombre());
         rest2.setDireccionID("2");
-        rest2.setDeshabilitar("1");
+        rest2.setEncargadoID("4");
+        rest2.setTelefono("888888888");
+        rest2.setCorreo("eats@gmail.com");
 
         Restaurante rest3 = new Restaurante();
         rest3.setNombre(dirRest3.getNombre());
         rest3.setDireccionID("3");
-        rest3.setDeshabilitar("1");
+        rest3.setEncargadoID("4");
+        rest3.setTelefono("888888888");
+        rest3.setCorreo("eats@gmail.com");
 
         Restaurante rest4 = new Restaurante();
         rest4.setNombre(dirRest4.getNombre());
         rest4.setDireccionID("4");
-        rest4.setDeshabilitar("1");
+        rest4.setEncargadoID("4");
+        rest4.setTelefono("888888888");
+        rest4.setCorreo("eats@gmail.com");
 
         Restaurante rest5 = new Restaurante();
         rest5.setNombre(dirRest5.getNombre());
         rest5.setDireccionID("5");
-        rest5.setDeshabilitar("1");
+        rest5.setEncargadoID("4");
+        rest5.setTelefono("888888888");
+        rest5.setCorreo("eats@gmail.com");
 
         Restaurante rest6 = new Restaurante();
         rest6.setNombre(dirRest6.getNombre());
         rest6.setDireccionID("6");
-        rest6.setDeshabilitar("1");
+        rest6.setEncargadoID("4");
+        rest6.setTelefono("888888888");
+        rest6.setCorreo("eats@gmail.com");
 
         model.insertRestaurante(this, rest1);
         model.insertRestaurante(this, rest2);

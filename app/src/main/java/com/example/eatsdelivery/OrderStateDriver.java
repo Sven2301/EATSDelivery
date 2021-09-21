@@ -2,6 +2,7 @@ package com.example.eatsdelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class OrderStateDriver extends AppCompatActivity {
 
         Object info = getIntent().getStringExtra("direc");
         Object ordenid = getIntent().getStringExtra("orden");
+        Object repartidor = getIntent().getStringExtra("repartidor");
         direccion.setText("\n\nOrden # " + ordenid.toString() + "\n\n Direccion de entrega: " + info.toString());
 
         entregado_btn.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +36,8 @@ public class OrderStateDriver extends AppCompatActivity {
                 model.updateOrdenEnCamino(getApplicationContext(), "2", ordenid.toString());
                 state.setText("Entregado");
                 Toast.makeText(getApplicationContext(), "Confirmado. Orden entregada.", Toast.LENGTH_SHORT).show();
+                Intent next = new Intent(getApplicationContext(), SelectOrdersDriver.class);
+                next.putExtra("userID", repartidor.toString());
             }
         });
     }

@@ -30,13 +30,18 @@ public class AddRestGerente extends AppCompatActivity {
     public void confirm(View view){
         EditText restName = (EditText) findViewById(R.id.editTextRestName4);
         EditText direccion = (EditText) findViewById(R.id.editTextTextPostalAddress2);
+        EditText telefono = (EditText) findViewById(R.id.editTextPhone2);
+        EditText correo = (EditText) findViewById(R.id.editTextTextEmailAddress2);
         Model model = new Model();
 
         Object gerenteid = getIntent().getStringExtra("gerente");
+        Object encargadoid = getIntent().getStringExtra("encargado");
         String nombreRest = restName.getText().toString();
         String address = direccion.getText().toString();
+        String phone = telefono.getText().toString();
+        String email = correo.getText().toString();
 
-        if (nombreRest != "" & address != "") {
+        if (nombreRest != "" & address != "" & email != "" & phone != "") {
 
             Direccion dir = new Direccion();
             dir.setNombre(nombreRest);
@@ -51,6 +56,9 @@ public class AddRestGerente extends AppCompatActivity {
             Restaurante rest = new Restaurante();
             rest.setNombre(nombreRest);
             rest.setDireccionID(dirId);
+            rest.setTelefono(phone);
+            rest.setCorreo(email);
+            rest.setEncargadoID(encargadoid.toString());
             model.insertRestaurante(getApplicationContext(), rest);
 
             Cursor curRest = model.selectRestauranteNom(getApplicationContext(), nombreRest);

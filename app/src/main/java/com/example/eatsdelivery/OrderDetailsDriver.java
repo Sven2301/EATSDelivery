@@ -40,6 +40,7 @@ public class OrderDetailsDriver extends AppCompatActivity {
                 Intent next = new Intent(getApplicationContext(), OrderStateDriver.class);
                 next.putExtra("direc", direc.toString());
                 next.putExtra("orden", ordenid.toString());
+                next.putExtra("repartidor", repartidorid.toString());
                 Toast.makeText(getApplicationContext(), "Confirmado", Toast.LENGTH_SHORT).show();
                 startActivity(next);
             }

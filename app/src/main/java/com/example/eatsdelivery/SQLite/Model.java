@@ -132,7 +132,8 @@ public class Model {
 
     public int insertRestaurante(Context context, Restaurante r) {
         int res = 0;
-        String sql = "INSERT INTO Restaurante(DireccionID, Nombre, Activo) VALUES ('"+r.getDireccionID()+"', '"+r.getNombre()+"', '"+1+"')";
+        String sql = "INSERT INTO Restaurante(DireccionID, Nombre, Activo, UsuarioID, Telefono, Correo) VALUES ('"+r.getDireccionID()+"', '"+r.getNombre()+"', '"+2+"', '"+r.getEncargadoID()+"'" +
+                ", '"+r.getTelefono()+"', '"+r.getCorreo()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -328,7 +329,7 @@ public class Model {
         String query =
                 "SELECT r.* FROM Restaurante r " +
                 "INNER JOIN RestauranteXGerente rxg ON r.id = rxg.RestauranteID " +
-                "WHERE rxg.UsuarioID = ?";
+                "WHERE rxg.UsuarioID = ? AND r.Activo > 0";
         return db.rawQuery(query, new String[]{idGerente});
     }
 

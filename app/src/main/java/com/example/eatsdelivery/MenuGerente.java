@@ -24,11 +24,15 @@ public class MenuGerente extends AppCompatActivity {
         startActivity(next);
     }
     public void seeDelRequests(View view){
+        Object  gerenteid = getIntent().getStringExtra("userID");
         Intent next = new Intent(this, RequestManageGerente.class);
+        next.putExtra("gerente", gerenteid.toString());
         startActivity(next);
     }
     public void seeRests(View view){
+        Object  gerenteid = getIntent().getStringExtra("userID");
         Intent next = new Intent(this, RestListGerente.class);
+        next.putExtra("gerente", gerenteid.toString());
         startActivity(next);
     }
     public void quit(View view){

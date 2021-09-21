@@ -2,7 +2,7 @@ package com.example.eatsdelivery.SQLite.Tables;
 
 public class Restaurante {
 
-    private String restauranteID, direccionID, nombre, deshabilitar;
+    private String restauranteID, direccionID, nombre, deshabilitar, encargadoID, correo, telefono;
 
     public String getRestauranteID() {
         return restauranteID;
@@ -35,5 +35,30 @@ public class Restaurante {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getEncargadoID() {
+        return encargadoID;
+    }
+
+    public void setEncargadoID(String encargadoID) {
+        this.encargadoID = encargadoID;
+
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }

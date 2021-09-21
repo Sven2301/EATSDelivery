@@ -9,9 +9,9 @@
         android:id="@+id/imageView18"
         android:layout_width="407dp"
         android:layout_height="726dp"
-        app:srcCompat="@drawable/squarebox"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="3dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/squarebox" />
 
     <Button
         android:id="@+id/button64"
@@ -19,7 +19,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/custom_button"
-        android:onClick="goBack"
+        android:onClick="back"
         android:text="@string/back"
         android:textAllCaps="false"
         android:textColor="#ffff"

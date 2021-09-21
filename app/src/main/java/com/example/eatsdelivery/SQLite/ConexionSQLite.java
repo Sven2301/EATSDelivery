@@ -20,7 +20,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
             "FOREIGN KEY(TipoComidaID) REFERENCES TipoComida(id))";
     final String SQL_CREATE_Direccion = "CREATE TABLE Direccion (id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT, Descripcion TEXT, Activo TEXT)";
     final String SQL_CREATE_Restaurante = "CREATE TABLE Restaurante (id INTEGER PRIMARY KEY AUTOINCREMENT, DireccionID INTEGER," +
-            " Nombre TEXT, Activo INTEGER, FOREIGN KEY(DireccionID) REFERENCES Direccion(id))";
+            " Nombre TEXT, Activo INTEGER, UsuarioID INTEGER, Telefono TEXT, Correo TEXT, FOREIGN KEY(DireccionID) REFERENCES Direccion(id))";
     final String SQL_CREATE_ResxGer = "CREATE TABLE RestauranteXGerente (id INTEGER PRIMARY KEY AUTOINCREMENT, RestauranteID INTEGER," +
             " UsuarioID INTEGER," +
             " FOREIGN KEY(RestauranteID) REFERENCES Restaurante(id), FOREIGN KEY(UsuarioID) REFERENCES Usuario(id))";
