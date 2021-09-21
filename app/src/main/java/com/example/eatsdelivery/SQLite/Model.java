@@ -364,7 +364,8 @@ public class Model {
         return count;
     }
 
-    public int updateOrdenRepartidorID(Context context, String value, String ordenid){
+
+    public int updateOrdenRepartidorID(Context context, String value, String ordenid) {
 
         SQLiteDatabase db = getConnRead(context);
 
@@ -374,7 +375,7 @@ public class Model {
 
         // Which row to update, based on the title
         String selection = "id = ?";
-        String[] selectionArgs = { ordenid };
+        String[] selectionArgs = {ordenid};
 
         int count = db.update(
                 "Orden",
@@ -383,6 +384,38 @@ public class Model {
                 selectionArgs);
 
         return count;
+    }
+
+    public Cursor selectDireccionXCliente(Context context, String idCliente) {
+        SQLiteDatabase db = getConnRead(context);
+        String query =
+                "SELECT d.* FROM Direccion d " +
+                        "INNER JOIN DireccionXCliente dxc ON d.id = dxc.DireccionID " +
+                        "WHERE dxc.UsuarioID = ?";
+        return db.rawQuery(query, new String[]{idCliente});
+    }
+
+    public int getLastID(Context context, String table) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT MAX(id) FROM " + table;
+        Cursor cursor = db.rawQuery(query, null);
+        int maxID = -1;
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            int index = cursor.getColumnIndexOrThrow("id");
+            maxID = Math.max(maxID, cursor.getInt(index));
+        }
+        return maxID;
+    }
+
+    public Cursor selectOrdenesXCliente(Context context, String idCliente) {
+        SQLiteDatabase db = getConnRead(context);
+        String query =
+                "SELECT o.* FROM Orden o " +
+                        "INNER JOIN Usuario u ON u.id = o.ClienteID " +
+                        "WHERE u.id = ?";
+        return db.rawQuery(query, new String[]{idCliente});
+
     }
     
 }
