@@ -132,7 +132,7 @@ public class Model {
 
     public int insertRestaurante(Context context, Restaurante r) {
         int res = 0;
-        String sql = "INSERT INTO Restaurante(DireccionID, Nombre, Activo, UsuarioID, Telefono, Correo) VALUES ('"+r.getDireccionID()+"', '"+r.getNombre()+"', '"+2+"', '"+r.getEncargadoID()+"'" +
+        String sql = "INSERT INTO Restaurante(DireccionID, Nombre, Activo, UsuarioID, Telefono, Correo) VALUES ('"+r.getDireccionID()+"', '"+r.getNombre()+"', '"+1+"', '"+r.getEncargadoID()+"'" +
                 ", '"+r.getTelefono()+"', '"+r.getCorreo()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
@@ -156,6 +156,7 @@ public class Model {
         }
         return res;
     }
+
 
     public int insertTarjeta(Context context, Tarjeta t) {
         int res = 0;
@@ -330,6 +331,15 @@ public class Model {
                 "SELECT r.* FROM Restaurante r " +
                 "INNER JOIN RestauranteXGerente rxg ON r.id = rxg.RestauranteID " +
                 "WHERE rxg.UsuarioID = ? AND r.Activo > 0";
+        return db.rawQuery(query, new String[]{idGerente});
+    }
+
+    public Cursor selectRestaurantesXGerenteElim(Context context, String idGerente) {   // Probar INNER JOIN
+        SQLiteDatabase db = getConnRead(context);
+        String query =
+                "SELECT r.* FROM Restaurante r " +
+                        "INNER JOIN RestauranteXGerente rxg ON r.id = rxg.RestauranteID " +
+                        "WHERE rxg.UsuarioID = ? AND r.Activo = 1";
         return db.rawQuery(query, new String[]{idGerente});
     }
 

@@ -24,7 +24,6 @@ import java.util.List;
 
 public class SelectOrdersDriver extends AppCompatActivity {
 
-    private List botones = new ArrayList();
     private ArrayList<Orden> ordenes = new ArrayList();
     private ArrayList<Button> listaBotones = new ArrayList();
     private LinearLayout lista;

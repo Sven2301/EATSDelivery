@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EATSDelivery">
         <activity
+            android:name=".AcceptRequestGerente"
+            android:exported="true" />
+        <activity
             android:name=".EliminateDireccion"
             android:exported="true" />
         <activity
