@@ -7,6 +7,16 @@ public class Plato {
     private String costo;
     private String descripcion;
 
+    public String getCant() {
+        return cant;
+    }
+
+    public void setCant(String cant) {
+        this.cant = cant;
+    }
+
+    private String cant;
+
     public String getTipoComidaID() {
         return tipoComidaID;
     }

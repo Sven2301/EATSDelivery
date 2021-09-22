@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.eatsdelivery.SQLite.Model;
 import com.example.eatsdelivery.SQLite.Tables.Plato;
@@ -19,6 +20,14 @@ public class RestaurantMenu extends AppCompatActivity {
 
     ListView listView;
     private Model model = new Model();
+    Object restId = getIntent().getStringExtra("idRest");
+    Object restName = getIntent().getStringExtra("nameRest");
+    Object clientID =  getIntent().getStringExtra("clientID");
+    Object nameRest=  getIntent().getStringExtra("nameRest");
+    Object direcRest = getIntent().getStringExtra("direcRest");
+    TempCart cart;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +36,9 @@ public class RestaurantMenu extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant_menu);
 
         listView = findViewById(R.id.listViewRests);
+
+        // Iguala carrito
+        cart = getIntent().getParcelableExtra("cart");
 
         Object  idRest = getIntent().getStringExtra("idRest");
 
@@ -74,18 +86,17 @@ public class RestaurantMenu extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Intent next = new Intent(getApplicationContext(), ProductInfo.class);
-
+                next.putExtra("RestID", restId.toString());
                 next.putExtra("PlatoID", platos.get(i).getPlatoID());
+                next.putExtra("clientID",clientID.toString());
+                next.putExtra("carrito", cart);
 
                 startActivity(next);
 
             }
         });
 
-
-
     }
-
 
 
     public void seeCart(View view){

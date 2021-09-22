@@ -58,52 +58,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/prodcut_Info" />
 
-    <TextView
-        android:id="@+id/cant"
-        android:layout_width="78dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/box"
-        android:gravity="center"
-        android:text="@string/number"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/precio"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/mas"
-        android:layout_width="70dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="148dp"
-        android:background="@drawable/custom_button"
-        android:text="@string/plus"
-        android:textAllCaps="false"
-        android:textColor="#FFFF"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.312"
-        app:layout_constraintStart_toEndOf="@+id/cant"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/menos"
-        android:layout_width="72dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="148dp"
-        android:background="@drawable/custom_button"
-        android:text="@string/less"
-        android:textAllCaps="false"
-        android:textColor="#FFFF"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/cant"
-        app:layout_constraintHorizontal_bias="0.684"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
     <Button
         android:id="@+id/button42"
         android:layout_width="110dp"
@@ -116,10 +70,10 @@
         android:textAllCaps="false"
         android:textColor="#FFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button48" />
+        app:layout_constraintStart_toEndOf="@+id/add_dish" />
 
     <Button
-        android:id="@+id/button48"
+        android:id="@+id/add_dish"
         android:layout_width="109dp"
         android:layout_height="54dp"
         android:layout_marginStart="64dp"
@@ -130,4 +84,23 @@
         android:textColor="#FFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/cant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:background="@drawable/box"
+        android:gravity="center"
+        android:text="@string/number"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/precio"
+        app:layout_constraintVertical_bias="0.092" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
         confirm_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 // Selecciona el texto de los EDIT TEXT VIEW
                 String user = usernameClient.getText().toString();
                 String pass = passwordClient.getText().toString();

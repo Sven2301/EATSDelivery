@@ -28,6 +28,7 @@ public class RestaurantList extends AppCompatActivity {
     private ArrayList<Restaurante> restaurantes = new ArrayList();
     private ArrayList<Button> listaBotones = new ArrayList();
     private LinearLayout lista;
+    TempCart cart = new TempCart();
 
 
     @Override
@@ -92,9 +93,11 @@ public class RestaurantList extends AppCompatActivity {
                 int nameIndex = cur.getColumnIndexOrThrow("Nombre");
                 int dirIndex = cur.getColumnIndexOrThrow("DireccionID");
                 int idRestIndex = cur.getColumnIndexOrThrow("id");
+                next.putExtra("clientID",userID.toString());
                 next.putExtra("nameRest", cur.getString(nameIndex));
                 next.putExtra("direcRest", cur.getString(dirIndex));
                 next.putExtra("idRest", cur.getString(idRestIndex));
+                next.putExtra("cart",cart);
                 startActivity(next);
             }
         };

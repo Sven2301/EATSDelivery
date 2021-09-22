@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Model;
 import com.example.eatsdelivery.SQLite.Tables.Plato;
@@ -19,25 +22,32 @@ public class ProductInfo extends AppCompatActivity {
 
     private Model model = new Model();
 
+    Object clientID =  getIntent().getStringExtra("clientID");
+    Object restId = getIntent().getStringExtra("idRest");
+    TempCart cart = getIntent().getParcelableExtra("carro");
+
+    Object platoID = getIntent().getStringExtra("PlatoID");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_info);
 
+        Button addCarrito = (Button) findViewById(R.id.add_dish);
         TextView nombre = (TextView) findViewById(R.id.nombrePlato);
         TextView info = (TextView) findViewById(R.id.prodcut_Info);
         TextView costo = (TextView) findViewById(R.id.precio);
         ImageView imageView = (ImageView)  findViewById(R.id.image);
-        TextView cant = (TextView) findViewById(R.id.cant);
+        EditText cant = (EditText) findViewById(R.id.cant);
 
         Object p = getIntent().getStringExtra("PlatoID");
         Cursor cursor = model.selectDishID(this,p.toString());
-        Plato plato = new Plato();;
+        Plato plato = new Plato();
 
         if (cursor != null && cursor.getCount() > 0) {
             int index;
             cursor.moveToFirst();
-
 
             index = cursor.getColumnIndexOrThrow("Nombre");
             plato.setNombre(cursor.getString(index));
@@ -58,9 +68,41 @@ public class ProductInfo extends AppCompatActivity {
 
         }
 
+        addCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cant.getText().toString().equals("") || cant.getText().toString().equals("0")){
+
+
+
+                    Toast.makeText(ProductInfo.this,"No has agregado nada al carrito",Toast.LENGTH_SHORT).show();
+                    Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
+                    next.putExtra("clientID",clientID.toString());
+                    next.putExtra("platoID", platoID.toString());
+                    next.putExtra("idRest", restId.toString());
+                    next.putExtra("cart", cart);
+
+                }
+                else{
+                    // Agregar producto a carrito
+                    Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
+                    plato.setCant(cant.getText().toString());
+                    cart.addPlato(plato);
+                    next.putExtra("cart", cart);
+                    next.putExtra("clientID",clientID.toString());
+                    next.putExtra("platoID", platoID.toString());
+                    next.putExtra("idRest", restId.toString() );
+                }
+            }
+        });
+
+
+
 
 
     }
+
+
 
     public void back(View view){
 
