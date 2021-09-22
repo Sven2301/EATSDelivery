@@ -57,8 +57,8 @@ public class VerDirecciones extends AppCompatActivity {
             index = cursor.getColumnIndexOrThrow("Nombre");
             newDir.setNombre(cursor.getString(index));
 
-            index = cursor.getColumnIndexOrThrow("Desccripcion");
-            newDir.setNombre(cursor.getString(index));
+            index = cursor.getColumnIndexOrThrow("Descripcion");
+            newDir.setDescripcion(cursor.getString(index));
 
             index = cursor.getColumnIndexOrThrow("Activo");
             newDir.setActivo(String.valueOf(cursor.getInt(index)));
@@ -84,9 +84,10 @@ public class VerDirecciones extends AppCompatActivity {
             public void onClick(View v) {
 
                 int index = listaBotones.indexOf(v);
-                Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
+                Intent next = new Intent(getApplicationContext(), EliminateDireccion.class);
                 Direccion dir = direccions.get(index);
                 // Agregar select
+                /*
                 Cursor cur = model.selectDireccionXCliente(getApplicationContext(),userID.toString());
 
                 cur.moveToFirst();
@@ -94,9 +95,12 @@ public class VerDirecciones extends AppCompatActivity {
                 int descripIndex = cur.getColumnIndexOrThrow("Descripcion");
                 int idDirIndex = cur.getColumnIndexOrThrow("id");
 
-                next.putExtra("direcName", cur.getString(nameIndex));
-                next.putExtra("direcID", cur.getString(idDirIndex));
-                next.putExtra("direcDescrip", cur.getString(descripIndex));
+                 */
+
+                next.putExtra("direcName", dir.getNombre());
+                next.putExtra("direcID", dir.getDireccionID());
+                next.putExtra("direcDescrip", dir.getDescripcion());
+                next.putExtra("user", userID.toString());
 
                 startActivity(next);
             }

@@ -49,7 +49,7 @@ public class CheckHistoryClient extends AppCompatActivity {
             int index;
 
             index = cursor.getColumnIndexOrThrow("id");
-            newOrder.setDireccionID(String.valueOf(cursor.getInt(index)));
+            newOrder.setOrdenID(String.valueOf(cursor.getInt(index)));
 
             index = cursor.getColumnIndexOrThrow("ClienteID");
             newOrder.setClienteID(cursor.getString(index));
@@ -126,6 +126,7 @@ public class CheckHistoryClient extends AppCompatActivity {
     public void back(View view){
 
         Intent next = new Intent(this, MainMenu.class);
+        next.putExtra("userID", userID.toString());
         startActivity(next);
     }
 }

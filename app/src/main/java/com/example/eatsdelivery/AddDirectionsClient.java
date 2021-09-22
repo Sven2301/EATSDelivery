@@ -5,6 +5,7 @@ import static com.example.eatsdelivery.MainActivity.model;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,20 +50,30 @@ public class AddDirectionsClient extends AppCompatActivity {
                     newDir.setNombre(name);
                     newDir.setDescripcion(descrip);
                     int statusDir = model.insertDireccion(view.getContext(), newDir);
-                    int idDir = model.getLastID(view.getContext(), "Direccion");
+
+                    // Obtiene el ID de la direccion que recien fue insertada
+                    Cursor cur = model.selectDireccionDesc(getApplicationContext(), descrip);
+                    cur.moveToFirst();
+                    int index = cur.getColumnIndexOrThrow("id");
+                    String dirID = String.valueOf(cur.getInt(index));
+
                     // Crea la relacion entre direccion y usuario (Falta)
                     DireccionXCliente newDirC = new DireccionXCliente();
                     newDirC.setUsuarioID(userID.toString());
-                    newDirC.setDireccionID(String.valueOf(idDir));
-
+                    newDirC.setDireccionID(dirID);
                     int statusDirCli = model.insertDireccionXCliente(view.getContext(), newDirC);
 
-                    if (statusDir == 1 && statusDirCli == 1)
-                        Toast.makeText(AddDirectionsClient.this,"Se ha insertado correctamente la dirección",Toast.LENGTH_SHORT).show();
+                    if (statusDir == 1 && statusDirCli == 1) {
+                        Toast.makeText(AddDirectionsClient.this, "Se ha insertado correctamente la dirección", Toast.LENGTH_SHORT).show();
+                        Intent next = new Intent(getApplicationContext(), MainMenu.class);
+                        next.putExtra("userID", userID.toString());
+                        startActivity(next);
+                    }
                     else {
                         Toast.makeText(AddDirectionsClient.this, "No se ha insertado la direccion hubo un error", Toast.LENGTH_SHORT).show();
-                        Intent next = new Intent(getApplicationContext(), MainMenu.class);
-                        startActivity(next);
+                        Intent next2 = new Intent(getApplicationContext(), MainMenu.class);
+                        next2.putExtra("userID", userID.toString());
+                        startActivity(next2);
                     }
                 }
             }

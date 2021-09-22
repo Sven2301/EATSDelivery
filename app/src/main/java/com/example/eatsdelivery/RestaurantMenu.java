@@ -20,11 +20,6 @@ public class RestaurantMenu extends AppCompatActivity {
 
     ListView listView;
     private Model model = new Model();
-    Object restId = getIntent().getStringExtra("idRest");
-    Object restName = getIntent().getStringExtra("nameRest");
-    Object clientID =  getIntent().getStringExtra("clientID");
-    Object nameRest=  getIntent().getStringExtra("nameRest");
-    Object direcRest = getIntent().getStringExtra("direcRest");
     TempCart cart;
 
 
@@ -34,6 +29,12 @@ public class RestaurantMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_restaurant_menu);
+
+        Object restId = getIntent().getStringExtra("idRest");
+        Object restName = getIntent().getStringExtra("nameRest");
+        Object clientID =  getIntent().getStringExtra("clientID");
+        Object nameRest=  getIntent().getStringExtra("nameRest");
+        Object direcRest = getIntent().getStringExtra("direcRest");
 
         listView = findViewById(R.id.listViewRests);
 

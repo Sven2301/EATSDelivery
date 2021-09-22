@@ -66,7 +66,7 @@ public class Model {
 
     public int insertDireccionXCliente(Context context, DireccionXCliente dxc) {
         int res = 0;
-        String sql = "INSERT INTO DireccionXCliente (DireccionID, InfoUsuarioID) VALUES ('"+dxc.getDireccionID()+"', '"+dxc.getUsuarioID()+"')";
+        String sql = "INSERT INTO DireccionXCliente (DireccionID, UsuarioID) VALUES ('"+dxc.getDireccionID()+"', '"+dxc.getUsuarioID()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -156,6 +156,8 @@ public class Model {
         }
         return res;
     }
+
+
 
 
     public int insertTarjeta(Context context, Tarjeta t) {
@@ -325,6 +327,12 @@ public class Model {
         return db.rawQuery(query, new String[]{name});
     }
 
+    public Cursor selectDireccionDesc(Context context, String desc) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Direccion WHERE Descripcion = ?";
+        return db.rawQuery(query, new String[]{desc});
+    }
+
     public Cursor selectSolicitudesEliminacion(Context context) {
         SQLiteDatabase db = getConnRead(context);
         String query = "SELECT * FROM Restaurante WHERE Activo = 1";
@@ -401,6 +409,27 @@ public class Model {
         return count;
     }
 
+    public int updateDirActive(Context context, String value, String id){
+
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Activo", value);
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = { id };
+
+        int count = db.update(
+                "Direccion",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
 
     public int updateOrdenRepartidorID(Context context, String value, String ordenid) {
 
@@ -430,7 +459,7 @@ public class Model {
         String query =
                 "SELECT d.* FROM Direccion d " +
                         "INNER JOIN DireccionXCliente dxc ON d.id = dxc.DireccionID " +
-                        "WHERE dxc.UsuarioID = ?";
+                        "WHERE dxc.UsuarioID = ? AND d.Activo = 1";
         return db.rawQuery(query, new String[]{idCliente});
     }
 

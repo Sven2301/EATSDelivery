@@ -33,20 +33,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 
-    <Button
-        android:id="@+id/button44"
-        android:layout_width="143dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/custom_button"
-        android:text="@string/back"
-        android:textAllCaps="false"
-        android:textColor="#ffff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button43" />
-
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
