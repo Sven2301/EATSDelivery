@@ -42,13 +42,13 @@ public class RestaurantMenu extends AppCompatActivity {
 
         Object  idRest = getIntent().getStringExtra("idRest");
 
-        //Create data
+        // Create data
         ArrayList<Plato> platos = new ArrayList<>();
 
-        //Agregar select
+        // Agregar select
         Cursor cursor = model.selectProductosXRestaurante(this, idRest.toString());
 
-        //For para crear la lista de productos
+        // For para crear la lista de productos
         cursor.moveToFirst();
 
         while(!cursor.isAfterLast()){

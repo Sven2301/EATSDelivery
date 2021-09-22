@@ -73,8 +73,7 @@ public class ProductInfo extends AppCompatActivity {
             public void onClick(View view) {
                 if (cant.getText().toString().equals("") || cant.getText().toString().equals("0")){
 
-
-
+                    // No agrego producto al carrito
                     Toast.makeText(ProductInfo.this,"No has agregado nada al carrito",Toast.LENGTH_SHORT).show();
                     Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
                     next.putExtra("clientID",clientID.toString());
