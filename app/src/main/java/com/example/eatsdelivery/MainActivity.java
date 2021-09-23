@@ -81,6 +81,13 @@ public class MainActivity extends AppCompatActivity{
                             startActivity(next);
                         }
 
+                        //Detecta si el usuario es el administrador
+                        if (checker.getTipoAccesoID().equals("5")){
+                            Intent next = new Intent(getApplicationContext(), AdminRegisterUser.class);
+                            next.putExtra("userID",checker.getUsuarioID());
+                            startActivity(next);
+                        }
+
                     }
                     else{
                         Toast.makeText(MainActivity.this,"El usuario no existe. Debes registrarte",Toast.LENGTH_SHORT).show();
@@ -132,6 +139,23 @@ public class MainActivity extends AppCompatActivity{
         tda.setDescripcion("Encargado");
         tda.setTipo("4");
         model.insertTipoAcceso(this, tda);
+
+        //TIPO ACCESO 5: ADMIN
+        tda.setDescripcion("Admin");
+        tda.setTipo("5");
+        model.insertTipoAcceso(this, tda);
+
+
+        //Agregar Admin
+        Usuario admin = new Usuario();
+        admin.setNombre("Admin");
+        admin.setApellido("Admin");
+        admin.setUsuario("admin");
+        admin.setContrasenha("admin");
+        admin.setCorreo("admin@gmail.com");
+        admin.setTelefono("12345678");
+        admin.setTipoAccesoID("5");
+        model.insertUsuario(this, admin);
 
         //Agregar cliente 1
         Tarjeta card = new Tarjeta();
