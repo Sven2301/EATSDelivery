@@ -35,8 +35,8 @@ public class SelectDireccion extends AppCompatActivity {
 
         cart = getIntent().getParcelableExtra("cart");
         ArrayList<Direccion> direccions = new ArrayList<>();
-        userID = getIntent().getStringExtra("userID");
-        restID = getIntent().getStringExtra("restId");
+        userID = getIntent().getStringExtra("clientID");
+        restID = getIntent().getStringExtra("idRest");
 
         Model model = new Model();
 
@@ -58,10 +58,7 @@ public class SelectDireccion extends AppCompatActivity {
 
             index = cursor.getColumnIndexOrThrow("Nombre");
             dir.setNombre(String.valueOf(cursor.getString(index)));
-
-
-
-
+            
             direccions.add(dir);
             cursor.moveToNext();
         }

@@ -36,7 +36,7 @@ public class DireccionListAdapter extends ArrayAdapter<Direccion> {
 
         convertView = layoutInflater.inflate(mResource, parent, false);
 
-        /*
+
         TextView textName = convertView.findViewById(R.id.dirNameList);
 
         TextView  direccion = convertView.findViewById(R.id.descripName);
@@ -63,7 +63,7 @@ public class DireccionListAdapter extends ArrayAdapter<Direccion> {
         textName.setText(getItem(position).getNombre());
         direccion.setText(rest.getDescripcion());
 
-         */
+
         return convertView;
 
     }
