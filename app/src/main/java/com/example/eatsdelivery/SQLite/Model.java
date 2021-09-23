@@ -417,6 +417,29 @@ public class Model {
         return count;
     }
 
+    public int updateResInfo(Context context, Restaurante restaurante, String id){
+
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Nombre", restaurante.getNombre());
+        values.put("Telefono", restaurante.getTelefono());
+        values.put("Correo", restaurante.getCorreo());
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = { id };
+
+        int count = db.update(
+                "Restaurante",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
     public int updateDirActive(Context context, String value, String id){
 
         SQLiteDatabase db = getConnRead(context);
@@ -503,11 +526,47 @@ public class Model {
                         "WHERE r.id = ?";
         return db.rawQuery(query, new String[]{idRestaurante});
     }
+
     public Cursor selectInfoDireccion(Context context, String idDireccion) {
         SQLiteDatabase db = getConnRead(context);
         String query =
                 "SELECT d.* FROM Direccion d " +
                         "WHERE d.id = ?";
         return db.rawQuery(query, new String[]{idDireccion});
+    }
+
+    public int selectIDDirXRes(Context context, String idRes) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT DireccionID FROM Restaurante " +
+                "WHERE id = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{idRes});
+        int idDir = -1;
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            int index = cursor.getColumnIndexOrThrow("DireccionID");
+            idDir = Math.max(idDir, cursor.getInt(index));
+        }
+        return idDir;
+    }
+
+    public int updateDirecccion(Context context, Direccion direccion, String id) {
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Nombre", direccion.getNombre());
+        values.put("Descripcion", direccion.getDescripcion());
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = {id};
+
+        int count = db.update(
+                "Direccion",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
     }
 }
