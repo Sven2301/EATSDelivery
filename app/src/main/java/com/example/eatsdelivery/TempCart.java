@@ -13,6 +13,23 @@ public class TempCart implements Parcelable {
 
     ArrayList <Plato> platos;
 
+    public String getTotalPrice(){
+
+        String totalPrice = "";
+        int res = 0;
+
+        //Suma precios de platos
+        for (Plato p : platos){
+
+            res += Integer.parseInt(p.getCosto()) * Integer.parseInt(p.getCant());
+
+        }
+        //Transfroma resultado en string
+        totalPrice = String.valueOf(res);
+
+        return totalPrice;
+    }
+
     public void addPlato(Plato plato){
         platos.add(plato);
     }

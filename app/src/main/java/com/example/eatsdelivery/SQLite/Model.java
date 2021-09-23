@@ -201,6 +201,14 @@ public class Model {
         return res;
     }
 
+    public Cursor selectInfoTarjeta(Context context, String idTarjeta) {
+        SQLiteDatabase db = getConnRead(context);
+        String query =
+                "SELECT t.* FROM Tarjeta t " +
+                        "WHERE t.id = ?";
+        return db.rawQuery(query, new String[]{idTarjeta});
+    }
+
     public Cursor getTipoAcceso(Context context){
 
         SQLiteDatabase db = getConnRead(context);

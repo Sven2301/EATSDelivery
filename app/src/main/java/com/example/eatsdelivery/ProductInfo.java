@@ -39,16 +39,20 @@ public class ProductInfo extends AppCompatActivity {
 
         Object clientID =  getIntent().getStringExtra("clientID");
         Object restId = getIntent().getStringExtra("idRest");
-        TempCart cart = getIntent().getParcelableExtra("carro");
+        TempCart cart = getIntent().getParcelableExtra("cart");
 
         Object platoID = getIntent().getStringExtra("PlatoID");
         Object p = getIntent().getStringExtra("PlatoID");
         Cursor cursor = model.selectDishID(this,p.toString());
+
         Plato plato = new Plato();
 
         if (cursor != null && cursor.getCount() > 0) {
             int index;
             cursor.moveToFirst();
+
+            index = cursor.getColumnIndexOrThrow("id");
+            plato.setPlatoID(cursor.getString(index));
 
             index = cursor.getColumnIndexOrThrow("Nombre");
             plato.setNombre(cursor.getString(index));
@@ -62,6 +66,7 @@ public class ProductInfo extends AppCompatActivity {
             index = cursor.getColumnIndexOrThrow("ImagenID");
             plato.setImage(String.valueOf(cursor.getInt(index)));
 
+            //Setea los texts y la imagen
             nombre.setText(plato.getNombre());
             info.setText(plato.getDescripcion());
             costo.setText("₡" + plato.getCosto());

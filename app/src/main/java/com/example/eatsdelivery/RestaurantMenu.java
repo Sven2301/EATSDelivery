@@ -7,8 +7,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Model;
 import com.example.eatsdelivery.SQLite.Tables.Plato;
@@ -21,7 +23,7 @@ public class RestaurantMenu extends AppCompatActivity {
     ListView listView;
     private Model model = new Model();
     TempCart cart;
-
+    Button verCarrito;
 
 
     @Override
@@ -29,7 +31,7 @@ public class RestaurantMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_restaurant_menu);
-
+        verCarrito = (Button) findViewById(R.id.verCarrito);
         Object restId = getIntent().getStringExtra("idRest");
         Object restName = getIntent().getStringExtra("nameRest");
         Object clientID =  getIntent().getStringExtra("clientID");
@@ -94,8 +96,29 @@ public class RestaurantMenu extends AppCompatActivity {
                 startActivity(next);
             }
         });
+
+        verCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // We make custom adapter
+                if (!(cart.getPlatos() == null)) {
+                    Intent next = new Intent(getApplicationContext(), Cart.class);
+                    next.putExtra("clientID",clientID.toString());
+                    next.putExtra("carrito", cart);
+                    next.putExtra("RestID", restId.toString());
+                    startActivity(next);
+
+                }
+                else{
+                    Toast.makeText(RestaurantMenu.this,"Tu carrito esta vacio",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
     }
-    
+
     public void seeCart(View view){
 
         Intent next = new Intent(this, Cart.class);

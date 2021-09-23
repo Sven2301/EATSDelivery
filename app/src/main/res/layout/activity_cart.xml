@@ -7,24 +7,48 @@
     tools:context=".Cart">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/totalPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/price"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="492dp" />
+        tools:layout_editor_absoluteY="516dp" />
 
     <Button
-        android:id="@+id/button45"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/confirmCarrito"
+        android:layout_width="177dp"
+        android:layout_height="52dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/custom_button"
         android:onClick="confirmOrder"
         android:text="@string/confirm"
+        android:textAllCaps="false"
+        android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/totalPrice" />
+
+    <ListView
+        android:id="@+id/listViewRests"
+        android:layout_width="365dp"
+        android:layout_height="417dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/totalPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView29"
+        android:layout_width="321dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/listViewRests"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/t1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

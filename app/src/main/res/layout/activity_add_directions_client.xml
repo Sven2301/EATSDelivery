@@ -18,22 +18,6 @@
         app:layout_constraintVertical_bias="0.4"
         app:srcCompat="@drawable/squarebox" />
 
-    <Button
-        android:id="@+id/quit_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_button"
-        android:onClick="quit"
-        android:text="@string/quit"
-        android:textAllCaps="false"
-        android:textColor="#FFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_dir"
-        tools:ignore="UsingOnClickInXml" />
-
     <ImageView
         android:id="@+id/imageView19"
         android:layout_width="379dp"
