@@ -26,12 +26,6 @@ import java.util.List;
 public class RestaurantList extends AppCompatActivity {
 
     Object userID;
-    /*
-    private List botones = new ArrayList();
-    private ArrayList<Restaurante> restaurantes = new ArrayList();
-    private ArrayList<Button> listaBotones = new ArrayList();
-    private LinearLayout lista;
-     */
     ListView listView;
     TempCart cart = new TempCart();
 
@@ -43,7 +37,7 @@ public class RestaurantList extends AppCompatActivity {
 
         userID = getIntent().getStringExtra("userID");
         ArrayList<Restaurante> restaurantes = new ArrayList<Restaurante>();
-
+        listView = findViewById(R.id.rest_lisview);
         model = new Model();
         Cursor cursor = model.selectRestaurantes(this);
 
@@ -71,15 +65,18 @@ public class RestaurantList extends AppCompatActivity {
             cursor.moveToNext();
         }
 
-        //RestListAdapter restListAdapter = new RestListAdapter(this, R.this., restaurantes);
-
-        //listView.setAdapter(restListAdapter);
+        RestListAdapter restListAdapter = new RestListAdapter(this, R.layout.list_row, restaurantes);
+        listView.setAdapter(restListAdapter);
         listView.setClickable(true);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
+                next.putExtra("clientID",userID.toString());
+                next.putExtra("cart", cart);
+                next.putExtra("idRest", restaurantes.get(i).getRestauranteID());
+                startActivity(next);
             }
         });
 
