@@ -504,11 +504,28 @@ public class Model {
         return db.rawQuery(query, new String[]{idRestaurante});
     }
 
+    public Cursor selectProductosXRestauranteTipo(Context context, String idRestaurante, String tipo) {
+        SQLiteDatabase db = getConnRead(context);
+        String query =
+                "SELECT p.* FROM Menu m " +
+                        "INNER JOIN Plato p ON p.id = m.PlatoID " +
+                        "INNER JOIN Restaurante r ON r.id = m.RestauranteID " +
+                        "WHERE r.id = ? AND p.TipoComidaID = ?";
+        return db.rawQuery(query, new String[]{idRestaurante, tipo});
+    }
+
     public Cursor selectInfoDireccion(Context context, String idDireccion) {
         SQLiteDatabase db = getConnRead(context);
         String query =
                 "SELECT d.* FROM Direccion d " +
                         "WHERE d.id = ?";
         return db.rawQuery(query, new String[]{idDireccion});
+    }
+
+    public Cursor selectRestauranteSearch(Context context, String search) {
+        SQLiteDatabase db = getConnRead(context);
+        String regex = "%" + search + "%";
+        String query = "SELECT * FROM Restaurante WHERE Nombre LIKE ? AND Activo > 0";
+        return db.rawQuery(query, new String[]{regex});
     }
 }

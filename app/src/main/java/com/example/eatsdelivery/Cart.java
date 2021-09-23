@@ -20,11 +20,10 @@ import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
 import java.util.ArrayList;
 
-public class Cart extends AppCompatActivity {
+public  class  Cart extends AppCompatActivity {
 
     ListView listView;
     private Model model = new Model();
-    TempCart cart;
     TextView total;
     String msgFactura;
     Button confirm;
@@ -42,10 +41,8 @@ public class Cart extends AppCompatActivity {
         listView = findViewById(R.id.listViewRests);
         total = findViewById(R.id.totalPrice);
         confirm = findViewById(R.id.confirmCarrito);
-        // Iguala carrito
-        cart = getIntent().getParcelableExtra("cart");
         //Crea mensaje de factura
-        Object restId = getIntent().getStringExtra("idRest");
+        Object restId = getIntent().getStringExtra("RestID");
         Object restName = getIntent().getStringExtra("nameRest");
         Object clientID =  getIntent().getStringExtra("clientID");
         msgFactura = "Tu pedido en "+ restName +"se ha realizado.\n" ;
@@ -147,7 +144,7 @@ public class Cart extends AppCompatActivity {
 
 
         //For para ver la lista de platos
-        ArrayList<Plato> platos = cart.getPlatos();
+        ArrayList<Plato> platos = TempCart.platos;
 
         // We make custom adapter
         PlatoAdapter platoAdapter = new PlatoAdapter(this,R.layout.list_row, platos);
@@ -156,7 +153,7 @@ public class Cart extends AppCompatActivity {
         listView.setAdapter(platoAdapter);
 
         //Pone el precio total
-        total.setText(cart.getTotalPrice());
+        total.setText(TempCart.getTotalPrice());
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
