@@ -33,10 +33,7 @@ public class RestaurantMenu extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant_menu);
         verCarrito = (Button) findViewById(R.id.verCarrito);
         Object restId = getIntent().getStringExtra("idRest");
-        Object restName = getIntent().getStringExtra("nameRest");
         Object clientID =  getIntent().getStringExtra("clientID");
-        Object nameRest=  getIntent().getStringExtra("nameRest");
-        Object direcRest = getIntent().getStringExtra("direcRest");
 
         listView = findViewById(R.id.listViewRests);
 
