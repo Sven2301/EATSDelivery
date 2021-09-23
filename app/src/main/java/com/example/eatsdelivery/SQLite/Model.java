@@ -521,4 +521,11 @@ public class Model {
                         "WHERE d.id = ?";
         return db.rawQuery(query, new String[]{idDireccion});
     }
+
+    public Cursor selectRestauranteSearch(Context context, String search) {
+        SQLiteDatabase db = getConnRead(context);
+        String regex = "%" + search + "%";
+        String query = "SELECT * FROM Restaurante WHERE Nombre LIKE ? AND Activo > 0";
+        return db.rawQuery(query, new String[]{regex});
+    }
 }
