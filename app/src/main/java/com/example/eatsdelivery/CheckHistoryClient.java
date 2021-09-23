@@ -89,7 +89,7 @@ public class CheckHistoryClient extends AppCompatActivity {
             public void onClick(View v) {
 
                 int index = listaBotones.indexOf(v);
-                Intent next = new Intent(getApplicationContext(), OrderDetailsDriver.class);
+                Intent next = new Intent(getApplicationContext(), OrderInfoHistory.class);
                 Orden orden = ordenes.get(index);
 
                 Cursor cur = model.selectDireccion(getApplicationContext(), orden.getDireccionID());

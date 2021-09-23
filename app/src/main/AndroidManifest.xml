@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EATSDelivery">
         <activity
+            android:name=".OrderInfoHistory"
+            android:exported="true" />
+        <activity
             android:name=".AcceptRequestGerente"
             android:exported="true" />
         <activity
