@@ -9,6 +9,7 @@
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/drawable/custom_button.xml" value="0.30833333333333335" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/drawable/divider_empty.xml" value="0.30833333333333335" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/drawable/squarebox.xml" value="0.2942708333333333" />
+        <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_accept_request_gerente.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_add_directions_client.xml" value="0.3046875" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_add_dish_encargado.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_add_payment_method.xml" value="0.2921875" />
@@ -24,6 +25,7 @@
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_driver_order_details.xml" value="0.278125" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_driver_order_state.xml" value="0.278125" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_driver_select_orders.xml" value="0.278125" />
+        <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_edit_info_client.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_edit_info_rest_encargado.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_edit_menu_encargado.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Marco/Desktop/DocumentosTEC/Github/EATSDelivery/app/src/main/res/layout/activity_edit_rest_info_encargado.xml" value="0.36666666666666664" />

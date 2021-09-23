@@ -107,7 +107,6 @@ public class RestaurantList extends AppCompatActivity {
             b.setBackground(getResources().getDrawable(R.drawable.custom_button));
             b.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
         }
-
     }
 
     public void quit(View view){

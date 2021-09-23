@@ -52,7 +52,7 @@ public class PlatoAdapter extends ArrayAdapter<Plato> {
 
         textName.setText(getItem(position).getNombre());
 
-        textDescrip.setText(getItem(position).getCosto());
+        textDescrip.setText(new StringBuilder().append("₡").append(getItem(position).getCosto()).toString());
 
         return convertView;
     }

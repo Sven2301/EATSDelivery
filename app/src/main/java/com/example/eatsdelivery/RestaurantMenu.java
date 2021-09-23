@@ -91,15 +91,11 @@ public class RestaurantMenu extends AppCompatActivity {
                 next.putExtra("PlatoID", platos.get(i).getPlatoID());
                 next.putExtra("clientID",clientID.toString());
                 next.putExtra("carrito", cart);
-
                 startActivity(next);
-
             }
         });
-
     }
-
-
+    
     public void seeCart(View view){
 
         Intent next = new Intent(this, Cart.class);

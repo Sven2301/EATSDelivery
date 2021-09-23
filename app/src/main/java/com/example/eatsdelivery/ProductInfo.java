@@ -22,11 +22,7 @@ public class ProductInfo extends AppCompatActivity {
 
     private Model model = new Model();
 
-    Object clientID =  getIntent().getStringExtra("clientID");
-    Object restId = getIntent().getStringExtra("idRest");
-    TempCart cart = getIntent().getParcelableExtra("carro");
 
-    Object platoID = getIntent().getStringExtra("PlatoID");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +37,11 @@ public class ProductInfo extends AppCompatActivity {
         ImageView imageView = (ImageView)  findViewById(R.id.image);
         EditText cant = (EditText) findViewById(R.id.cant);
 
+        Object clientID =  getIntent().getStringExtra("clientID");
+        Object restId = getIntent().getStringExtra("idRest");
+        TempCart cart = getIntent().getParcelableExtra("carro");
+
+        Object platoID = getIntent().getStringExtra("PlatoID");
         Object p = getIntent().getStringExtra("PlatoID");
         Cursor cursor = model.selectDishID(this,p.toString());
         Plato plato = new Plato();
@@ -63,8 +64,8 @@ public class ProductInfo extends AppCompatActivity {
 
             nombre.setText(plato.getNombre());
             info.setText(plato.getDescripcion());
-            costo.setText(plato.getCosto());
-            imageView.setImageResource(Integer.parseInt(plato.getImage()));
+            costo.setText("₡" + plato.getCosto());
+            //imageView.setImageResource(Integer.parseInt(plato.getImage()));
 
         }
 
