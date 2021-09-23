@@ -7,8 +7,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ public class RestaurantMenu extends AppCompatActivity {
     private Model model = new Model();
     TempCart cart;
     Button verCarrito;
+    private Spinner spinner;
 
 
     @Override
@@ -36,6 +39,11 @@ public class RestaurantMenu extends AppCompatActivity {
         Object clientID =  getIntent().getStringExtra("clientID");
 
         listView = findViewById(R.id.listViewRests);
+        spinner = findViewById(R.id.spinner_category);
+
+        String [] categorias = {"Default", "Plato fuerte", "Bebidas", "Postre"};
+        ArrayAdapter <String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, categorias);
+        spinner.setAdapter(adapter);
 
         // Iguala carrito
         cart = getIntent().getParcelableExtra("cart");
@@ -46,72 +54,106 @@ public class RestaurantMenu extends AppCompatActivity {
         ArrayList<Plato> platos = new ArrayList<>();
 
         // Agregar select
-        Cursor cursor = model.selectProductosXRestaurante(this, idRest.toString());
 
-        // For para crear la lista de productos
-        cursor.moveToFirst();
 
-        while(!cursor.isAfterLast()){
 
-            Plato plato = new Plato();
-
-            int index;
-
-            index = cursor.getColumnIndexOrThrow("id");
-            plato.setPlatoID(String.valueOf(cursor.getInt(index)));
-            index = cursor.getColumnIndexOrThrow("Nombre");
-            plato.setNombre(cursor.getString(index));
-            index = cursor.getColumnIndexOrThrow("Costo");
-            plato.setCosto(String.valueOf(cursor.getInt(index)));
-            index = cursor.getColumnIndexOrThrow("Descripcion");
-            plato.setDescripcion(cursor.getString(index));
-            index = cursor.getColumnIndexOrThrow("ImagenID");
-            plato.setImage(cursor.getString(index));
-
-            platos.add(plato);
-            cursor.moveToNext();
-
-        }
-
-        // We make custom adapter
-        PlatoAdapter platoAdapter = new PlatoAdapter(this,R.layout.list_row, platos);
-
-        //Create adapter
-        listView.setAdapter(platoAdapter);
-
-        //Set data
-        listView.setClickable(true);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent next = new Intent(getApplicationContext(), ProductInfo.class);
-                next.putExtra("RestID", restId.toString());
-                next.putExtra("PlatoID", platos.get(i).getPlatoID());
-                next.putExtra("clientID",clientID.toString());
-                next.putExtra("carrito", cart);
-                startActivity(next);
-            }
-        });
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String select = spinner.getSelectedItem().toString();
+                Cursor cursor;
+                platos.clear();
 
-        verCarrito.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+                switch (select){
+                    case "Default": cursor = model.selectProductosXRestaurante(getApplicationContext(), idRest.toString());
+                        break;
+
+                    case "Plato fuerte": cursor = model.selectProductosXRestauranteTipo(getApplicationContext(), idRest.toString(), "1");
+                        break;
+
+                    case "Bebidas": cursor = model.selectProductosXRestauranteTipo(getApplicationContext(), idRest.toString(), "2");
+                        break;
+
+                    case "Postre": cursor = model.selectProductosXRestauranteTipo(getApplicationContext(), idRest.toString(), "3");
+                        break;
+
+                    default: cursor = model.selectProductosXRestaurante(getApplicationContext(), idRest.toString());
+                }
+
+                // For para crear la lista de productos
+                cursor.moveToFirst();
+
+                while(!cursor.isAfterLast()){
+
+                    Plato plato = new Plato();
+
+                    int index;
+
+                    index = cursor.getColumnIndexOrThrow("id");
+                    plato.setPlatoID(String.valueOf(cursor.getInt(index)));
+                    index = cursor.getColumnIndexOrThrow("Nombre");
+                    plato.setNombre(cursor.getString(index));
+                    index = cursor.getColumnIndexOrThrow("Costo");
+                    plato.setCosto(String.valueOf(cursor.getInt(index)));
+                    index = cursor.getColumnIndexOrThrow("Descripcion");
+                    plato.setDescripcion(cursor.getString(index));
+                    index = cursor.getColumnIndexOrThrow("ImagenID");
+                    plato.setImage(cursor.getString(index));
+
+                    platos.add(plato);
+                    cursor.moveToNext();
+
+                }
 
                 // We make custom adapter
-                if (!(cart.getPlatos() == null)) {
-                    Intent next = new Intent(getApplicationContext(), Cart.class);
-                    next.putExtra("clientID",clientID.toString());
-                    next.putExtra("carrito", cart);
-                    next.putExtra("RestID", restId.toString());
-                    startActivity(next);
+                PlatoAdapter platoAdapter = new PlatoAdapter(getApplicationContext(),R.layout.list_row, platos);
 
-                }
-                else{
-                    Toast.makeText(RestaurantMenu.this,"Tu carrito esta vacio",Toast.LENGTH_SHORT).show();
-                }
+                //Create adapter
+                listView.setAdapter(platoAdapter);
+
+                //Set data
+                listView.setClickable(true);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Intent next = new Intent(getApplicationContext(), ProductInfo.class);
+                        next.putExtra("RestID", restId.toString());
+                        next.putExtra("PlatoID", platos.get(i).getPlatoID());
+                        next.putExtra("clientID",clientID.toString());
+                        next.putExtra("carrito", cart);
+                        startActivity(next);
+                    }
+                });
+
+                verCarrito.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        // We make custom adapter
+                        if (!(cart.getPlatos() == null)) {
+                            Intent next = new Intent(getApplicationContext(), Cart.class);
+                            next.putExtra("clientID",clientID.toString());
+                            next.putExtra("carrito", cart);
+                            next.putExtra("RestID", restId.toString());
+                            startActivity(next);
+
+                        }
+                        else{
+                            Toast.makeText(RestaurantMenu.this,"Tu carrito esta vacio",Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
+
+
 
     }
 

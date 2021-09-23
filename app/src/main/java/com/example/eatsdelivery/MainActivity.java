@@ -335,7 +335,7 @@ public class MainActivity extends AppCompatActivity{
         p1.setCosto("3000");
         p1.setDescripcion("Hamburguesa angus de 1/4 de libre con queso. Hecha a la plancha y servida con queso de la casa y salsa especial");
         p1.setImage("hamburguesa");
-        p1.setTipoComidaID("1");
+        p1.setTipoComidaID("2");
         model.insertPlato(this,p1);
 
         Plato p2 = new Plato();
@@ -343,14 +343,14 @@ public class MainActivity extends AppCompatActivity{
         p2.setCosto("2500");
         p2.setDescripcion("Papas a la francesa, fritas con nuestro aceite especial y servidas con nuestras deliciosas salsas y queso.");
         p2.setImage("papas.png");
-        p2.setTipoComidaID("1");
+        p2.setTipoComidaID("3");
         model.insertPlato(this,p2);
 
         Plato p3 = new Plato();
         p3.setNombre("Quesadilla de la Casa");
         p3.setCosto("3500");
         p3.setImage("quesadilla.jpg");
-        p3.setTipoComidaID("1");
+        p3.setTipoComidaID("2");
         p3.setDescripcion("Quesadilla hecha de una combinacion de quesos especiales y acompañada de una salsa de queso de la casa.");
         model.insertPlato(this,p3);
 
