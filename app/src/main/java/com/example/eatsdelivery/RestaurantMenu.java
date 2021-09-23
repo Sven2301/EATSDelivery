@@ -24,7 +24,6 @@ public class RestaurantMenu extends AppCompatActivity {
 
     ListView listView;
     private Model model = new Model();
-    TempCart cart;
     Button verCarrito;
     private Spinner spinner;
 
@@ -45,9 +44,6 @@ public class RestaurantMenu extends AppCompatActivity {
         ArrayAdapter <String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, categorias);
         spinner.setAdapter(adapter);
 
-        // Iguala carrito
-        cart = getIntent().getParcelableExtra("cart");
-
         Object  idRest = getIntent().getStringExtra("idRest");
 
         // Create data
@@ -66,8 +62,6 @@ public class RestaurantMenu extends AppCompatActivity {
 
 
                 switch (select){
-                    case "Default": cursor = model.selectProductosXRestaurante(getApplicationContext(), idRest.toString());
-                        break;
 
                     case "Plato fuerte": cursor = model.selectProductosXRestauranteTipo(getApplicationContext(), idRest.toString(), "1");
                         break;
@@ -121,7 +115,6 @@ public class RestaurantMenu extends AppCompatActivity {
                         next.putExtra("RestID", restId.toString());
                         next.putExtra("PlatoID", platos.get(i).getPlatoID());
                         next.putExtra("clientID",clientID.toString());
-                        next.putExtra("carrito", cart);
                         startActivity(next);
                     }
                 });
@@ -131,10 +124,9 @@ public class RestaurantMenu extends AppCompatActivity {
                     public void onClick(View view) {
 
                         // We make custom adapter
-                        if (!(cart.getPlatos() == null)) {
+                        if (!(TempCart.platos == null)) {
                             Intent next = new Intent(getApplicationContext(), Cart.class);
                             next.putExtra("clientID",clientID.toString());
-                            next.putExtra("carrito", cart);
                             next.putExtra("RestID", restId.toString());
                             startActivity(next);
 

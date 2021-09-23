@@ -28,7 +28,6 @@ public class RestaurantList extends AppCompatActivity {
 
     Object userID;
     ListView listView;
-    TempCart cart = new TempCart();
     SearchView search;
 
 
@@ -83,7 +82,7 @@ public class RestaurantList extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
                         next.putExtra("clientID",userID.toString());
-                        next.putExtra("cart", cart);
+                        TempCart.clearCart();
                         next.putExtra("idRest", restaurantes.get(i).getRestauranteID());
                         startActivity(next);
                     }
@@ -131,7 +130,7 @@ public class RestaurantList extends AppCompatActivity {
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
                             next.putExtra("clientID",userID.toString());
-                            next.putExtra("cart", cart);
+                            TempCart.clearCart();
                             next.putExtra("idRest", restaurantes.get(i).getRestauranteID());
                             startActivity(next);
                         }
@@ -176,7 +175,10 @@ public class RestaurantList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
                 next.putExtra("clientID",userID.toString());
-                next.putExtra("cart", cart);
+                if (TempCart.platos != null){
+                    TempCart.clearCart();
+                }
+
                 next.putExtra("idRest", restaurantes.get(i).getRestauranteID());
                 startActivity(next);
             }
