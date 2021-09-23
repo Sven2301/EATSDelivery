@@ -2,7 +2,22 @@ package com.example.eatsdelivery.SQLite.Tables;
 
 public class Restaurante {
 
-    private String restauranteID, direccionID, nombre, deshabilitar, encargadoID, correo, telefono;
+    private String restauranteID;
+    private String direccionID;
+    private String nombre;
+    private String deshabilitar;
+    private String encargadoID;
+    private String correo;
+    private String telefono;
+    private String imageID;
+
+    public String getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(String imageID) {
+        this.imageID = imageID;
+    }
 
     public String getRestauranteID() {
         return restauranteID;

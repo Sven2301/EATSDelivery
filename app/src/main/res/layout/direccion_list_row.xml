@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    android:layout_width="405dp"
+    android:layout_height="85dp"
+    android:layout_marginBottom="88dp"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/dirNameList"
+        style="@style/TextAppearance.AppCompat.SearchResult.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Title"
+        android:textColor="@color/Button"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/descripName"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="270dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/dirNameList"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:maxLength="50"
+        android:maxLines="2"
+        android:singleLine="true"
+        android:text="Subtitle"
+        android:textColor="#B69292" />
+
+</RelativeLayout>

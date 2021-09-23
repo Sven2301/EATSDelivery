@@ -9,8 +9,10 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Model;
@@ -24,10 +26,13 @@ import java.util.List;
 public class RestaurantList extends AppCompatActivity {
 
     Object userID;
+    /*
     private List botones = new ArrayList();
     private ArrayList<Restaurante> restaurantes = new ArrayList();
     private ArrayList<Button> listaBotones = new ArrayList();
     private LinearLayout lista;
+     */
+    ListView listView;
     TempCart cart = new TempCart();
 
 
@@ -37,12 +42,11 @@ public class RestaurantList extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant_list);
 
         userID = getIntent().getStringExtra("userID");
+        ArrayList<Restaurante> restaurantes = new ArrayList<Restaurante>();
 
         model = new Model();
         Cursor cursor = model.selectRestaurantes(this);
-        if (cursor.getCount() > 0){
-            Toast.makeText(this, "Lista de Restaurantes Disponibles", Toast.LENGTH_SHORT).show();
-        }
+
         cursor.moveToFirst();
 
         while (!cursor.isAfterLast()){
@@ -67,46 +71,20 @@ public class RestaurantList extends AppCompatActivity {
             cursor.moveToNext();
         }
 
-        lista = (LinearLayout) findViewById(R.id.restList_LL);
+        //RestListAdapter restListAdapter = new RestListAdapter(this, R.this., restaurantes);
 
-        for (Restaurante r : restaurantes){
+        //listView.setAdapter(restListAdapter);
+        listView.setClickable(true);
 
-            Button button = new Button(this);
-            button.setText(r.getNombre());
-            lista.addView(button);
-            listaBotones.add(button);
-
-        }
-
-
-        View.OnClickListener listener = new View.OnClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-
-                int index = listaBotones.indexOf(v);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
-                Restaurante rest = restaurantes.get(index);
-
-                Cursor cur = model.selectRestauranteID(getApplicationContext(), rest.getRestauranteID());
-
-                cur.moveToFirst();
-                int nameIndex = cur.getColumnIndexOrThrow("Nombre");
-                int dirIndex = cur.getColumnIndexOrThrow("DireccionID");
-                int idRestIndex = cur.getColumnIndexOrThrow("id");
-                next.putExtra("clientID",userID.toString());
-                next.putExtra("nameRest", cur.getString(nameIndex));
-                next.putExtra("direcRest", cur.getString(dirIndex));
-                next.putExtra("idRest", cur.getString(idRestIndex));
-                next.putExtra("cart",cart);
-                startActivity(next);
             }
-        };
+        });
 
-        for (Button b : listaBotones) {
-            b.setOnClickListener(listener);
-            b.setBackground(getResources().getDrawable(R.drawable.custom_button));
-            b.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.white));
-        }
+
+
     }
 
     public void quit(View view){

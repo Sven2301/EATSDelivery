@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EATSDelivery">
+
         <activity
-
-            android:name=".OrderInfoHistory"
-
             android:name=".SelectDireccion"
-
+            android:exported="true" />
+        <activity
+            android:name=".OrderInfoHistory"
             android:exported="true" />
         <activity
             android:name=".AcceptRequestGerente"

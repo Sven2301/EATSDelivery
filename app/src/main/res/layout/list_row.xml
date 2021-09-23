@@ -3,14 +3,14 @@
 
 
     android:layout_width="405dp"
-    android:layout_height="85dp"
+    android:layout_height="120dp"
     android:layout_marginBottom="88dp"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="71dp"
+        android:layout_height="77dp"
 
         />
 
@@ -23,7 +23,8 @@
         android:layout_toRightOf="@+id/image"
 
 
-        android:text="Title" />
+        android:text="Title"
+        android:textColor="@color/Button" />
 
     <TextView
         android:id="@+id/txtSub"
@@ -32,10 +33,27 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txtName"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="4dp"
         android:layout_toRightOf="@+id/image"
         android:maxLength="50"
         android:maxLines="2"
         android:singleLine="true"
-        android:text="Subtitle" />
+        android:text="Subtitle"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/txtSub2"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtName"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/image"
+        android:maxLength="50"
+        android:maxLines="2"
+        android:singleLine="true"
+        android:text="Subtitle"
+        android:textColor="#676262" />
 
 </RelativeLayout>

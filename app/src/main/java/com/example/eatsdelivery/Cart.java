@@ -146,11 +146,6 @@ public class Cart extends AppCompatActivity {
 
 
 
-
-
-
-
-
         //For para ver la lista de platos
         ArrayList<Plato> platos = cart.getPlatos();
 
@@ -172,7 +167,6 @@ public class Cart extends AppCompatActivity {
 
             }
         });
-
 
 
     }
