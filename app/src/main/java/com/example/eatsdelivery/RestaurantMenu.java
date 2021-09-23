@@ -84,7 +84,6 @@ public class RestaurantMenu extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 Intent next = new Intent(getApplicationContext(), ProductInfo.class);
                 next.putExtra("RestID", restId.toString());
                 next.putExtra("PlatoID", platos.get(i).getPlatoID());

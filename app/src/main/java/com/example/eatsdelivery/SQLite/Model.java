@@ -503,6 +503,7 @@ public class Model {
                         "WHERE r.id = ?";
         return db.rawQuery(query, new String[]{idRestaurante});
     }
+
     public Cursor selectInfoDireccion(Context context, String idDireccion) {
         SQLiteDatabase db = getConnRead(context);
         String query =
