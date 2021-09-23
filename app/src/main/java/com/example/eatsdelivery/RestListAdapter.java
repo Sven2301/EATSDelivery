@@ -40,12 +40,12 @@ public class RestListAdapter extends ArrayAdapter<Restaurante> {
         convertView = layoutInflater.inflate(mResource, parent, false);
 
         ImageView imageView = convertView.findViewById(R.id.image);
-        /*
-        TextView textName = convertView.findViewById(R.id.dirNameList);
+
+        TextView textName = convertView.findViewById(R.id.txtName);
 
         TextView  textView = convertView.findViewById(R.id.txtSub);
 
-        TextView  direccion = convertView.findViewById(R.id.descripName);
+        TextView  direccion = convertView.findViewById(R.id.txtSub2);
 
         Model model = new Model();
 
@@ -72,9 +72,9 @@ public class RestListAdapter extends ArrayAdapter<Restaurante> {
         //imageView.setImageResource(idD);
 
         textName.setText(getItem(position).getNombre());
-        textView.setText("DirecciÃ³n: ");
+        textView.setText("Dirección: ");
         direccion.setText(rest.getDescripcion());
-        */
+
         return convertView;
     }
 }
