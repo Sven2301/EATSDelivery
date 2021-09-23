@@ -2,6 +2,8 @@ package com.example.eatsdelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.os.Bundle;
 import android.widget.Button;
@@ -39,7 +41,23 @@ public class MainActivity extends AppCompatActivity{
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_register = (Button) findViewById(R.id.btn_register);
 
-        //createDB();
+        // Objeto para guardar un dato que permite saber si es la primera vez que se ejcuta la app
+        SharedPreferences preferences = getSharedPreferences("config", Context.MODE_PRIVATE);
+        String exec = preferences.getString("firstTime", "");
+
+        if (exec.equals("false")){
+            // La base de datos ya existe entonces no debe crearla otra vez
+        }
+        else{
+            //Si entra aqui significa que es la primera vez entonces debe crear la base de datos.
+            //Ademas de guardar el dato que indique la proxima vez que no es la primera ejecucion del programa
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("firstTime", "false");
+            editor.commit();
+            createDB();
+        }
+
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
