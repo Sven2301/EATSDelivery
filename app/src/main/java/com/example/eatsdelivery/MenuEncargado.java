@@ -2,9 +2,13 @@ package com.example.eatsdelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.eatsdelivery.SQLite.Model;
 
 public class MenuEncargado extends AppCompatActivity {
 
@@ -15,7 +19,7 @@ public class MenuEncargado extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_encargado);
 
-        Object idEncargado = getIntent().getStringExtra("userID");
+        this.idEncargado = getIntent().getStringExtra("userID");
     }
     public void editMenuRest(View view){    // 0/3
         Intent next = new Intent(this, EditMenuEncargado.class);
@@ -32,7 +36,7 @@ public class MenuEncargado extends AppCompatActivity {
         next.putExtra("idEncargado", idEncargado.toString());
         startActivity(next);
     }
-    public void requestDeletetion(View view){   // 0/1
+    public void requestDeletetion(View view){   // LISTO
         Intent next = new Intent(this, DeleteRequestEncargado.class);
         next.putExtra("idEncargado", idEncargado.toString());
         startActivity(next);
@@ -42,4 +46,18 @@ public class MenuEncargado extends AppCompatActivity {
         next.putExtra("idEncargado", idEncargado.toString());
         startActivity(next);
     }
+
+    public static int getRestaurantID(Context context, String idEncargado) {
+        Model model = new Model();
+        Cursor cursor = model.selectRestaurantesXGerente(context, idEncargado);
+        int idRestaurante = -1;
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            int index = cursor.getColumnIndexOrThrow("id");
+            idRestaurante = Math.max(idRestaurante, cursor.getInt(index));
+        }
+        return idRestaurante;
+    }
+
+
 }
