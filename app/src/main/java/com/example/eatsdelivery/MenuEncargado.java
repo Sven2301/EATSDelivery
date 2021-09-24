@@ -34,7 +34,7 @@ public class MenuEncargado extends AppCompatActivity {
         startActivity(next);
     }
 
-    public void manageOrders(View view){    // 1/2
+    public void manageOrders(View view){    // LISTO
         Intent next = new Intent(this, OrderManageEncargado.class);
         next.putExtra("idEncargado", idEncargado.toString());
         startActivity(next);
