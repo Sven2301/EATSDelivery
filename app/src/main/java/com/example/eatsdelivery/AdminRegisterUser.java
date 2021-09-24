@@ -92,6 +92,7 @@ public class AdminRegisterUser extends AppCompatActivity {
                         // Objeto Usuario
                         usuario.setUsuario(user);
                         usuario.setContrasenha(pass);
+                        usuario.setNombre(name);
                         usuario.setCorreo(mail);
                         usuario.setTelefono(num);
                         usuario.setTipoAccesoID(tda.getTipo());

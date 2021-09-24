@@ -41,7 +41,7 @@ public class RestaurantMenu extends AppCompatActivity {
         listView = findViewById(R.id.listViewRests);
         spinner = findViewById(R.id.spinner_category);
 
-        String [] categorias = {"Default", "Plato fuerte", "Bebidas", "Postre"};
+        String [] categorias = {"Default", "Comida rapida", "Bebidas", "Postre"};
         ArrayAdapter <String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, categorias);
         spinner.setAdapter(adapter);
 
@@ -61,13 +61,13 @@ public class RestaurantMenu extends AppCompatActivity {
 
                 switch (select){
 
-                    case "Plato fuerte": cursor = model.selectProductosXRestauranteTipo(getApplicationContext(), idRest.toString(), "1");
+                    case "Comida rapida": cursor = model.selectProductosXRestauranteTipo(getApplicationContext(), idRest.toString(), "1");
                         break;
 
-                    case "Bebidas": cursor = model.selectProductosXRestauranteTipo(getApplicationContext(), idRest.toString(), "2");
+                    case "Postre": cursor = model.selectProductosXRestauranteTipo(getApplicationContext(), idRest.toString(), "2");
                         break;
 
-                    case "Postre": cursor = model.selectProductosXRestauranteTipo(getApplicationContext(), idRest.toString(), "3");
+                    case "Bebidas": cursor = model.selectProductosXRestauranteTipo(getApplicationContext(), idRest.toString(), "3");
                         break;
 
                     default: cursor = model.selectProductosXRestaurante(getApplicationContext(), idRest.toString());

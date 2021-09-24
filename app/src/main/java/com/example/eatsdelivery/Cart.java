@@ -79,7 +79,7 @@ public  class  Cart extends AppCompatActivity {
 
         // Tarjeta
 
-        Cursor cursor1 = model.selectInfoTarjeta(this, clientID.toString());
+        Cursor cursor1 = model.selectInfoTarjeta(this, client.getTarjetaID());
 
         cursor1.moveToFirst();
         Tarjeta newTarjeta = new Tarjeta();

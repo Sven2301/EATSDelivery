@@ -65,7 +65,7 @@ public class OrderManageEncargado extends AppCompatActivity {
             cursor.moveToNext();
         }
 
-        lista = (LinearLayout) findViewById(R.id.orders_list);
+        lista = (LinearLayout) findViewById(R.id.linLayoutOrdenes);
 
         for (Orden o : ordenes){
 

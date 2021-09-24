@@ -181,84 +181,6 @@ public class MainActivity extends AppCompatActivity{
         admin.setTipoAccesoID("5");
         model.insertUsuario(this, admin);
 
-        //Agregar cliente 1
-        Tarjeta card = new Tarjeta();
-        card.setCcv("123");
-        card.setFechaVencimiento("20/10/24");
-        card.setNombrePropietario("Thorfinn");
-        card.setNumero("123456789");
-        int statusClient1 = model.insertTarjeta(this, card);
-
-        Usuario user = new Usuario();
-        user.setNombre("Thorfinn");
-        user.setApellido("Vestegard");
-        user.setUsuario("Thor");
-        user.setContrasenha("1234");
-        user.setCorreo("skratosk77@gmail.com");
-        user.setTelefono("85769213");
-        user.setTipoAccesoID("1");
-        user.setTarjetaID("1");
-        model.insertUsuario(this, user);
-
-
-        //Agregar cliente 2
-        Tarjeta card2 = new Tarjeta();
-        card2.setCcv("222");
-        card2.setFechaVencimiento("23/10/23");
-        card2.setNombrePropietario("Arthur Shelby");
-        card2.setNumero("987654321");
-        int statusClient2 = model.insertTarjeta(this, card2);
-
-        Usuario user2 = new Usuario();
-        user2.setNombre("Arthur");
-        user2.setApellido("Shelby");
-        user2.setUsuario("2");
-        user2.setContrasenha("1234");
-        user2.setCorreo("arthShell@gmail.com");
-        user2.setTelefono("8888696");
-        user2.setTipoAccesoID("2");
-        user2.setTarjetaID("2");
-        model.insertUsuario(this, user2);
-
-
-        //Agregar cliente 3
-        Tarjeta card3 = new Tarjeta();
-        card3.setCcv("475");
-        card3.setFechaVencimiento("20/09/22");
-        card3.setNombrePropietario("Nathan Stockton");
-        card3.setNumero("6969656521");
-        int statusClient3 = model.insertTarjeta(this, card3);
-
-        Usuario user3 = new Usuario();
-        user3.setNombre("Nathan");
-        user3.setApellido("Stockton");
-        user3.setUsuario("3");
-        user3.setContrasenha("1234");
-        user3.setCorreo("nathan@gmail.com");
-        user3.setTelefono("8787556933");
-        user3.setTipoAccesoID("3");
-        user3.setTarjetaID("3");
-        model.insertUsuario(this, user3);
-
-        //Agregar cliente 4
-        Tarjeta card4 = new Tarjeta();
-        card4.setCcv("255");
-        card4.setFechaVencimiento("12/09/26");
-        card4.setNombrePropietario("Thomas Shelby");
-        card4.setNumero("56565622114");
-        int statusClient4 = model.insertTarjeta(this, card4);
-
-        Usuario user4 = new Usuario();
-        user4.setNombre("Thomas");
-        user4.setApellido("Shelby");
-        user4.setUsuario("4");
-        user4.setContrasenha("1234");
-        user4.setCorreo("thom@gmail.com");
-        user4.setTelefono("777788855");
-        user4.setTipoAccesoID("4");
-        user4.setTarjetaID("4");
-        model.insertUsuario(this, user4);
-
 
 
         // Agregar direcciones para restaurante
@@ -287,13 +209,6 @@ public class MainActivity extends AppCompatActivity{
         dirRest6.setNombre("EATS Coyol");
         dirRest6.setDescripcion("100 mts sur del hotel de paso Eros, carretera Coyol.");
 
-        Direccion dirClient = new Direccion();
-        dirClient.setNombre("Mi casa");
-        dirClient.setDescripcion("250 mts sur del salon Azteca, Buenos Aires.");
-
-        Direccion dirClient2 = new Direccion();
-        dirClient2.setNombre("Acilo");
-        dirClient2.setDescripcion("50 mts norte de la escuela Holanda.");
 
         //Agrega direcciones
         model.insertDireccion(this, dirRest1);
@@ -302,8 +217,6 @@ public class MainActivity extends AppCompatActivity{
         model.insertDireccion(this, dirRest4);
         model.insertDireccion(this, dirRest5);
         model.insertDireccion(this, dirRest6);
-        model.insertDireccion(this, dirClient);
-        model.insertDireccion(this, dirClient2);
 
 
         //Agregar Restaurantes
@@ -364,23 +277,15 @@ public class MainActivity extends AppCompatActivity{
         model.insertRestaurante(this, rest5);
         model.insertRestaurante(this, rest6);
 
-        Orden orden = new Orden();
-        orden.setClienteID("1");
-        orden.setCostoTotal("3500");
-        orden.setDireccionID("7");
-        orden.setRestauranteID("1");
-        orden.setEnCamino("0");
-        model.insertOrden(this, orden);
-
-        orden.setClienteID("1");
-        orden.setCostoTotal("3000");
-        orden.setDireccionID("8");
-        orden.setRestauranteID("2");
-        orden.setEnCamino("0");
-        model.insertOrden(this, orden);
 
         TipoDeComida tdc = new TipoDeComida();
-        tdc.setDescripccion("Fast Food");
+        tdc.setDescripccion("Comida Rapida");
+        model.insertTipoDeComida(this,tdc);
+
+        tdc.setDescripccion("Postre");
+        model.insertTipoDeComida(this,tdc);
+
+        tdc.setDescripccion("Bebidas");
         model.insertTipoDeComida(this,tdc);
 
         Plato p1 = new Plato();
@@ -388,7 +293,7 @@ public class MainActivity extends AppCompatActivity{
         p1.setCosto("3000");
         p1.setDescripcion("Hamburguesa angus de 1/4 de libre con queso. Hecha a la plancha y servida con queso de la casa y salsa especial");
         p1.setImage("hamburguesa");
-        p1.setTipoComidaID("2");
+        p1.setTipoComidaID("1");
         model.insertPlato(this,p1);
 
         Plato p2 = new Plato();
@@ -396,7 +301,7 @@ public class MainActivity extends AppCompatActivity{
         p2.setCosto("2500");
         p2.setDescripcion("Papas a la francesa, fritas con nuestro aceite especial y servidas con nuestras deliciosas salsas y queso.");
         p2.setImage("papas");
-        p2.setTipoComidaID("3");
+        p2.setTipoComidaID("1");
         model.insertPlato(this,p2);
 
         Plato p3 = new Plato();
@@ -412,7 +317,7 @@ public class MainActivity extends AppCompatActivity{
         p4.setCosto("3500");
         p4.setDescripcion("Emparedado de pollo frito especial de la casa acompañado de nuestra mayonesa especial.");
         p4.setImage("sandwich.jpg");
-        p4.setTipoComidaID("1");
+        p4.setTipoComidaID("2");
         model.insertPlato(this,p4);
 
         Plato p5 = new Plato();
@@ -420,7 +325,7 @@ public class MainActivity extends AppCompatActivity{
         p5.setCosto("3500");
         p5.setDescripcion("Perro caliente con salchicha frita especial de la casa acompañado de nuestra mayonesa especial.");
         p5.setImage("perro");
-        p5.setTipoComidaID("1");
+        p5.setTipoComidaID("3");
         model.insertPlato(this,p5);
 
         Menu menu = new Menu();
@@ -435,6 +340,23 @@ public class MainActivity extends AppCompatActivity{
         menu2.setCantidadDisponible("100");
         model.insertMenu(this,menu2);
 
+        Menu menu3 = new Menu();
+        menu2.setRestauranteID("1");
+        menu2.setPlatoID("3");
+        menu2.setCantidadDisponible("100");
+        model.insertMenu(this,menu2);
+
+        Menu menu4 = new Menu();
+        menu2.setRestauranteID("1");
+        menu2.setPlatoID("4");
+        menu2.setCantidadDisponible("100");
+        model.insertMenu(this,menu2);
+
+        Menu menu5 = new Menu();
+        menu2.setRestauranteID("1");
+        menu2.setPlatoID("5");
+        menu2.setCantidadDisponible("100");
+        model.insertMenu(this,menu2);
 
     }
 

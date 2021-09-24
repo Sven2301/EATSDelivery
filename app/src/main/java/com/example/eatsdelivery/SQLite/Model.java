@@ -308,10 +308,22 @@ public class Model {
         return db.rawQuery(query, new String[]{name});
     }
 
+    public Cursor selectTarjetaNum(Context context, String num) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Tarjeta WHERE NumeroTarjeta = ?";
+        return db.rawQuery(query, new String[]{num});
+    }
+
     public Cursor selectUsuarioID(Context context, String id) {
         SQLiteDatabase db = getConnRead(context);
         String query = "SELECT * FROM Usuario WHERE id = ?";
         return db.rawQuery(query, new String[]{id});
+    }
+
+    public Cursor selectUsuarioTel(Context context, String tel) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Usuario WHERE Telefono = ?";
+        return db.rawQuery(query, new String[]{tel});
     }
 
     public Cursor selectDishID(Context context, String id) {

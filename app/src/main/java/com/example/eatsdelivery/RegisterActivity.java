@@ -2,6 +2,7 @@ package com.example.eatsdelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -83,18 +84,23 @@ public class RegisterActivity extends AppCompatActivity {
                 else{
                     if (pass.equals(passConfirmed)) {
 
+                            String numero = getIntent().getStringExtra("numero");
+                            Cursor cur = model.selectTarjetaNum(getApplicationContext(), numero);
+                            cur.moveToFirst();
+                            int index = cur.getColumnIndexOrThrow("id");
+
                             // Objeto direccion
                             direccion.setNombre(nombreDir);
                             direccion.setDescripcion(dir);
                             // Objeto Usuario
                             usuario.setUsuario(user);
+                            usuario.setTarjetaID(cur.getString(index));
                             usuario.setContrasenha(pass);
                             usuario.setCorreo(mail);
                             usuario.setTelefono(num);
+                            usuario.setNombre(name);
                             usuario.setTipoAccesoID(tda.getTipo());
-                            usuario.setTarjetaID(getIntent().getStringExtra("numero"));
-                            // Objeto DireccionXUsuario
-                            //direccionXCliente.setDireccionID(direccion.getDireccionID());
+
                             int status = model.insertUsuario(view.getContext(), usuario);
 
                             if (status == 1){
@@ -105,6 +111,19 @@ public class RegisterActivity extends AppCompatActivity {
                                 Toast.makeText(view.getContext(), "Error al agregar usuario", Toast.LENGTH_SHORT).show();
                             }
                             status = model.insertDireccion(view.getContext(), direccion);
+
+                            Cursor cursor = model.selectDireccionNom(getApplicationContext(), direccion.getNombre());
+                            cursor.moveToFirst();
+                            int idx = cursor.getColumnIndexOrThrow("id");
+
+                            Cursor cursor2 = model.selectUsuarioTel(getApplicationContext(), usuario.getTelefono());
+                            cursor2.moveToFirst();
+                            int idx2 = cursor2.getColumnIndexOrThrow("id");
+
+                            // Objeto DireccionXUsuario
+                            direccionXCliente.setDireccionID(String.valueOf(cursor.getInt(idx)));
+                            direccionXCliente.setUsuarioID(String.valueOf(cursor2.getInt(idx2)));
+                            model.insertDireccionXCliente(getApplicationContext(), direccionXCliente);
 
                         if (status == 1){
                             Toast.makeText(view.getContext(), "Direccion agregada con éxito", Toast.LENGTH_SHORT).show();
