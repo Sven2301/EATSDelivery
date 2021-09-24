@@ -168,6 +168,7 @@ public  class  Cart extends AppCompatActivity {
                         "Total a pagar: " + "₡" + TempCart.getTotalPrice();
 
                 Toast.makeText(Cart.this,"Pedido realizado!",Toast.LENGTH_SHORT).show();
+
                 Intent next = new Intent(getApplicationContext(), OrderWaitScreen.class);
                 Orden orden = new Orden();
                 orden.setCostoTotal(TempCart.getTotalPrice());
@@ -177,6 +178,7 @@ public  class  Cart extends AppCompatActivity {
                 orden.setRestauranteID(rest.getRestauranteID());
                 orden.setEnCamino("0");
                 int status = model.insertOrden(getApplicationContext(), orden);
+
                 if (status == 1){
                     Toast.makeText(getApplicationContext(), "Orden confirmada", Toast.LENGTH_SHORT).show();
                 }

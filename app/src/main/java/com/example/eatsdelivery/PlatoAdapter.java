@@ -51,7 +51,6 @@ public class PlatoAdapter extends ArrayAdapter<Plato> {
 
         String uri = "@drawable/" + getItem(position).getImage();
         int idD = mContext.getResources().getIdentifier(uri,null, mContext.getPackageName());
-        System.out.println(uri);
         imageView.setImageResource(idD);
 
         textName.setText(getItem(position).getNombre());
