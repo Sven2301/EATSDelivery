@@ -20,6 +20,8 @@ import com.example.eatsdelivery.SQLite.Tables.TipoDeComida;
 import com.example.eatsdelivery.SQLite.Tables.TipoDeAcceso;
 import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
+import java.util.Date;
+
 public class Model {
 
     public static final int VERSION = 1;
@@ -106,7 +108,8 @@ public class Model {
 
     public int insertOrden(Context context, Orden o) {
         int res = 0;
-        String sql = "INSERT INTO Orden(ClienteID, RepartidorID, RestauranteID, DireccionID, costoTotal, enCamino, Factura) VALUES ('"+o.getClienteID()+"', '"+o.getRepartidorID()+"', '"+o.getRestauranteID()+"', '"+o.getDireccionID()+"', '"+o.getCostoTotal()+"', '"+o.getEnCamino()+"', '"+o.getFactura()+"')";
+        String sql = "INSERT INTO Orden(ClienteID, RepartidorID, RestauranteID, DireccionID, costoTotal, enCamino, Factura, Time) VALUES ('"+o.getClienteID()+"', '"+o.getRepartidorID()+"', " +
+                "'"+o.getRestauranteID()+"', '"+o.getDireccionID()+"', '"+o.getCostoTotal()+"', '"+o.getEnCamino()+"', '"+o.getFactura()+"', '"+o.getCurrentDate()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -321,6 +324,12 @@ public class Model {
         SQLiteDatabase db = getConnRead(context);
         String query = "SELECT * FROM Orden WHERE enCamino < 2";
         return db.rawQuery(query, null);
+    }
+
+    public Cursor selectOrdenesCancelar(Context context, String id) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Orden WHERE enCamino < 2 AND ClienteID = ?";
+        return db.rawQuery(query, new String[]{id});
     }
 
     public Cursor selectEncargados(Context context) {

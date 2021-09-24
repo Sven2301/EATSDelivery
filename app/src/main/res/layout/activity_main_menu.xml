@@ -18,9 +18,24 @@
         app:srcCompat="@drawable/box" />
 
     <Button
+        android:id="@+id/cancelPedidobtn"
+        android:layout_width="165dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/custom_button"
+        android:onClick="cancelPedido"
+        android:text="Cancelar Pedido"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:ignore="MissingConstraints" />
+
+    <Button
         android:id="@+id/verRest"
-        android:layout_width="123dp"
-        android:layout_height="48dp"
+        android:layout_width="178dp"
+        android:layout_height="47dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/custom_button"
         android:onClick="seeRestaurantList"
@@ -50,9 +65,9 @@
 
     <Button
         android:id="@+id/agregarDir"
-        android:layout_width="175dp"
+        android:layout_width="155dp"
         android:layout_height="49dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/custom_button"
         android:onClick="manageDirections"
         android:text="Agregar Dirección"
@@ -60,7 +75,7 @@
         android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/verRest"
+        app:layout_constraintTop_toBottomOf="@+id/cancelPedidobtn"
         tools:ignore="UsingOnClickInXml" />
 
     <Button

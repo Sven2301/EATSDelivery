@@ -20,6 +20,8 @@ import com.example.eatsdelivery.SQLite.Tables.Tarjeta;
 import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public  class  Cart extends AppCompatActivity {
 
@@ -180,6 +182,9 @@ public  class  Cart extends AppCompatActivity {
                 orden.setFactura(factura);
                 orden.setRestauranteID(rest.getRestauranteID());
                 orden.setEnCamino("0");
+                long currentTime = Calendar.getInstance().getTime().getTime();
+                orden.setCurrentDate(currentTime);
+
                 int status = model.insertOrden(getApplicationContext(), orden);
 
                 if (status == 1){
