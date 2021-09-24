@@ -22,7 +22,6 @@ public class SelectDireccion extends AppCompatActivity {
     ListView dirs;
     private LinearLayout lista;
     Object userID;
-    TempCart cart;
     Object restID;
 
 
@@ -33,10 +32,9 @@ public class SelectDireccion extends AppCompatActivity {
         setContentView(R.layout.activity_select_direccion);
 
 
-        cart = getIntent().getParcelableExtra("cart");
         ArrayList<Direccion> direccions = new ArrayList<>();
-        userID = getIntent().getStringExtra("userID");
-        restID = getIntent().getStringExtra("restId");
+        userID = getIntent().getStringExtra("clientID");
+        restID = getIntent().getStringExtra("idRest");
 
         Model model = new Model();
 
@@ -59,9 +57,6 @@ public class SelectDireccion extends AppCompatActivity {
             index = cursor.getColumnIndexOrThrow("Nombre");
             dir.setNombre(String.valueOf(cursor.getString(index)));
 
-
-
-
             direccions.add(dir);
             cursor.moveToNext();
         }
@@ -78,9 +73,9 @@ public class SelectDireccion extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
-                next.putExtra("cart", cart);
                 next.putExtra("idRest", restID.toString());
                 next.putExtra("clientID", userID.toString());
+                next.putExtra("dirID", direccions.get(i).getDireccionID());
                 startActivity(next);
             }
         });

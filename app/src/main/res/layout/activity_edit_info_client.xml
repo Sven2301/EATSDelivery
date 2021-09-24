@@ -39,7 +39,7 @@
             app:srcCompat="@drawable/t1" />
 
         <EditText
-            android:id="@+id/name_reg"
+            android:id="@+id/name_reg_admin"
             android:layout_width="341dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -51,7 +51,7 @@
             tools:ignore="TextContrastCheck" />
 
         <EditText
-            android:id="@+id/phone_reg"
+            android:id="@+id/phone_reg_admin"
             android:background="@drawable/box"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -62,7 +62,7 @@
             android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/email_reg"
+            android:id="@+id/email_reg_admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/box"
@@ -73,7 +73,7 @@
             android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/username_reg"
+            android:id="@+id/username_reg_admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/box"
@@ -84,7 +84,7 @@
             android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/password_reg"
+            android:id="@+id/password_reg_admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -96,7 +96,7 @@
             tools:ignore="TextContrastCheck" />
 
         <EditText
-            android:id="@+id/confpass_reg"
+            android:id="@+id/confpass_reg_admin"
             android:background="@drawable/box"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -119,7 +119,7 @@
             android:inputType="textMultiLine" />
 
         <Button
-            android:id="@+id/confirm_btn_register"
+            android:id="@+id/confirm_btn_register_admin"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:background="@drawable/custom_button"

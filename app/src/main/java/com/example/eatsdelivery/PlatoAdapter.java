@@ -47,17 +47,19 @@ public class PlatoAdapter extends ArrayAdapter<Plato> {
 
         TextView precio = convertView.findViewById(R.id.txtSub);
 
+
+
         String uri = "@drawable/" + getItem(position).getImage();
         int idD = mContext.getResources().getIdentifier(uri,null, mContext.getPackageName());
-
         imageView.setImageResource(idD);
 
         textName.setText(getItem(position).getNombre());
 
-        precio.setText(new StringBuilder().append("₡").append(getItem(position).getCosto()).toString());
+        precio.setText("₡" + getItem(position).getCosto());
 
         textDescrip.setText(getItem(position).getDescripcion());
-        
+
+
         return convertView;
     }
 }

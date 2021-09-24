@@ -20,6 +20,8 @@ import com.example.eatsdelivery.SQLite.Tables.TipoDeComida;
 import com.example.eatsdelivery.SQLite.Tables.TipoDeAcceso;
 import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
+import java.util.Date;
+
 public class Model {
 
     public static final int VERSION = 1;
@@ -106,7 +108,8 @@ public class Model {
 
     public int insertOrden(Context context, Orden o) {
         int res = 0;
-        String sql = "INSERT INTO Orden(ClienteID, RepartidorID, RestauranteID, DireccionID, costoTotal, enCamino) VALUES ('"+o.getClienteID()+"', '"+o.getRepartidorID()+"', '"+o.getRestauranteID()+"', '"+o.getDireccionID()+"', '"+o.getCostoTotal()+"', '"+o.getEnCamino()+"')";
+        String sql = "INSERT INTO Orden(ClienteID, RepartidorID, RestauranteID, DireccionID, costoTotal, enCamino, Factura, Time, Activo) VALUES ('"+o.getClienteID()+"', '"+o.getRepartidorID()+"', " +
+                "'"+o.getRestauranteID()+"', '"+o.getDireccionID()+"', '"+o.getCostoTotal()+"', '"+o.getEnCamino()+"', '"+o.getFactura()+"', '"+o.getCurrentDate()+"', '"+1+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -132,8 +135,8 @@ public class Model {
 
     public int insertRestaurante(Context context, Restaurante r) {
         int res = 0;
-        String sql = "INSERT INTO Restaurante(DireccionID, Nombre, Activo, UsuarioID, Telefono, Correo) VALUES ('"+r.getDireccionID()+"', '"+r.getNombre()+"', '"+2+"', '"+r.getEncargadoID()+"'" +
-                ", '"+r.getTelefono()+"', '"+r.getCorreo()+"')";
+        String sql = "INSERT INTO Restaurante(DireccionID, Nombre, Activo, UsuarioID, Telefono, Correo, ImagenID) VALUES ('"+r.getDireccionID()+"', '"+r.getNombre()+"', '"+2+"', '"+r.getEncargadoID()+"'" +
+                ", '"+r.getTelefono()+"', '"+r.getCorreo()+"', '"+r.getImageID()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -293,16 +296,34 @@ public class Model {
         return db.rawQuery(query, new String[]{id});
     }
 
+    public Cursor selectRestauranteEncargado(Context context, String id) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Restaurante WHERE UsuarioID = ? AND Activo > 0";
+        return db.rawQuery(query, new String[]{id});
+    }
+
     public Cursor selectRestauranteNom(Context context, String name) {
         SQLiteDatabase db = getConnRead(context);
         String query = "SELECT * FROM Restaurante WHERE Nombre = ?";
         return db.rawQuery(query, new String[]{name});
     }
 
+    public Cursor selectTarjetaNum(Context context, String num) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Tarjeta WHERE NumeroTarjeta = ?";
+        return db.rawQuery(query, new String[]{num});
+    }
+
     public Cursor selectUsuarioID(Context context, String id) {
         SQLiteDatabase db = getConnRead(context);
         String query = "SELECT * FROM Usuario WHERE id = ?";
         return db.rawQuery(query, new String[]{id});
+    }
+
+    public Cursor selectUsuarioTel(Context context, String tel) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Usuario WHERE Telefono = ?";
+        return db.rawQuery(query, new String[]{tel});
     }
 
     public Cursor selectDishID(Context context, String id) {
@@ -313,8 +334,14 @@ public class Model {
 
     public Cursor selectOrdenesPendientes(Context context) {
         SQLiteDatabase db = getConnRead(context);
-        String query = "SELECT * FROM Orden WHERE enCamino < 2";
+        String query = "SELECT * FROM Orden WHERE enCamino < 2 AND Activo = 1";
         return db.rawQuery(query, null);
+    }
+
+    public Cursor selectOrdenesCancelar(Context context, String id) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Orden WHERE enCamino < 2 AND ClienteID = ? AND Activo = 1";
+        return db.rawQuery(query, new String[]{id});
     }
 
     public Cursor selectEncargados(Context context) {
@@ -367,9 +394,7 @@ public class Model {
 
     public Cursor selectPedidosDeRestaurante(Context context, String idRestaurante) {
         SQLiteDatabase db = getConnRead(context);
-        String query =
-                "SELECT lf.*, u.Nombre FROM LineaFactura lf " +
-                "INNER JOIN Orden o ON o.id = lf.OrdenID " +
+        String query = "SELECT o.* FROM Orden o " +
                 "INNER JOIN Usuario u ON u.id = o.ClienteID " +
                 "WHERE o.RestauranteID = ?";
         return db.rawQuery(query, new String[]{idRestaurante});
@@ -396,6 +421,27 @@ public class Model {
         return count;
     }
 
+    public int updateOrdenActiva(Context context, String value, String id){
+
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Activo", value);
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = { id };
+
+        int count = db.update(
+                "Orden",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
     public int updateRestActive(Context context, String value, String id){
 
         SQLiteDatabase db = getConnRead(context);
@@ -403,6 +449,29 @@ public class Model {
         // New value for one column
         ContentValues values = new ContentValues();
         values.put("Activo", value);
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = { id };
+
+        int count = db.update(
+                "Restaurante",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
+    public int updateResInfo(Context context, Restaurante restaurante, String id){
+
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Nombre", restaurante.getNombre());
+        values.put("Telefono", restaurante.getTelefono());
+        values.put("Correo", restaurante.getCorreo());
 
         // Which row to update, based on the title
         String selection = "id = ?";
@@ -504,11 +573,105 @@ public class Model {
         return db.rawQuery(query, new String[]{idRestaurante});
     }
 
+    public Cursor selectProductosXRestauranteTipo(Context context, String idRestaurante, String tipo) {
+        SQLiteDatabase db = getConnRead(context);
+        String query =
+                "SELECT p.* FROM Menu m " +
+                        "INNER JOIN Plato p ON p.id = m.PlatoID " +
+                        "INNER JOIN Restaurante r ON r.id = m.RestauranteID " +
+                        "WHERE r.id = ? AND p.TipoComidaID = ?";
+        return db.rawQuery(query, new String[]{idRestaurante, tipo});
+    }
+
     public Cursor selectInfoDireccion(Context context, String idDireccion) {
         SQLiteDatabase db = getConnRead(context);
         String query =
                 "SELECT d.* FROM Direccion d " +
                         "WHERE d.id = ?";
         return db.rawQuery(query, new String[]{idDireccion});
+    }
+
+    public int selectIDDirXRes(Context context, String idRes) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT DireccionID FROM Restaurante " +
+                "WHERE id = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{idRes});
+        int idDir = -1;
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            int index = cursor.getColumnIndexOrThrow("DireccionID");
+            idDir = Math.max(idDir, cursor.getInt(index));
+        }
+        return idDir;
+    }
+
+    public int updateDirecccion(Context context, Direccion direccion, String id) {
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Nombre", direccion.getNombre());
+        values.put("Descripcion", direccion.getDescripcion());
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = {id};
+
+        int count = db.update(
+                "Direccion",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
+    public Cursor selectRestauranteSearch(Context context, String search) {
+        SQLiteDatabase db = getConnRead(context);
+        String regex = "%" + search + "%";
+        String query = "SELECT * FROM Restaurante WHERE Nombre LIKE ? AND Activo > 0";
+        return db.rawQuery(query, new String[]{regex});
+    }
+
+    public int updateCantidadMenu(Context context, String newCantidad, String idRestaurante, String idPlato) {
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("CantidadDisponible", newCantidad);
+
+        // Which row to update, based on the title
+        String selection = "RestauranteID = ? AND PlatoID = ?";
+        String[] selectionArgs = {idRestaurante, idPlato};
+
+        int count = db.update(
+                "Menu",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
+    public int updatePlatoInfo(Context context, Plato plato, String idPlato) {
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Nombre", plato.getNombre());
+        values.put("Costo", plato.getCosto());
+        values.put("Descripcion", plato.getDescripcion());
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = {idPlato};
+
+        int count = db.update(
+                "Plato",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
     }
 }

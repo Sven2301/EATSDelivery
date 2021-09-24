@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,20 +20,21 @@ import com.example.eatsdelivery.SQLite.Tables.Tarjeta;
 import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
-public class Cart extends AppCompatActivity {
+public  class  Cart extends AppCompatActivity {
 
     ListView listView;
     private Model model = new Model();
-    TempCart cart;
     TextView total;
     String msgFactura;
     Button confirm;
     Usuario client;
     Tarjeta tarjeta;
-    Direccion direccionClient;
     Restaurante rest;
-    Orden orden;
+    String msg;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,144 +44,180 @@ public class Cart extends AppCompatActivity {
         listView = findViewById(R.id.listViewRests);
         total = findViewById(R.id.totalPrice);
         confirm = findViewById(R.id.confirmCarrito);
-        // Iguala carrito
-        cart = getIntent().getParcelableExtra("cart");
         //Crea mensaje de factura
-        Object restId = getIntent().getStringExtra("idRest");
+        Object restId = getIntent().getStringExtra("RestID");
         Object restName = getIntent().getStringExtra("nameRest");
         Object clientID =  getIntent().getStringExtra("clientID");
+        Object dirID = getIntent().getStringExtra("dirID");
         msgFactura = "Tu pedido en "+ restName +"se ha realizado.\n" ;
 
         // Iguala objeto restaurante pedido y usuario
 
+
         //Usuario
-        Cursor cursor = model.selectProductosXRestaurante(this, clientID.toString());
+        Cursor cursor = model.selectUsuarioID(this, clientID.toString());
 
 
         cursor.moveToFirst();
         Usuario newUser = new Usuario();
-        while(!cursor.isAfterLast()){
 
-            int index;
+        int index;
 
-            index = cursor.getColumnIndexOrThrow("id");
-            newUser.setUsuarioID(String.valueOf(cursor.getInt(index)));
-            index = cursor.getColumnIndexOrThrow("Nombre");
-            newUser.setNombre(cursor.getString(index));
-            index = cursor.getColumnIndexOrThrow("Apellido");
-            newUser.setApellido(String.valueOf(cursor.getInt(index)));
-            index = cursor.getColumnIndexOrThrow("Correo");
-            newUser.setCorreo(cursor.getString(index));
-            index = cursor.getColumnIndexOrThrow("TarjetaID");
-            newUser.setTarjetaID(cursor.getString(index));
-            index = cursor.getColumnIndexOrThrow("Telefono");
-            newUser.setTelefono(cursor.getString(index));
-            cursor.moveToNext();
-
-        }
+        index = cursor.getColumnIndexOrThrow("id");
+        newUser.setUsuarioID(String.valueOf(cursor.getInt(index)));
+        index = cursor.getColumnIndexOrThrow("Nombre");
+        newUser.setNombre(cursor.getString(index));
+        index = cursor.getColumnIndexOrThrow("Correo");
+        newUser.setCorreo(cursor.getString(index));
+        index = cursor.getColumnIndexOrThrow("TarjetaID");
+        newUser.setTarjetaID(cursor.getString(index));
+        index = cursor.getColumnIndexOrThrow("Telefono");
+        newUser.setTelefono(cursor.getString(index));
+        cursor.moveToNext();
 
         client = newUser;
 
         // Tarjeta
 
-        Cursor cursor1 = model.selectInfoTarjeta(this, clientID.toString());
+        Cursor cursor1 = model.selectInfoTarjeta(this, client.getTarjetaID());
 
-
-        cursor.moveToFirst();
+        cursor1.moveToFirst();
         Tarjeta newTarjeta = new Tarjeta();
-        while(!cursor.isAfterLast()){
 
 
-            int index;
+        index = cursor1.getColumnIndexOrThrow("id");
+        newTarjeta.setTarjetaID(String.valueOf(cursor1.getInt(index)));
+        index = cursor1.getColumnIndexOrThrow("NombrePropietario");
+        newTarjeta.setNombrePropietario(cursor1.getString(index));
+        index = cursor1.getColumnIndexOrThrow("NumeroTarjeta");
+        newTarjeta.setNumero(String.valueOf(cursor1.getInt(index)));
+        index = cursor1.getColumnIndexOrThrow("CCV");
+        newTarjeta.setCcv(cursor1.getString(index));
+        index = cursor1.getColumnIndexOrThrow("FechaVencimiento");
+        newTarjeta.setFechaVencimiento(cursor1.getString(index));
 
-            index = cursor1.getColumnIndexOrThrow("id");
-            newTarjeta.setTarjetaID(String.valueOf(cursor1.getInt(index)));
-            index = cursor1.getColumnIndexOrThrow("NombrePropietario");
-            newTarjeta.setNombrePropietario(cursor1.getString(index));
-            index = cursor1.getColumnIndexOrThrow("NumeroTarjeta");
-            newTarjeta.setNumero(String.valueOf(cursor1.getInt(index)));
-            index = cursor1.getColumnIndexOrThrow("CCV");
-            newTarjeta.setCcv(cursor1.getString(index));
-            index = cursor1.getColumnIndexOrThrow("FechaVencimiento");
-            newTarjeta.setFechaVencimiento(cursor1.getString(index));
 
-            cursor.moveToNext();
-
-        }
         tarjeta = newTarjeta;
 
         //Restaurante
 
         Cursor cursor2 = model.selectRestauranteID(this, restId.toString());
 
-
-        cursor.moveToFirst();
+        cursor2.moveToFirst();
         Restaurante newRest = new Restaurante();
-        while(!cursor.isAfterLast()){
 
+        index = cursor2.getColumnIndexOrThrow("id");
+        newRest.setRestauranteID(String.valueOf(cursor2.getInt(index)));
+        index = cursor2.getColumnIndexOrThrow("Nombre");
+        newRest.setNombre(cursor2.getString(index));
+        index = cursor2.getColumnIndexOrThrow("DireccionID");
+        newRest.setDireccionID(cursor2.getString(index));
 
-            int index;
-
-            index = cursor2.getColumnIndexOrThrow("id");
-            newRest.setRestauranteID(String.valueOf(cursor2.getInt(index)));
-            index = cursor2.getColumnIndexOrThrow("Nombre");
-            newRest.setNombre(cursor2.getString(index));
-            index = cursor2.getColumnIndexOrThrow("Telefono");
-            newRest.setTelefono(String.valueOf(cursor2.getInt(index)));
-            index = cursor2.getColumnIndexOrThrow("Correo");
-            newRest.setCorreo(cursor2.getString(index));
-            index = cursor2.getColumnIndexOrThrow("EncargadoID");
-            newRest.setEncargadoID(cursor2.getString(index));
-            index = cursor2.getColumnIndexOrThrow("DireccionID");
-            newRest.setDireccionID(cursor2.getString(index));
-
-            cursor.moveToNext();
-
-        }
         rest = newRest;
 
-        //Direccion
+        //Direccion Rest
 
+        Cursor cursor3 = model.selectDireccion(this, dirID.toString());
 
-        cursor.moveToFirst();
+        cursor3.moveToFirst();
         Direccion newDir = new Direccion();
 
-
+        index = cursor3.getColumnIndexOrThrow("id");
+        newDir.setDireccionID(String.valueOf(cursor3.getInt(index)));
+        index = cursor3.getColumnIndexOrThrow("Nombre");
+        newDir.setNombre(cursor3.getString(index));
+        index = cursor3.getColumnIndexOrThrow("Descripcion");
+        newDir.setDescripcion(cursor3.getString(index));
 
         //For para ver la lista de platos
-        ArrayList<Plato> platos = cart.getPlatos();
+        ArrayList<Plato> platos = TempCart.platos;
 
         // We make custom adapter
-        PlatoAdapter platoAdapter = new PlatoAdapter(this,R.layout.list_row, platos);
+        CartListAdapter platoAdapter = new CartListAdapter(this,R.layout.cart_list_row, platos);
+
+
 
         //Create adapter
         listView.setAdapter(platoAdapter);
 
         //Pone el precio total
-        total.setText(cart.getTotalPrice());
+        total.setText(TempCart.getTotalPrice());
+
+        //Set data
+        listView.setClickable(true);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                platos.remove(platos.get(i));
+                CartListAdapter platoAdapter = new CartListAdapter(Cart.this,R.layout.cart_list_row, platos);
+                listView.setAdapter(platoAdapter);
+                total.setText("₡" +0);
+            }
+        });
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String products = "";
+                for (Plato p : platos){
+                    products += p.getNombre() + " Costo " + p.getCosto() + " Cant " + p.getCant() + "\n";
+                }
                 //Agregar correo y realizar pedido
+                String factura = "Nombre de dirección entrega: " + newDir.getNombre() +  "\n\n" +
+                        "Señales: " + newDir.getDescripcion() + "\n\n" +
+                        "ID de cliente: "+ client.getUsuarioID() +"\n\n" +
+                        "Cliente: " + client.getNombre() + " "+ "\n\n" +
+                        "Correo " + client.getCorreo() + " "+ "\n\n" +
+                        "Numero de tarjeta: " + tarjeta.getNumero() + "\n\n" +
+                        products + "\n" +
+                        "Total a pagar: " + "₡" + TempCart.getTotalPrice();
+
                 Toast.makeText(Cart.this,"Pedido realizado!",Toast.LENGTH_SHORT).show();
 
+                Intent next = new Intent(getApplicationContext(), OrderWaitScreen.class);
+                Orden orden = new Orden();
+                orden.setCostoTotal(TempCart.getTotalPrice());
+                orden.setClienteID(client.getUsuarioID());
+                orden.setDireccionID(dirID.toString());
+                orden.setFactura(factura);
+                orden.setRestauranteID(rest.getRestauranteID());
+                orden.setEnCamino("0");
+                long currentTime = Calendar.getInstance().getTime().getTime();
+                orden.setCurrentDate(String.valueOf(currentTime));
+
+                int status = model.insertOrden(getApplicationContext(), orden);
+
+                if (status == 1){
+                    Toast.makeText(getApplicationContext(), "Orden confirmada", Toast.LENGTH_SHORT).show();
+                }
+                next.putExtra("factura", factura);
+                next.putExtra("userID", client.getUsuarioID());
+                msg = factura;
+                sendEmail();
+                startActivity(next);
             }
         });
-
-
     }
 
     public void back(View view){
-
         Intent next = new Intent(this, RestaurantMenu.class);
         startActivity(next);
     }
 
     public void confirmOrder(View view){
-
         Intent next = new Intent(this, OrderWaitScreen.class);
         startActivity(next);
     }
+
+    public void sendEmail(){
+        String mEmail = client.getCorreo();
+        String mSubject = "Pedido de Eats Delivery App";
+        String mMessage = msg;
+
+        JavaMailAPI javaMailAPI = new JavaMailAPI(this, mEmail, mSubject, mMessage);
+
+        javaMailAPI.execute();
+
+    }
+
 }

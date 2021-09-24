@@ -55,7 +55,6 @@ public class RestListAdapter extends ArrayAdapter<Restaurante> {
 
         Direccion rest = new Direccion();
 
-
         int index;
 
         index = cursor.getColumnIndexOrThrow("id");
@@ -65,11 +64,10 @@ public class RestListAdapter extends ArrayAdapter<Restaurante> {
         index = cursor.getColumnIndexOrThrow("Descripcion");
         rest.setDescripcion(cursor.getString(index));
 
-
-        //String uri = "@drawable/" + getItem(position).getImage();
-        //int idD = mContext.getResources().getIdentifier(uri,null, mContext.getPackageName());
-
-        //imageView.setImageResource(idD);
+        String uri = "@drawable/" + getItem(position).getImageID();
+        int idD = mContext.getResources().getIdentifier(uri,null, mContext.getPackageName());
+        imageView.setImageResource(idD);
+        System.out.println(uri);
 
         textName.setText(getItem(position).getNombre());
         textView.setText("Dirección: ");

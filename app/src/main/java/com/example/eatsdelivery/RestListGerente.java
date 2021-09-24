@@ -29,7 +29,7 @@ public class RestListGerente extends AppCompatActivity {
 
         Object gerenteid = getIntent().getStringExtra("gerente");
         Model model = new Model();
-        Cursor cursor = model.selectRestaurantesXGerente(getApplicationContext(), gerenteid.toString());
+        Cursor cursor = model.selectRestaurantes(getApplicationContext());
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){

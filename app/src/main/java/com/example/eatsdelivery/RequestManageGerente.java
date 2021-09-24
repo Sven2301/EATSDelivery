@@ -28,7 +28,7 @@ public class RequestManageGerente extends AppCompatActivity {
 
         Object gerenteid = getIntent().getStringExtra("gerente");
         Model model = new Model();
-        Cursor cursor = model.selectRestaurantesXGerenteElim(getApplicationContext(), gerenteid.toString());
+        Cursor cursor = model.selectSolicitudesEliminacion(this);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){

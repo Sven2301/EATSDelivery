@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".RestaurantList">
 
-    <TextView
-
-        android:id="@+id/slogan_resList2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Selecciona un restaurante:"
-        android:textColor="@color/Button"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView23" />
-
     <ImageView
         android:id="@+id/imageView23"
         android:layout_width="367dp"
@@ -33,12 +20,16 @@
         android:id="@+id/rest_lisview"
         android:layout_width="388dp"
         android:layout_height="528dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slogan_resList2"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="409dp"
+        android:layout_height="78dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView23" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

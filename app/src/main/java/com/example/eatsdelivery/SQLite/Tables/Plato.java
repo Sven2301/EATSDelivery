@@ -6,6 +6,9 @@ public class Plato {
     private String nombre;
     private String costo;
     private String descripcion;
+    private String cant = "0";
+    private String image;
+    private String tipoComidaID;
 
     public String getCant() {
         return cant;
@@ -15,8 +18,6 @@ public class Plato {
         this.cant = cant;
     }
 
-    private String cant;
-
     public String getTipoComidaID() {
         return tipoComidaID;
     }
@@ -25,7 +26,6 @@ public class Plato {
         this.tipoComidaID = tipoComidaID;
     }
 
-    private String tipoComidaID;
 
     public String getImage() {
         return image;
@@ -35,7 +35,6 @@ public class Plato {
         this.image = image;
     }
 
-    private String image;
 
     public String getPlatoID() {
         return platoID;

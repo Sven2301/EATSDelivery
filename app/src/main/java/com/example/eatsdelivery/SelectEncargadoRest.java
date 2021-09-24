@@ -62,7 +62,7 @@ public class SelectEncargadoRest extends AppCompatActivity {
 
             Button button = new Button(this);
 
-            button.setText(u.getNombre() + " " + u.getApellido());
+            button.setText(u.getNombre());
             lista.addView(button);
             listaBotones.add(button);
 
