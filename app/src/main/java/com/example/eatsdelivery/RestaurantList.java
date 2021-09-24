@@ -68,6 +68,9 @@ public class RestaurantList extends AppCompatActivity {
                     index = cursor.getColumnIndexOrThrow("Activo");
                     newRest.setDeshabilitar(String.valueOf(cursor.getInt(index)));
 
+                    index = cursor.getColumnIndexOrThrow("ImagenID");
+                    newRest.setImageID(cursor.getString(index));
+
 
                     restaurantes.add(newRest);
                     cursor.moveToNext();
@@ -116,6 +119,9 @@ public class RestaurantList extends AppCompatActivity {
                         index = cursor.getColumnIndexOrThrow("Activo");
                         newRest.setDeshabilitar(String.valueOf(cursor.getInt(index)));
 
+                        index = cursor.getColumnIndexOrThrow("ImagenID");
+                        newRest.setImageID(cursor.getString(index));
+
 
                         restaurantes.add(newRest);
                         cursor.moveToNext();
@@ -161,6 +167,8 @@ public class RestaurantList extends AppCompatActivity {
             index = cursor.getColumnIndexOrThrow("Activo");
             newRest.setDeshabilitar(String.valueOf(cursor.getInt(index)));
 
+            index = cursor.getColumnIndexOrThrow("ImagenID");
+            newRest.setImageID(cursor.getString(index));
 
             restaurantes.add(newRest);
             cursor.moveToNext();
@@ -186,7 +194,6 @@ public class RestaurantList extends AppCompatActivity {
     }
 
     public void quit(View view){
-
         Intent next = new Intent(this, MainMenu.class);
         startActivity(next);
     }

@@ -92,6 +92,7 @@ public class RestaurantMenu extends AppCompatActivity {
                     plato.setDescripcion(cursor.getString(index));
                     index = cursor.getColumnIndexOrThrow("ImagenID");
                     plato.setImage(cursor.getString(index));
+
                     platos.add(plato);
                     cursor.moveToNext();
                 }
