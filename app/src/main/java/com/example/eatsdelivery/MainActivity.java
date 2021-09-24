@@ -314,7 +314,7 @@ public class MainActivity extends AppCompatActivity{
         Restaurante rest2 = new Restaurante();
         rest2.setNombre(dirRest2.getNombre());
         rest2.setDireccionID("2");
-        rest2.setEncargadoID("4");
+        rest2.setEncargadoID("5");
         rest2.setTelefono("888888888");
         rest2.setCorreo("eats@gmail.com");
 

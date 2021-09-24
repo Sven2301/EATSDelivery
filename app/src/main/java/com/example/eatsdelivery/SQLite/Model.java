@@ -293,6 +293,12 @@ public class Model {
         return db.rawQuery(query, new String[]{id});
     }
 
+    public Cursor selectRestauranteEncargado(Context context, String id) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Restaurante WHERE UsuarioID = ? AND Activo > 0";
+        return db.rawQuery(query, new String[]{id});
+    }
+
     public Cursor selectRestauranteNom(Context context, String name) {
         SQLiteDatabase db = getConnRead(context);
         String query = "SELECT * FROM Restaurante WHERE Nombre = ?";
