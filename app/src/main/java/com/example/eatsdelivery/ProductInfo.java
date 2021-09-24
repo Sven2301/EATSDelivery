@@ -38,8 +38,7 @@ public class ProductInfo extends AppCompatActivity {
         EditText cant = (EditText) findViewById(R.id.cant);
 
         Object clientID =  getIntent().getStringExtra("clientID");
-        Object restId = getIntent().getStringExtra("idRest");
-        TempCart cart = getIntent().getParcelableExtra("cart");
+        Object restId = getIntent().getStringExtra("RestID");
 
         Object platoID = getIntent().getStringExtra("PlatoID");
         Object p = getIntent().getStringExtra("PlatoID");
@@ -85,29 +84,34 @@ public class ProductInfo extends AppCompatActivity {
                     next.putExtra("clientID",clientID.toString());
                     next.putExtra("platoID", platoID.toString());
                     next.putExtra("idRest", restId.toString());
-                    next.putExtra("cart", cart);
 
                 }
                 else{
                     // Agregar producto a carrito
                     Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
                     plato.setCant(cant.getText().toString());
-                    cart.addPlato(plato);
-                    next.putExtra("cart", cart);
+
+                    boolean found = false;
+                    for (Plato p : TempCart.platos){
+
+                        if (plato.getNombre().equals(p.getNombre())){
+                            int index = TempCart.platos.indexOf(p);
+                            TempCart.platos.get(index).setCant(plato.getCant());
+                            found = true;
+                        }
+                    }
+                    if(!found){
+                        TempCart.platos.add(plato);
+                    }
                     next.putExtra("clientID",clientID.toString());
                     next.putExtra("platoID", platoID.toString());
-                    next.putExtra("idRest", restId.toString() );
+                    next.putExtra("idRest", restId.toString());
+                    Toast.makeText(getApplicationContext(), "Producto agregado", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-
-
-
-
     }
-
-
 
     public void back(View view){
 
