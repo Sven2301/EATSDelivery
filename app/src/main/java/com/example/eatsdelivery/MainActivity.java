@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity{
         user.setApellido("Vestegard");
         user.setUsuario("Thor");
         user.setContrasenha("1234");
-        user.setCorreo("thorfinn@fakemail.com");
+        user.setCorreo("revvace@gmail.com");
         user.setTelefono("85769213");
         user.setTipoAccesoID("1");
         user.setTarjetaID("1");
@@ -271,7 +271,6 @@ public class MainActivity extends AppCompatActivity{
         dirRest2.setNombre("EATS Paraíso");
         dirRest2.setDescripcion("Frente al costado este del Tecnológico de Costa Rica");
 
-
         Direccion dirRest3 = new Direccion();
         dirRest3.setNombre("EATS Heredia Centro");
         dirRest3.setDescripcion("Esquina donde estaba el antiguo Testy");
@@ -313,6 +312,7 @@ public class MainActivity extends AppCompatActivity{
         rest1.setNombre(dirRest1.getNombre());
         rest1.setDireccionID("1");
         rest1.setEncargadoID("4");
+        rest1.setImageID("sanjoaquin");
         rest1.setTelefono("888888888");
         rest1.setCorreo("eats@gmail.com");
 
@@ -320,7 +320,8 @@ public class MainActivity extends AppCompatActivity{
         Restaurante rest2 = new Restaurante();
         rest2.setNombre(dirRest2.getNombre());
         rest2.setDireccionID("2");
-        rest2.setEncargadoID("4");
+        rest2.setEncargadoID("5");
+        rest2.setImageID("paraiso");
         rest2.setTelefono("888888888");
         rest2.setCorreo("eats@gmail.com");
 
@@ -328,6 +329,7 @@ public class MainActivity extends AppCompatActivity{
         rest3.setNombre(dirRest3.getNombre());
         rest3.setDireccionID("3");
         rest3.setEncargadoID("4");
+        rest3.setImageID("heredia");
         rest3.setTelefono("888888888");
         rest3.setCorreo("eats@gmail.com");
 
@@ -335,6 +337,7 @@ public class MainActivity extends AppCompatActivity{
         rest4.setNombre(dirRest4.getNombre());
         rest4.setDireccionID("4");
         rest4.setEncargadoID("4");
+        rest4.setImageID("puntarenas");
         rest4.setTelefono("888888888");
         rest4.setCorreo("eats@gmail.com");
 
@@ -342,12 +345,14 @@ public class MainActivity extends AppCompatActivity{
         rest5.setNombre(dirRest5.getNombre());
         rest5.setDireccionID("5");
         rest5.setEncargadoID("4");
+        rest5.setImageID("sanrafael");
         rest5.setTelefono("888888888");
         rest5.setCorreo("eats@gmail.com");
 
         Restaurante rest6 = new Restaurante();
         rest6.setNombre(dirRest6.getNombre());
         rest6.setDireccionID("6");
+        rest6.setImageID("coyol");
         rest6.setEncargadoID("4");
         rest6.setTelefono("888888888");
         rest6.setCorreo("eats@gmail.com");
@@ -390,14 +395,14 @@ public class MainActivity extends AppCompatActivity{
         p2.setNombre("Papas Supremas");
         p2.setCosto("2500");
         p2.setDescripcion("Papas a la francesa, fritas con nuestro aceite especial y servidas con nuestras deliciosas salsas y queso.");
-        p2.setImage("papas.png");
+        p2.setImage("papas");
         p2.setTipoComidaID("3");
         model.insertPlato(this,p2);
 
         Plato p3 = new Plato();
         p3.setNombre("Quesadilla de la Casa");
         p3.setCosto("3500");
-        p3.setImage("quesadilla.jpg");
+        p3.setImage("quesadilla");
         p3.setTipoComidaID("2");
         p3.setDescripcion("Quesadilla hecha de una combinacion de quesos especiales y acompañada de una salsa de queso de la casa.");
         model.insertPlato(this,p3);
@@ -414,7 +419,7 @@ public class MainActivity extends AppCompatActivity{
         p5.setNombre("Perro de la Casa");
         p5.setCosto("3500");
         p5.setDescripcion("Perro caliente con salchicha frita especial de la casa acompañado de nuestra mayonesa especial.");
-        p5.setImage("perro.jpg");
+        p5.setImage("perro");
         p5.setTipoComidaID("1");
         model.insertPlato(this,p5);
 

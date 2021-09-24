@@ -19,13 +19,13 @@ public class ConexionSQLite extends SQLiteOpenHelper {
     final String SQL_CREATE_Plato = "CREATE TABLE Plato (id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT, Costo INTEGER, Descripcion TEXT, TipoComidaID INTEGER, ImagenID TEXT," +
             "FOREIGN KEY(TipoComidaID) REFERENCES TipoComida(id))";
     final String SQL_CREATE_Direccion = "CREATE TABLE Direccion (id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT, Descripcion TEXT, Activo TEXT)";
-    final String SQL_CREATE_Restaurante = "CREATE TABLE Restaurante (id INTEGER PRIMARY KEY AUTOINCREMENT, DireccionID INTEGER," +
+    final String SQL_CREATE_Restaurante = "CREATE TABLE Restaurante (id INTEGER PRIMARY KEY AUTOINCREMENT, DireccionID INTEGER, ImagenID TEXT," +
             " Nombre TEXT, Activo INTEGER, UsuarioID INTEGER, Telefono TEXT, Correo TEXT, FOREIGN KEY(DireccionID) REFERENCES Direccion(id))";
     final String SQL_CREATE_ResxGer = "CREATE TABLE RestauranteXGerente (id INTEGER PRIMARY KEY AUTOINCREMENT, RestauranteID INTEGER," +
             " UsuarioID INTEGER," +
             " FOREIGN KEY(RestauranteID) REFERENCES Restaurante(id), FOREIGN KEY(UsuarioID) REFERENCES Usuario(id))";
     final String SQL_CREATE_Orden = "CREATE TABLE Orden (id INTEGER PRIMARY KEY AUTOINCREMENT, ClienteID INTEGER," +
-            " RepartidorID INTEGER, RestauranteID INTEGER, DireccionID INTEGER, costoTotal INTEGER, enCamino INTEGER, Factura TEXT," +
+            " RepartidorID INTEGER, RestauranteID INTEGER, DireccionID INTEGER, costoTotal INTEGER, enCamino INTEGER, Activo INTEGER, Factura TEXT," +
             " FOREIGN KEY(ClienteID) REFERENCES Usuario(id), FOREIGN KEY(RepartidorID) REFERENCES Usuario(id)," +
             "FOREIGN KEY(RestauranteID) REFERENCES Restaurante(id), FOREIGN KEY(DireccionID) REFERENCES Direccion(id))";
     final String SQL_CREATE_Menu = "CREATE TABLE Menu (id INTEGER PRIMARY KEY AUTOINCREMENT, RestauranteID INTEGER," +

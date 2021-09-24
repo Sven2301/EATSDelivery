@@ -14,9 +14,7 @@ import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Model;
 import com.example.eatsdelivery.SQLite.Tables.Plato;
-import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
-import org.w3c.dom.Text;
 
 public class ProductInfo extends AppCompatActivity {
 
@@ -30,12 +28,12 @@ public class ProductInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_info);
 
-        Button addCarrito = (Button) findViewById(R.id.add_dish);
+        Button addCarrito = (Button) findViewById(R.id.btnDelPE);
         TextView nombre = (TextView) findViewById(R.id.nombrePlato);
-        TextView info = (TextView) findViewById(R.id.prodcut_Info);
+        TextView info = (TextView) findViewById(R.id.ltxtDescriptionPE);
         TextView costo = (TextView) findViewById(R.id.precio);
-        ImageView imageView = (ImageView)  findViewById(R.id.image);
-        EditText cant = (EditText) findViewById(R.id.cant);
+        ImageView imageView = (ImageView)  findViewById(R.id.fotoProductInfo);
+        TextView cant = (TextView) findViewById(R.id.txtCantPE);
 
         Object clientID =  getIntent().getStringExtra("clientID");
         Object restId = getIntent().getStringExtra("RestID");
@@ -63,13 +61,20 @@ public class ProductInfo extends AppCompatActivity {
             plato.setDescripcion(cursor.getString(index));
 
             index = cursor.getColumnIndexOrThrow("ImagenID");
-            plato.setImage(String.valueOf(cursor.getInt(index)));
+            plato.setImage(cursor.getString(index));
 
+            System.out.println(cursor.getString(index));
             //Setea los texts y la imagen
             nombre.setText(plato.getNombre());
+
             info.setText(plato.getDescripcion());
+
             costo.setText("₡" + plato.getCosto());
-            //imageView.setImageResource(Integer.parseInt(plato.getImage()));
+
+            String uri = "@drawable/" + plato.getImage();
+
+            int idD = this.getResources().getIdentifier(uri,null, this.getPackageName());
+            imageView.setImageResource(idD);
 
         }
 
@@ -89,7 +94,6 @@ public class ProductInfo extends AppCompatActivity {
                 else{
                     // Agregar producto a carrito
                     Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
-                    Toast.makeText(getApplicationContext(), "Producto agregado", Toast.LENGTH_SHORT).show();
                     plato.setCant(cant.getText().toString());
 
                     boolean found = false;
@@ -106,14 +110,11 @@ public class ProductInfo extends AppCompatActivity {
                     }
                     next.putExtra("clientID",clientID.toString());
                     next.putExtra("platoID", platoID.toString());
-                    next.putExtra("idRest", restId.toString() );
+                    next.putExtra("idRest", restId.toString());
+                    Toast.makeText(getApplicationContext(), "Producto agregado", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
-
-
 
     }
 

@@ -1,6 +1,5 @@
 package com.example.eatsdelivery;
 
-
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -18,16 +17,15 @@ import com.example.eatsdelivery.SQLite.Tables.Plato;
 
 import java.util.ArrayList;
 
-public class PlatoAdapter extends ArrayAdapter<Plato> {
+public class CartListAdapter extends ArrayAdapter<Plato> {
 
     private Context mContext;
     private  int mResource;
 
-    public PlatoAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Plato> objects){
+    public CartListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Plato> objects){
         super(context,resource,objects);
         this.mContext =  context;
         this.mResource =  resource;
-
     }
 
 
@@ -47,18 +45,20 @@ public class PlatoAdapter extends ArrayAdapter<Plato> {
 
         TextView precio = convertView.findViewById(R.id.txtSub);
 
-
+        TextView cant = convertView.findViewById(R.id.cantText);
 
         String uri = "@drawable/" + getItem(position).getImage();
         int idD = mContext.getResources().getIdentifier(uri,null, mContext.getPackageName());
+
         imageView.setImageResource(idD);
 
         textName.setText(getItem(position).getNombre());
 
-        precio.setText("₡" + getItem(position).getCosto());
+        precio.setText(new StringBuilder().append("₡").append(getItem(position).getCosto()).toString());
 
         textDescrip.setText(getItem(position).getDescripcion());
 
+        cant.setText(getItem(position).getCant());
 
         return convertView;
     }

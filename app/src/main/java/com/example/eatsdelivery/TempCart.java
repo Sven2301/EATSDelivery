@@ -29,6 +29,7 @@ public class TempCart {
         return totalPrice;
     }
 
+
     public static void clearCart(){
         platos.clear();
     }

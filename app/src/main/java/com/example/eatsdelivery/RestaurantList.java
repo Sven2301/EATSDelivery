@@ -68,6 +68,9 @@ public class RestaurantList extends AppCompatActivity {
                     index = cursor.getColumnIndexOrThrow("Activo");
                     newRest.setDeshabilitar(String.valueOf(cursor.getInt(index)));
 
+                    index = cursor.getColumnIndexOrThrow("ImagenID");
+                    newRest.setImageID(cursor.getString(index));
+
 
                     restaurantes.add(newRest);
                     cursor.moveToNext();
@@ -116,6 +119,9 @@ public class RestaurantList extends AppCompatActivity {
                         index = cursor.getColumnIndexOrThrow("Activo");
                         newRest.setDeshabilitar(String.valueOf(cursor.getInt(index)));
 
+                        index = cursor.getColumnIndexOrThrow("ImagenID");
+                        newRest.setImageID(cursor.getString(index));
+
 
                         restaurantes.add(newRest);
                         cursor.moveToNext();
@@ -161,6 +167,8 @@ public class RestaurantList extends AppCompatActivity {
             index = cursor.getColumnIndexOrThrow("Activo");
             newRest.setDeshabilitar(String.valueOf(cursor.getInt(index)));
 
+            index = cursor.getColumnIndexOrThrow("ImagenID");
+            newRest.setImageID(cursor.getString(index));
 
             restaurantes.add(newRest);
             cursor.moveToNext();
@@ -173,23 +181,19 @@ public class RestaurantList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
+                Intent next = new Intent(getApplicationContext(), SelectDireccion.class);
                 next.putExtra("clientID",userID.toString());
                 if (TempCart.platos != null){
                     TempCart.clearCart();
                 }
-
                 next.putExtra("idRest", restaurantes.get(i).getRestauranteID());
                 startActivity(next);
             }
         });
 
-
-
     }
 
     public void quit(View view){
-
         Intent next = new Intent(this, MainMenu.class);
         startActivity(next);
     }
