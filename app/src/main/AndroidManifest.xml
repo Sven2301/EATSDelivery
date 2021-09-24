@@ -115,6 +115,9 @@
             android:name=".RegisterActivity"
             android:exported="true" />
         <activity
+            android:name=".EditRestDirectionEncargado"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
