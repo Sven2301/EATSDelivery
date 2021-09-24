@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.eatsdelivery.SQLite.Model;
 import com.example.eatsdelivery.SQLite.Tables.Plato;
 
+
 public class ProductInfo extends AppCompatActivity {
 
     private Model model = new Model();
@@ -31,8 +32,8 @@ public class ProductInfo extends AppCompatActivity {
         TextView nombre = (TextView) findViewById(R.id.nombrePlato);
         TextView info = (TextView) findViewById(R.id.ltxtDescriptionPE);
         TextView costo = (TextView) findViewById(R.id.precio);
-        ImageView imageView = (ImageView)  findViewById(R.id.image);
-        EditText cant = (EditText) findViewById(R.id.txtCantPE);
+        ImageView imageView = (ImageView)  findViewById(R.id.fotoProductInfo);
+        EditText cant = (EditText) findViewById(R.id.cant);
 
         Object clientID =  getIntent().getStringExtra("clientID");
         Object restId = getIntent().getStringExtra("RestID");
@@ -60,13 +61,16 @@ public class ProductInfo extends AppCompatActivity {
             plato.setDescripcion(cursor.getString(index));
 
             index = cursor.getColumnIndexOrThrow("ImagenID");
-            plato.setImage(String.valueOf(cursor.getInt(index)));
+            plato.setImage(cursor.getString(index));
 
+            System.out.println(cursor.getString(index));
             //Setea los texts y la imagen
             nombre.setText(plato.getNombre());
             info.setText(plato.getDescripcion());
             costo.setText("₡" + plato.getCosto());
-            //imageView.setImageResource(Integer.parseInt(plato.getImage()));
+            String uri = "@drawable/" + plato.getImage();
+            int idD = this.getResources().getIdentifier(uri,null, this.getPackageName());
+            imageView.setImageResource(idD);
 
         }
 

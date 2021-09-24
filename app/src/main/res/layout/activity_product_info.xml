@@ -44,7 +44,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/fotoProductInfo"
         android:layout_width="178dp"
         android:layout_height="108dp"
 
@@ -64,7 +64,7 @@
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/fotoProductInfo" />
 
     <Button
         android:id="@+id/btnDelPE"

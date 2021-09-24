@@ -132,8 +132,8 @@ public class Model {
 
     public int insertRestaurante(Context context, Restaurante r) {
         int res = 0;
-        String sql = "INSERT INTO Restaurante(DireccionID, Nombre, Activo, UsuarioID, Telefono, Correo) VALUES ('"+r.getDireccionID()+"', '"+r.getNombre()+"', '"+2+"', '"+r.getEncargadoID()+"'" +
-                ", '"+r.getTelefono()+"', '"+r.getCorreo()+"')";
+        String sql = "INSERT INTO Restaurante(DireccionID, Nombre, Activo, UsuarioID, Telefono, Correo, ImagenID) VALUES ('"+r.getDireccionID()+"', '"+r.getNombre()+"', '"+2+"', '"+r.getEncargadoID()+"'" +
+                ", '"+r.getTelefono()+"', '"+r.getCorreo()+"', '"+r.getImageID()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);

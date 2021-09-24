@@ -19,7 +19,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
     final String SQL_CREATE_Plato = "CREATE TABLE Plato (id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT, Costo INTEGER, Descripcion TEXT, TipoComidaID INTEGER, ImagenID TEXT," +
             "FOREIGN KEY(TipoComidaID) REFERENCES TipoComida(id))";
     final String SQL_CREATE_Direccion = "CREATE TABLE Direccion (id INTEGER PRIMARY KEY AUTOINCREMENT, Nombre TEXT, Descripcion TEXT, Activo TEXT)";
-    final String SQL_CREATE_Restaurante = "CREATE TABLE Restaurante (id INTEGER PRIMARY KEY AUTOINCREMENT, DireccionID INTEGER," +
+    final String SQL_CREATE_Restaurante = "CREATE TABLE Restaurante (id INTEGER PRIMARY KEY AUTOINCREMENT, DireccionID INTEGER, ImagenID TEXT," +
             " Nombre TEXT, Activo INTEGER, UsuarioID INTEGER, Telefono TEXT, Correo TEXT, FOREIGN KEY(DireccionID) REFERENCES Direccion(id))";
     final String SQL_CREATE_ResxGer = "CREATE TABLE RestauranteXGerente (id INTEGER PRIMARY KEY AUTOINCREMENT, RestauranteID INTEGER," +
             " UsuarioID INTEGER," +
