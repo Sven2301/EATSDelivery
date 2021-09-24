@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".AdminRegisterUser">
+
 
     <ScrollView
         android:layout_width="408dp"
@@ -77,9 +78,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/box"
-            android:gravity="center"
             android:ems="10"
-            android:hint="@string/username"
+            android:gravity="center"
+            android:hint="Ident Laboral"
             android:inputType="textPersonName"
             android:minHeight="48dp" />
 
@@ -107,16 +108,10 @@
             android:minHeight="48dp"
             tools:ignore="TextContrastCheck" />
 
-        <EditText
-            android:id="@+id/direction_reg"
-            android:background="@drawable/box"
-            android:gravity="center"
+        <Spinner
+            android:id="@+id/spinner_tipoacceso"
             android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:ems="10"
-
-            android:hint="@string/direction"
-            android:inputType="textMultiLine" />
+            android:layout_height="56dp" />
 
         <Button
             android:id="@+id/confirm_btn_register_admin"
