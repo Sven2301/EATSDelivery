@@ -22,6 +22,11 @@ import com.example.eatsdelivery.SQLite.Tables.TipoDeAcceso;
 import com.example.eatsdelivery.SQLite.Tables.TipoDeComida;
 import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class MainActivity extends AppCompatActivity{
 
@@ -40,6 +45,7 @@ public class MainActivity extends AppCompatActivity{
         password =  (EditText) findViewById(R.id.password_log);
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_register = (Button) findViewById(R.id.btn_register);
+
 
         // Objeto para guardar un dato que permite saber si es la primera vez que se ejcuta la app
         SharedPreferences preferences = getSharedPreferences("config", Context.MODE_PRIVATE);

@@ -1,8 +1,11 @@
 package com.example.eatsdelivery.SQLite.Tables;
 
+import java.util.Date;
+
 public class Orden {
 
     private String ordenID, clienteID, repartidorID, restauranteID, direccionID, costoTotal, enCamino, factura;
+    private long currentDate;
 
     public String getOrdenID() {
         return ordenID;
@@ -63,4 +66,12 @@ public class Orden {
     public String getFactura() { return factura; }
 
     public void setFactura(String factura) { this.factura = factura; }
+
+    public long getCurrentDate() {
+        return currentDate;
+    }
+
+    public void setCurrentDate(long currentDate) {
+        this.currentDate = currentDate;
+    }
 }

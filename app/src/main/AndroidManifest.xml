@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EATSDelivery">
         <activity
+            android:name=".CancelOrdenConfirm"
+            android:exported="true" />
+        <activity
+            android:name=".CancelOrdenList"
+            android:exported="true" />
+        <activity
             android:name=".AdminRegisterUser"
             android:exported="true" />
         <activity

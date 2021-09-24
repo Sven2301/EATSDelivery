@@ -32,8 +32,8 @@ public class MainMenu extends AppCompatActivity {
         startActivity(next);
     }
 
-    public void editClientData(View view){
-        Intent next = new Intent(this, EditInfoClient.class);
+    public void cancelPedido(View view){
+        Intent next = new Intent(this, CancelOrdenList.class);
         next.putExtra("userID",userID.toString());
         startActivity(next);
     }
