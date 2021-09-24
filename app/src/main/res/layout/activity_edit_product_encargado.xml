@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductInfo">
+    tools:context=".EditProductEncargado">
 
     <ImageView
         android:id="@+id/imageView29"
@@ -12,78 +12,55 @@
         android:layout_height="725dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/squarebox" />
 
     <ImageView
-        android:id="@+id/imageView32"
-        android:layout_width="129dp"
-        android:layout_height="92dp"
-        android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnDelPE"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/papas_hamb" />
-
-    <TextView
-        android:id="@+id/nombrePlato"
-        android:layout_width="280dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/productNameTemp"
-        android:textAlignment="center"
-        android:textColor="@color/Button"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/fotoProductInfo"
+        android:id="@+id/imageView"
         android:layout_width="178dp"
         android:layout_height="108dp"
 
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombrePlato"
+        tools:layout_editor_absoluteY="34dp"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/precio"
-        android:layout_width="190dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="@string/price"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fotoProductInfo" />
 
     <Button
         android:id="@+id/btnDelPE"
         android:layout_width="165dp"
         android:layout_height="52dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/custom_button"
-        android:text="Agregar al carrito"
+        android:text="Eliminar el producto"
         android:textAllCaps="false"
         android:textColor="#FFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCantPE" />
 
+    <Button
+        android:id="@+id/btnConfPE"
+        android:layout_width="165dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_button"
+        android:text="Modificar el producto"
+        android:textAllCaps="false"
+        android:textColor="#FFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView29"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDelPE"
+        app:layout_constraintVertical_bias="0.086" />
+
     <EditText
         android:id="@+id/txtCantPE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/box"
         android:ems="10"
 
@@ -97,14 +74,47 @@
         app:layout_constraintTop_toBottomOf="@+id/ltxtDescriptionPE"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <EditText
+        android:id="@+id/txtCostPE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+
+        android:background="@drawable/box"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Precio del producto"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombrePE"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:layout_editor_absoluteX="100dp" />
+
+    <EditText
+        android:id="@+id/txtNombrePE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+
+        android:background="@drawable/box"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Nombre del producto"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:layout_editor_absoluteX="100dp" />
+
     <TextView
         android:id="@+id/ltxtDescriptionPE"
         android:layout_width="253dp"
         android:layout_height="121dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/squarebox"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/precio" />
+        app:layout_constraintTop_toBottomOf="@+id/txtCostPE" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

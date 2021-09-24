@@ -611,4 +611,46 @@ public class Model {
         String query = "SELECT * FROM Restaurante WHERE Nombre LIKE ? AND Activo > 0";
         return db.rawQuery(query, new String[]{regex});
     }
+
+    public int updateCantidadMenu(Context context, String newCantidad, String idRestaurante, String idPlato) {
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("CantidadDisponible", newCantidad);
+
+        // Which row to update, based on the title
+        String selection = "RestauranteID = ? AND PlatoID = ?";
+        String[] selectionArgs = {idRestaurante, idPlato};
+
+        int count = db.update(
+                "Menu",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
+    public int updatePlatoInfo(Context context, Plato plato, String idPlato) {
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Nombre", plato.getNombre());
+        values.put("Costo", plato.getCosto());
+        values.put("Descripcion", plato.getDescripcion());
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = {idPlato};
+
+        int count = db.update(
+                "Plato",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
 }

@@ -28,9 +28,9 @@ public class ProductInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_info);
 
-        Button addCarrito = (Button) findViewById(R.id.add_dish);
+        Button addCarrito = (Button) findViewById(R.id.btnDelPE);
         TextView nombre = (TextView) findViewById(R.id.nombrePlato);
-        TextView info = (TextView) findViewById(R.id.prodcut_Info);
+        TextView info = (TextView) findViewById(R.id.ltxtDescriptionPE);
         TextView costo = (TextView) findViewById(R.id.precio);
         ImageView imageView = (ImageView)  findViewById(R.id.fotoProductInfo);
         EditText cant = (EditText) findViewById(R.id.cant);
