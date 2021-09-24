@@ -166,28 +166,28 @@ public class MainActivity extends AppCompatActivity{
 
         //Agregar Admin
         Usuario admin = new Usuario();
-        admin.setNombre("Admin");
-        admin.setApellido("Admin");
-        admin.setUsuario("admin");
-        admin.setContrasenha("admin");
+        admin.setNombre("Lucia");
+        admin.setApellido("Herrera");
+        admin.setUsuario("AdmLu2021");
+        admin.setContrasenha("lu");
         admin.setCorreo("admin@gmail.com");
-        admin.setTelefono("12345678");
+        admin.setTelefono("22646251");
         admin.setTipoAccesoID("5");
         model.insertUsuario(this, admin);
 
         //Agregar cliente 1
         Tarjeta card = new Tarjeta();
         card.setCcv("123");
-        card.setFechaVencimiento("20/10/24");
-        card.setNombrePropietario("Thorfinn");
+        card.setFechaVencimiento("10/24");
+        card.setNombrePropietario("Marco Reveiz R.");
         card.setNumero("123456789");
         int statusClient1 = model.insertTarjeta(this, card);
 
         Usuario user = new Usuario();
-        user.setNombre("Thorfinn");
-        user.setApellido("Vestegard");
-        user.setUsuario("Thor");
-        user.setContrasenha("1234");
+        user.setNombre("Marco");
+        user.setApellido("Reveiz");
+        user.setUsuario("revvro");
+        user.setContrasenha("rev2021");
         user.setCorreo("revvace@gmail.com");
         user.setTelefono("85769213");
         user.setTipoAccesoID("1");
@@ -197,28 +197,28 @@ public class MainActivity extends AppCompatActivity{
 
         //Agregar cliente 2
         Tarjeta card2 = new Tarjeta();
-        card2.setCcv("222");
-        card2.setFechaVencimiento("23/10/23");
-        card2.setNombrePropietario("Arthur Shelby");
+        card2.setCcv("178");
+        card2.setFechaVencimiento("10/23");
+        card2.setNombrePropietario("Sebastian Lopez H.");
         card2.setNumero("987654321");
         int statusClient2 = model.insertTarjeta(this, card2);
 
         Usuario user2 = new Usuario();
-        user2.setNombre("Arthur");
-        user2.setApellido("Shelby");
-        user2.setUsuario("2");
-        user2.setContrasenha("1234");
-        user2.setCorreo("arthShell@gmail.com");
-        user2.setTelefono("8888696");
-        user2.setTipoAccesoID("2");
+        user2.setNombre("Sebastian");
+        user2.setApellido("Lopez");
+        user2.setUsuario("FISH");
+        user2.setContrasenha("fishlopez");
+        user2.setCorreo("sebastianlopezherrera@gmail.com");
+        user2.setTelefono("22683196");
+        user2.setTipoAccesoID("1");
         user2.setTarjetaID("2");
         model.insertUsuario(this, user2);
 
 
-        //Agregar cliente 3
+        //Agregar repartidor
         Tarjeta card3 = new Tarjeta();
         card3.setCcv("475");
-        card3.setFechaVencimiento("20/09/22");
+        card3.setFechaVencimiento("09/22");
         card3.setNombrePropietario("Nathan Stockton");
         card3.setNumero("6969656521");
         int statusClient3 = model.insertTarjeta(this, card3);
@@ -226,15 +226,15 @@ public class MainActivity extends AppCompatActivity{
         Usuario user3 = new Usuario();
         user3.setNombre("Nathan");
         user3.setApellido("Stockton");
-        user3.setUsuario("3");
-        user3.setContrasenha("1234");
-        user3.setCorreo("nathan@gmail.com");
-        user3.setTelefono("8787556933");
-        user3.setTipoAccesoID("3");
+        user3.setUsuario("Nath56");
+        user3.setContrasenha("contraseña");
+        user3.setCorreo("cuentadediositoparalaprogra@gmail.com");
+        user3.setTelefono("87875569");
+        user3.setTipoAccesoID("2");
         user3.setTarjetaID("3");
         model.insertUsuario(this, user3);
 
-        //Agregar cliente 4
+        //Agregar encargado 1
         Tarjeta card4 = new Tarjeta();
         card4.setCcv("255");
         card4.setFechaVencimiento("12/09/26");
@@ -245,16 +245,71 @@ public class MainActivity extends AppCompatActivity{
         Usuario user4 = new Usuario();
         user4.setNombre("Thomas");
         user4.setApellido("Shelby");
-        user4.setUsuario("4");
-        user4.setContrasenha("1234");
-        user4.setCorreo("thom@gmail.com");
-        user4.setTelefono("777788855");
+        user4.setUsuario("TShelby");
+        user4.setContrasenha("eatstshelby");
+        user4.setCorreo("pablomuevaesasnalgas@gmail.com");
+        user4.setTelefono("77778885");
         user4.setTipoAccesoID("4");
         user4.setTarjetaID("4");
         model.insertUsuario(this, user4);
 
+        //Agregar encargado 2
+        Tarjeta card5 = new Tarjeta();
+        card5.setCcv("255");
+        card5.setFechaVencimiento("12/09/26");
+        card5.setNombrePropietario("Thomas Shelby");
+        card5.setNumero("56565622114");
+        int statusClient5 = model.insertTarjeta(this, card5);
 
+        Usuario user5 = new Usuario();
+        user5.setNombre("Thomas");
+        user5.setApellido("Shelby");
+        user5.setUsuario("TShelby");
+        user5.setContrasenha("eatstshelby");
+        user5.setCorreo("pablomuevaesasnalgas@gmail.com");
+        user5.setTelefono("77778885");
+        user5.setTipoAccesoID("4");
+        user5.setTarjetaID("5");
+        model.insertUsuario(this, user5);
 
+        //Agregar encargado 3
+        Tarjeta card6 = new Tarjeta();
+        card6.setCcv("255");
+        card6.setFechaVencimiento("12/09/26");
+        card6.setNombrePropietario("Thomas Shelby");
+        card6.setNumero("56565622114");
+        int statusClient6 = model.insertTarjeta(this, card6);
+
+        Usuario user6 = new Usuario();
+        user6.setNombre("Thomas");
+        user6.setApellido("Shelby");
+        user6.setUsuario("TShelby");
+        user6.setContrasenha("eatstshelby");
+        user6.setCorreo("pablomuevaesasnalgas@gmail.com");
+        user6.setTelefono("77778885");
+        user6.setTipoAccesoID("4");
+        user6.setTarjetaID("6");
+        model.insertUsuario(this, user6);
+
+        //Agregar gerente
+        Tarjeta card7 = new Tarjeta();
+        card7.setCcv("255");
+        card7.setFechaVencimiento("12/09/26");
+        card7.setNombrePropietario("Thomas Shelby");
+        card7.setNumero("56565622114");
+        int statusClient7 = model.insertTarjeta(this, card7);
+
+        Usuario user7 = new Usuario();
+        user7.setNombre("Thomas");
+        user7.setApellido("Shelby");
+        user7.setUsuario("TShelby");
+        user7.setContrasenha("eatstshelby");
+        user7.setCorreo("pablomuevaesasnalgas@gmail.com");
+        user7.setTelefono("77778885");
+        user7.setTipoAccesoID("3");
+        user7.setTarjetaID("7");
+        model.insertUsuario(this, user7);
+        
         // Agregar direcciones para restaurante
 
         Direccion dirRest1 = new Direccion();
