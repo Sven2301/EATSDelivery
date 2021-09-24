@@ -354,6 +354,7 @@ public class MainActivity extends AppCompatActivity{
 
         direccionXCliente1.setDireccionID("5");
         direccionXCliente1.setUsuarioID("3");
+        model.insertDireccionXCliente(this, direccionXCliente1);
 
         //Agregar Restaurantes
 

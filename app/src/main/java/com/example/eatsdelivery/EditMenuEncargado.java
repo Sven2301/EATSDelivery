@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -31,14 +30,15 @@ public class EditMenuEncargado extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_menu_encargado);
 
-        this.idEncargado = getIntent().getStringExtra("userID");
+        this.idEncargado = getIntent().getStringExtra("idEncargado");
 
-        this.listaProductosEncargado = (ListView) findViewById(R.id.listaProductosEncargado);
+        this.listaProductosEncargado = (ListView) findViewById(R.id.listProductsE);
         this.add_product = (Button) findViewById(R.id.add_product);
 
         Model model = new Model();
         this.idRes = MenuEncargado.getRestaurantID(this, idEncargado.toString());
 
+        System.out.println(idRes);
         Cursor cursor = model.selectProductosXRestaurante(this, String.valueOf(idRes));
         cursor.moveToFirst();
 
@@ -59,6 +59,9 @@ public class EditMenuEncargado extends AppCompatActivity {
             platos.add(plato);
             cursor.moveToNext();
         }
+
+        PlatoAdapter platoAdapter = new PlatoAdapter(getApplicationContext(),R.layout.list_row, platos);
+        listaProductosEncargado.setAdapter(platoAdapter);
 
         listaProductosEncargado.setClickable(true);
 

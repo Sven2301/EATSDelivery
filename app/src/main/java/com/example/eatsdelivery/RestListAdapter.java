@@ -67,7 +67,7 @@ public class RestListAdapter extends ArrayAdapter<Restaurante> {
 
         String uri = "@drawable/" + getItem(position).getImageID();
         int idD = mContext.getResources().getIdentifier(uri,null, mContext.getPackageName());
-        //imageView.setImageResource(idD);
+        imageView.setImageResource(idD);
 
 
 
