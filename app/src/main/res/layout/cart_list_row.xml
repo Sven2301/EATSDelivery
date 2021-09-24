@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    android:layout_width="405dp"
+    android:layout_height="120dp"
+    android:layout_marginBottom="88dp"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="71dp"
+        android:layout_height="77dp"
+
+        />
+
+    <TextView
+        android:id="@+id/txtName"
+        style="@style/TextAppearance.AppCompat.SearchResult.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/image"
+
+
+        android:text="Title"
+        android:textColor="@color/Button" />
+
+    <TextView
+        android:id="@+id/txtSub"
+        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtName"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@+id/image"
+        android:maxLength="50"
+        android:maxLines="2"
+        android:singleLine="true"
+        android:text="Subtitle"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/txtSub2"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtName"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_toRightOf="@+id/image"
+        android:maxLength="50"
+        android:maxLines="2"
+        android:singleLine="true"
+        android:text="Subtitle"
+        android:textColor="#676262" />
+
+    <TextView
+        android:id="@+id/cantText"
+        android:layout_width="70dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/textView48"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="27dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="50dp"
+        android:text="Cantidad:"
+        android:textAlignment="center" />
+
+</RelativeLayout>

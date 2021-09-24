@@ -33,8 +33,8 @@ public class SelectDireccion extends AppCompatActivity {
 
 
         ArrayList<Direccion> direccions = new ArrayList<>();
-        userID = getIntent().getStringExtra("userID");
-        restID = getIntent().getStringExtra("restId");
+        userID = getIntent().getStringExtra("clientID");
+        restID = getIntent().getStringExtra("idRest");
 
         Model model = new Model();
 
@@ -57,9 +57,6 @@ public class SelectDireccion extends AppCompatActivity {
             index = cursor.getColumnIndexOrThrow("Nombre");
             dir.setNombre(String.valueOf(cursor.getString(index)));
 
-
-
-
             direccions.add(dir);
             cursor.moveToNext();
         }
@@ -78,6 +75,7 @@ public class SelectDireccion extends AppCompatActivity {
                 Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
                 next.putExtra("idRest", restID.toString());
                 next.putExtra("clientID", userID.toString());
+                next.putExtra("dirID", direccions.get(i).getDireccionID());
                 startActivity(next);
             }
         });

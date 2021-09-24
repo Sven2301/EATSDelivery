@@ -173,18 +173,15 @@ public class RestaurantList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
+                Intent next = new Intent(getApplicationContext(), SelectDireccion.class);
                 next.putExtra("clientID",userID.toString());
                 if (TempCart.platos != null){
                     TempCart.clearCart();
                 }
-
                 next.putExtra("idRest", restaurantes.get(i).getRestauranteID());
                 startActivity(next);
             }
         });
-
-
 
     }
 

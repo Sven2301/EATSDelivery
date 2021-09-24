@@ -36,6 +36,7 @@ public class RestaurantMenu extends AppCompatActivity {
         verCarrito = (Button) findViewById(R.id.verCarrito);
         Object restId = getIntent().getStringExtra("idRest");
         Object clientID =  getIntent().getStringExtra("clientID");
+        Object dirClientID = getIntent().getStringExtra("dirID");
 
         listView = findViewById(R.id.listViewRests);
         spinner = findViewById(R.id.spinner_category);
@@ -48,9 +49,6 @@ public class RestaurantMenu extends AppCompatActivity {
 
         // Create data
         ArrayList<Plato> platos = new ArrayList<>();
-
-        // Agregar select
-
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -94,7 +92,6 @@ public class RestaurantMenu extends AppCompatActivity {
                     plato.setDescripcion(cursor.getString(index));
                     index = cursor.getColumnIndexOrThrow("ImagenID");
                     plato.setImage(cursor.getString(index));
-
                     platos.add(plato);
                     cursor.moveToNext();
 
@@ -128,6 +125,7 @@ public class RestaurantMenu extends AppCompatActivity {
                             Intent next = new Intent(getApplicationContext(), Cart.class);
                             next.putExtra("clientID",clientID.toString());
                             next.putExtra("RestID", restId.toString());
+                            next.putExtra("dirID",dirClientID.toString());
                             startActivity(next);
 
                         }
