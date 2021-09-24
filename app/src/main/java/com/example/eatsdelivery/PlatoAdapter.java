@@ -55,7 +55,7 @@ public class PlatoAdapter extends ArrayAdapter<Plato> {
 
         textName.setText(getItem(position).getNombre());
 
-        precio.setText(new StringBuilder().append("₡").append(getItem(position).getCosto()).toString());
+        precio.setText("₡" + getItem(position).getCosto());
 
         textDescrip.setText(getItem(position).getDescripcion());
 

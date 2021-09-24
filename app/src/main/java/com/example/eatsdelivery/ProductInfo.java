@@ -33,7 +33,7 @@ public class ProductInfo extends AppCompatActivity {
         TextView info = (TextView) findViewById(R.id.ltxtDescriptionPE);
         TextView costo = (TextView) findViewById(R.id.precio);
         ImageView imageView = (ImageView)  findViewById(R.id.fotoProductInfo);
-        EditText cant = (EditText) findViewById(R.id.cant);
+        TextView cant = (TextView) findViewById(R.id.txtCantPE);
 
         Object clientID =  getIntent().getStringExtra("clientID");
         Object restId = getIntent().getStringExtra("RestID");
@@ -66,9 +66,13 @@ public class ProductInfo extends AppCompatActivity {
             System.out.println(cursor.getString(index));
             //Setea los texts y la imagen
             nombre.setText(plato.getNombre());
+
             info.setText(plato.getDescripcion());
+
             costo.setText("₡" + plato.getCosto());
+
             String uri = "@drawable/" + plato.getImage();
+
             int idD = this.getResources().getIdentifier(uri,null, this.getPackageName());
             imageView.setImageResource(idD);
 

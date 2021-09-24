@@ -133,11 +133,13 @@ public  class  Cart extends AppCompatActivity {
         // We make custom adapter
         CartListAdapter platoAdapter = new CartListAdapter(this,R.layout.cart_list_row, platos);
 
+
+
         //Create adapter
         listView.setAdapter(platoAdapter);
 
         //Pone el precio total
-        total.setText("₡" + TempCart.getTotalPrice());
+        total.setText(TempCart.getTotalPrice());
 
         //Set data
         listView.setClickable(true);
@@ -183,10 +185,9 @@ public  class  Cart extends AppCompatActivity {
                 if (status == 1){
                     Toast.makeText(getApplicationContext(), "Orden confirmada", Toast.LENGTH_SHORT).show();
                 }
-                System.out.println(factura);
                 next.putExtra("factura", factura);
                 msg = factura;
-                //sendEmail();
+                sendEmail();
                 startActivity(next);
             }
         });
