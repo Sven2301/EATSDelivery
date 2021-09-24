@@ -31,6 +31,8 @@ public  class  Cart extends AppCompatActivity {
     Usuario client;
     Tarjeta tarjeta;
     Restaurante rest;
+    String msg;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,6 @@ public  class  Cart extends AppCompatActivity {
         Object restName = getIntent().getStringExtra("nameRest");
         Object clientID =  getIntent().getStringExtra("clientID");
         Object dirID = getIntent().getStringExtra("dirID");
-
         msgFactura = "Tu pedido en "+ restName +"se ha realizado.\n" ;
 
         // Iguala objeto restaurante pedido y usuario
@@ -184,6 +185,8 @@ public  class  Cart extends AppCompatActivity {
                 }
                 System.out.println(factura);
                 next.putExtra("factura", factura);
+                msg = factura;
+                //sendEmail();
                 startActivity(next);
             }
         });
@@ -198,4 +201,16 @@ public  class  Cart extends AppCompatActivity {
         Intent next = new Intent(this, OrderWaitScreen.class);
         startActivity(next);
     }
+
+    public void sendEmail(){
+        String mEmail = client.getCorreo();
+        String mSubject = "Pedido de Eats Delivery App";
+        String mMessage = msg;
+
+        JavaMailAPI javaMailAPI = new JavaMailAPI(this, mEmail, mSubject, mMessage);
+
+        javaMailAPI.execute();
+
+    }
+
 }

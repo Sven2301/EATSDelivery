@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity{
         user.setApellido("Vestegard");
         user.setUsuario("Thor");
         user.setContrasenha("1234");
-        user.setCorreo("thorfinn@fakemail.com");
+        user.setCorreo("revvace@gmail.com");
         user.setTelefono("85769213");
         user.setTipoAccesoID("1");
         user.setTarjetaID("1");
