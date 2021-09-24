@@ -384,14 +384,14 @@ public class MainActivity extends AppCompatActivity{
         p2.setNombre("Papas Supremas");
         p2.setCosto("2500");
         p2.setDescripcion("Papas a la francesa, fritas con nuestro aceite especial y servidas con nuestras deliciosas salsas y queso.");
-        p2.setImage("papas.png");
+        p2.setImage("papas");
         p2.setTipoComidaID("3");
         model.insertPlato(this,p2);
 
         Plato p3 = new Plato();
         p3.setNombre("Quesadilla de la Casa");
         p3.setCosto("3500");
-        p3.setImage("quesadilla.jpg");
+        p3.setImage("quesadilla");
         p3.setTipoComidaID("2");
         p3.setDescripcion("Quesadilla hecha de una combinacion de quesos especiales y acompañada de una salsa de queso de la casa.");
         model.insertPlato(this,p3);
@@ -408,7 +408,7 @@ public class MainActivity extends AppCompatActivity{
         p5.setNombre("Perro de la Casa");
         p5.setCosto("3500");
         p5.setDescripcion("Perro caliente con salchicha frita especial de la casa acompañado de nuestra mayonesa especial.");
-        p5.setImage("perro.jpg");
+        p5.setImage("perro");
         p5.setTipoComidaID("1");
         model.insertPlato(this,p5);
 

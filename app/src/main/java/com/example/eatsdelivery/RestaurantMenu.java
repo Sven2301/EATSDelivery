@@ -94,7 +94,6 @@ public class RestaurantMenu extends AppCompatActivity {
                     plato.setImage(cursor.getString(index));
                     platos.add(plato);
                     cursor.moveToNext();
-
                 }
 
                 // We make custom adapter
