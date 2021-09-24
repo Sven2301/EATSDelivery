@@ -106,7 +106,7 @@ public class Model {
 
     public int insertOrden(Context context, Orden o) {
         int res = 0;
-        String sql = "INSERT INTO Orden(ClienteID, RepartidorID, RestauranteID, DireccionID, costoTotal, enCamino) VALUES ('"+o.getClienteID()+"', '"+o.getRepartidorID()+"', '"+o.getRestauranteID()+"', '"+o.getDireccionID()+"', '"+o.getCostoTotal()+"', '"+o.getEnCamino()+"')";
+        String sql = "INSERT INTO Orden(ClienteID, RepartidorID, RestauranteID, DireccionID, costoTotal, enCamino, Factura) VALUES ('"+o.getClienteID()+"', '"+o.getRepartidorID()+"', '"+o.getRestauranteID()+"', '"+o.getDireccionID()+"', '"+o.getCostoTotal()+"', '"+o.getEnCamino()+"', '"+o.getFactura()+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -290,6 +290,12 @@ public class Model {
     public Cursor selectRestauranteID(Context context, String id) {
         SQLiteDatabase db = getConnRead(context);
         String query = "SELECT * FROM Restaurante WHERE id = ? AND Activo > 0";
+        return db.rawQuery(query, new String[]{id});
+    }
+
+    public Cursor selectRestauranteEncargado(Context context, String id) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT * FROM Restaurante WHERE UsuarioID = ? AND Activo > 0";
         return db.rawQuery(query, new String[]{id});
     }
 
@@ -546,6 +552,16 @@ public class Model {
         return db.rawQuery(query, new String[]{idRestaurante});
     }
 
+    public Cursor selectProductosXRestauranteTipo(Context context, String idRestaurante, String tipo) {
+        SQLiteDatabase db = getConnRead(context);
+        String query =
+                "SELECT p.* FROM Menu m " +
+                        "INNER JOIN Plato p ON p.id = m.PlatoID " +
+                        "INNER JOIN Restaurante r ON r.id = m.RestauranteID " +
+                        "WHERE r.id = ? AND p.TipoComidaID = ?";
+        return db.rawQuery(query, new String[]{idRestaurante, tipo});
+    }
+
     public Cursor selectInfoDireccion(Context context, String idDireccion) {
         SQLiteDatabase db = getConnRead(context);
         String query =
@@ -587,5 +603,12 @@ public class Model {
                 selectionArgs);
 
         return count;
+    }
+
+    public Cursor selectRestauranteSearch(Context context, String search) {
+        SQLiteDatabase db = getConnRead(context);
+        String regex = "%" + search + "%";
+        String query = "SELECT * FROM Restaurante WHERE Nombre LIKE ? AND Activo > 0";
+        return db.rawQuery(query, new String[]{regex});
     }
 }

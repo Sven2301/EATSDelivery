@@ -6,33 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".RestaurantList">
 
-    <TextView
-
-        android:id="@+id/slogan_resList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/slogan"
-        android:textColor="@color/Button"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
-
-    <TextView
-
-        android:id="@+id/slogan_resList2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Selecciona un restaurante:"
-        android:textColor="@color/Button"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView23" />
-
     <ImageView
         android:id="@+id/imageView23"
         android:layout_width="367dp"
@@ -43,23 +16,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/t1" />
 
-    <ScrollView
-        android:layout_width="400dp"
-        android:layout_height="493dp"
-        android:layout_marginTop="4dp"
+    <ListView
+        android:id="@+id/rest_lisview"
+        android:layout_width="388dp"
+        android:layout_height="528dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slogan_resList2"
-        tools:ignore="SpeakableTextPresentCheck">
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
-        <LinearLayout
-            android:id="@+id/restList_LL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@drawable/divider_empty"
-            android:orientation="vertical"
-            android:showDividers="middle" />
-    </ScrollView>
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="409dp"
+        android:layout_height="78dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView23" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

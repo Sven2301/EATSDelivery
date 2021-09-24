@@ -23,9 +23,9 @@ public class EditRestDirectionEncargado extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_info_rest_encargado);
+        setContentView(R.layout.activity_change_direction_encargado);
 
-        this.idRestaurante = getIntent().getStringExtra("idRestaurante");
+        this.idRestaurante = getIntent().getIntExtra("idRestaurante", 0);
 
         this.edtTxtDesc = (EditText) findViewById(R.id.edtTxtDesc);
         this.edtTxtNombreDir = (EditText) findViewById(R.id.edtTxtNombreDir);

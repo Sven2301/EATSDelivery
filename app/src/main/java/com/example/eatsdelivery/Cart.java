@@ -20,11 +20,10 @@ import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
 import java.util.ArrayList;
 
-public class Cart extends AppCompatActivity {
+public  class  Cart extends AppCompatActivity {
 
     ListView listView;
     private Model model = new Model();
-    TempCart cart;
     TextView total;
     String msgFactura;
     Button confirm;
@@ -42,10 +41,8 @@ public class Cart extends AppCompatActivity {
         listView = findViewById(R.id.listViewRests);
         total = findViewById(R.id.totalPrice);
         confirm = findViewById(R.id.confirmCarrito);
-        // Iguala carrito
-        cart = getIntent().getParcelableExtra("cart");
         //Crea mensaje de factura
-        Object restId = getIntent().getStringExtra("idRest");
+        Object restId = getIntent().getStringExtra("RestID");
         Object restName = getIntent().getStringExtra("nameRest");
         Object clientID =  getIntent().getStringExtra("clientID");
         msgFactura = "Tu pedido en "+ restName +"se ha realizado.\n" ;
@@ -87,7 +84,7 @@ public class Cart extends AppCompatActivity {
 
         cursor.moveToFirst();
         Tarjeta newTarjeta = new Tarjeta();
-        while(!cursor.isAfterLast()){
+        while(!cursor1.isAfterLast()){
 
 
             int index;
@@ -103,7 +100,7 @@ public class Cart extends AppCompatActivity {
             index = cursor1.getColumnIndexOrThrow("FechaVencimiento");
             newTarjeta.setFechaVencimiento(cursor1.getString(index));
 
-            cursor.moveToNext();
+            cursor1.moveToNext();
 
         }
         tarjeta = newTarjeta;
@@ -115,8 +112,7 @@ public class Cart extends AppCompatActivity {
 
         cursor.moveToFirst();
         Restaurante newRest = new Restaurante();
-        while(!cursor.isAfterLast()){
-
+        while(!cursor2.isAfterLast()){
 
             int index;
 
@@ -133,7 +129,7 @@ public class Cart extends AppCompatActivity {
             index = cursor2.getColumnIndexOrThrow("DireccionID");
             newRest.setDireccionID(cursor2.getString(index));
 
-            cursor.moveToNext();
+            cursor2.moveToNext();
 
         }
         rest = newRest;
@@ -141,13 +137,13 @@ public class Cart extends AppCompatActivity {
         //Direccion
 
 
-        cursor.moveToFirst();
-        Direccion newDir = new Direccion();
+        //cursor.moveToFirst();
+        //Direccion newDir = new Direccion();
 
 
 
         //For para ver la lista de platos
-        ArrayList<Plato> platos = cart.getPlatos();
+        ArrayList<Plato> platos = TempCart.platos;
 
         // We make custom adapter
         PlatoAdapter platoAdapter = new PlatoAdapter(this,R.layout.list_row, platos);
@@ -156,14 +152,43 @@ public class Cart extends AppCompatActivity {
         listView.setAdapter(platoAdapter);
 
         //Pone el precio total
-        total.setText(cart.getTotalPrice());
+        total.setText(TempCart.getTotalPrice());
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                String products = "";
+
+                for (Plato p : platos){
+                    products += p.getNombre() + " Costo " + p.getCosto() + " Cant " + p.getCant() + "\n";
+                }
+
+                String micasa = "Mi casa";
                 //Agregar correo y realizar pedido
+                String factura = "Direccion de entrega: " + micasa +  "\n\n" +
+                        "Cliente: " + client.getNombre() + " " + client.getApellido() + "\n\n" +
+                        "Numero de tarjeta: " + tarjeta.getNumero() + "\n\n" +
+                        products + "\n" +
+                        "Total a pagar: " + TempCart.getTotalPrice();
                 Toast.makeText(Cart.this,"Pedido realizado!",Toast.LENGTH_SHORT).show();
+
+                Intent next = new Intent(getApplicationContext(), OrderWaitScreen.class);
+                Orden orden = new Orden();
+                orden.setCostoTotal(TempCart.getTotalPrice());
+                orden.setClienteID(client.getUsuarioID());
+                //orden.setDireccionID();
+                orden.setFactura(factura);
+                orden.setRestauranteID(rest.getRestauranteID());
+                orden.setEnCamino("0");
+                int status = model.insertOrden(getApplicationContext(), orden);
+
+                if (status == 1){
+                    Toast.makeText(getApplicationContext(), "Orden confirmada", Toast.LENGTH_SHORT).show();
+                }
+                System.out.println(factura);
+                next.putExtra("factura", factura);
+                startActivity(next);
 
             }
         });

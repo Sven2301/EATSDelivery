@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Model;
 
@@ -54,12 +55,13 @@ public class MenuEncargado extends AppCompatActivity {
 
     public static int getRestaurantID(Context context, String idEncargado) {
         Model model = new Model();
-        Cursor cursor = model.selectRestaurantesXGerente(context, idEncargado);
+        Cursor cursor = model.selectRestauranteEncargado(context, idEncargado);
         int idRestaurante = -1;
+        Toast.makeText(context.getApplicationContext(), "Count" + cursor.getCount(), Toast.LENGTH_SHORT).show();
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
             int index = cursor.getColumnIndexOrThrow("id");
-            idRestaurante = Math.max(idRestaurante, cursor.getInt(index));
+            idRestaurante = cursor.getInt(index);
         }
         return idRestaurante;
     }

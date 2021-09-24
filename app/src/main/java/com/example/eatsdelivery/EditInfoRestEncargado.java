@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Model;
 import com.example.eatsdelivery.SQLite.Tables.Restaurante;
@@ -27,7 +28,7 @@ public class EditInfoRestEncargado extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_info_rest_encargado);
 
-        this.idEncargado = getIntent().getStringExtra("userID");
+        this.idEncargado = getIntent().getStringExtra("idEncargado");
 
         this.editTextTextPersonName3 = (EditText) findViewById(R.id.editTextTextPersonName3);
         this.editTextPhone = (EditText) findViewById(R.id.editTextPhone);
@@ -41,9 +42,9 @@ public class EditInfoRestEncargado extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 changeResInfo();
-                Intent next = new Intent(view.getContext(), MenuEncargado.class);
-                next.putExtra("userID", idEncargado.toString());
-                startActivity(next);
+                //Intent next = new Intent(view.getContext(), MenuEncargado.class);
+                //next.putExtra("userID", idEncargado.toString());
+                //startActivity(next);
             }
         });
 
@@ -65,6 +66,7 @@ public class EditInfoRestEncargado extends AppCompatActivity {
     }
 
     public void changeResInfo() {
+        Toast.makeText(getApplicationContext(), String.valueOf(this.idRestaurante), Toast.LENGTH_SHORT).show();
         if (this.idRestaurante != -1 && !isEmpty()) {
             Restaurante restaurante = new Restaurante();
             restaurante.setNombre(editTextTextPersonName3.getText().toString());
@@ -72,6 +74,7 @@ public class EditInfoRestEncargado extends AppCompatActivity {
             restaurante.setCorreo(editTextTextEmailAddress.getText().toString());
             Model model = new Model();
             model.updateResInfo(this, restaurante, String.valueOf(idRestaurante));
+            Toast.makeText(getApplicationContext(), "Informacion actualizada", Toast.LENGTH_SHORT).show();
         }
     }
 

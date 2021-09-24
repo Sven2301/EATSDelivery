@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Model;
@@ -26,14 +27,8 @@ import java.util.List;
 public class RestaurantList extends AppCompatActivity {
 
     Object userID;
-    /*
-    private List botones = new ArrayList();
-    private ArrayList<Restaurante> restaurantes = new ArrayList();
-    private ArrayList<Button> listaBotones = new ArrayList();
-    private LinearLayout lista;
-     */
     ListView listView;
-    TempCart cart = new TempCart();
+    SearchView search;
 
 
     @Override
@@ -43,8 +38,108 @@ public class RestaurantList extends AppCompatActivity {
 
         userID = getIntent().getStringExtra("userID");
         ArrayList<Restaurante> restaurantes = new ArrayList<Restaurante>();
+        listView = findViewById(R.id.rest_lisview);
+        search = findViewById(R.id.searchView);
 
         model = new Model();
+
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                restaurantes.clear();
+                Cursor cursor = model.selectRestauranteSearch(getApplicationContext(), s);
+
+                cursor.moveToFirst();
+
+                while (!cursor.isAfterLast()){
+
+                    Restaurante newRest = new Restaurante();
+                    int index;
+
+                    index = cursor.getColumnIndexOrThrow("id");
+                    newRest.setRestauranteID(String.valueOf(cursor.getInt(index)));
+
+                    index = cursor.getColumnIndexOrThrow("DireccionID");
+                    newRest.setDireccionID(String.valueOf(cursor.getInt(index)));
+
+                    index = cursor.getColumnIndexOrThrow("Nombre");
+                    newRest.setNombre(String.valueOf(cursor.getString(index)));
+
+                    index = cursor.getColumnIndexOrThrow("Activo");
+                    newRest.setDeshabilitar(String.valueOf(cursor.getInt(index)));
+
+
+                    restaurantes.add(newRest);
+                    cursor.moveToNext();
+                }
+
+                RestListAdapter restListAdapter = new RestListAdapter(getApplicationContext(), R.layout.list_row, restaurantes);
+                listView.setAdapter(restListAdapter);
+                listView.setClickable(true);
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
+                        next.putExtra("clientID",userID.toString());
+                        TempCart.clearCart();
+                        next.putExtra("idRest", restaurantes.get(i).getRestauranteID());
+                        startActivity(next);
+                    }
+                });
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+                if (s.equals("")){
+                    restaurantes.clear();
+                    Cursor cursor = model.selectRestaurantes(getApplicationContext());
+
+                    cursor.moveToFirst();
+
+                    while (!cursor.isAfterLast()){
+
+                        Restaurante newRest = new Restaurante();
+                        int index;
+
+                        index = cursor.getColumnIndexOrThrow("id");
+                        newRest.setRestauranteID(String.valueOf(cursor.getInt(index)));
+
+                        index = cursor.getColumnIndexOrThrow("DireccionID");
+                        newRest.setDireccionID(String.valueOf(cursor.getInt(index)));
+
+                        index = cursor.getColumnIndexOrThrow("Nombre");
+                        newRest.setNombre(String.valueOf(cursor.getString(index)));
+
+                        index = cursor.getColumnIndexOrThrow("Activo");
+                        newRest.setDeshabilitar(String.valueOf(cursor.getInt(index)));
+
+
+                        restaurantes.add(newRest);
+                        cursor.moveToNext();
+                    }
+
+                    RestListAdapter restListAdapter = new RestListAdapter(getApplicationContext(), R.layout.list_row, restaurantes);
+                    listView.setAdapter(restListAdapter);
+                    listView.setClickable(true);
+
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
+                            next.putExtra("clientID",userID.toString());
+                            TempCart.clearCart();
+                            next.putExtra("idRest", restaurantes.get(i).getRestauranteID());
+                            startActivity(next);
+                        }
+                    });
+                }
+                return false;
+            }
+        });
+
         Cursor cursor = model.selectRestaurantes(this);
 
         cursor.moveToFirst();
@@ -71,15 +166,21 @@ public class RestaurantList extends AppCompatActivity {
             cursor.moveToNext();
         }
 
-        //RestListAdapter restListAdapter = new RestListAdapter(this, R.this., restaurantes);
-
-        //listView.setAdapter(restListAdapter);
+        RestListAdapter restListAdapter = new RestListAdapter(this, R.layout.list_row, restaurantes);
+        listView.setAdapter(restListAdapter);
         listView.setClickable(true);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
+                next.putExtra("clientID",userID.toString());
+                if (TempCart.platos != null){
+                    TempCart.clearCart();
+                }
+
+                next.putExtra("idRest", restaurantes.get(i).getRestauranteID());
+                startActivity(next);
             }
         });
 

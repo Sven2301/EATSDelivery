@@ -130,15 +130,6 @@
             android:inputType="textMultiLine" />
 
         <Button
-            android:id="@+id/addPayment_tbn"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@drawable/custom_button"
-            android:text="@string/paymethod"
-            android:textAllCaps="false"
-            android:textColor="#FFFF" />
-
-        <Button
             android:id="@+id/confirm_btn_register"
             android:layout_width="match_parent"
             android:layout_height="48dp"

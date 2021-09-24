@@ -2,6 +2,8 @@ package com.example.eatsdelivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.os.Bundle;
 import android.widget.Button;
@@ -39,7 +41,23 @@ public class MainActivity extends AppCompatActivity{
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_register = (Button) findViewById(R.id.btn_register);
 
-        //createDB();
+        // Objeto para guardar un dato que permite saber si es la primera vez que se ejcuta la app
+        SharedPreferences preferences = getSharedPreferences("config", Context.MODE_PRIVATE);
+        String exec = preferences.getString("firstTime", "");
+
+        if (exec.equals("false")){
+            // La base de datos ya existe entonces no debe crearla otra vez
+        }
+        else{
+            //Si entra aqui significa que es la primera vez entonces debe crear la base de datos.
+            //Ademas de guardar el dato que indique la proxima vez que no es la primera ejecucion del programa
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("firstTime", "false");
+            editor.commit();
+            createDB();
+        }
+
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +95,13 @@ public class MainActivity extends AppCompatActivity{
                         //Detecta si el usuario es un encargado
                         if (checker.getTipoAccesoID().equals("4")){
                             Intent next = new Intent(getApplicationContext(), MenuEncargado.class);
+                            next.putExtra("userID",checker.getUsuarioID());
+                            startActivity(next);
+                        }
+
+                        //Detecta si el usuario es el administrador
+                        if (checker.getTipoAccesoID().equals("5")){
+                            Intent next = new Intent(getApplicationContext(), AdminRegisterUser.class);
                             next.putExtra("userID",checker.getUsuarioID());
                             startActivity(next);
                         }
@@ -132,6 +157,23 @@ public class MainActivity extends AppCompatActivity{
         tda.setDescripcion("Encargado");
         tda.setTipo("4");
         model.insertTipoAcceso(this, tda);
+
+        //TIPO ACCESO 5: ADMIN
+        tda.setDescripcion("Admin");
+        tda.setTipo("5");
+        model.insertTipoAcceso(this, tda);
+
+
+        //Agregar Admin
+        Usuario admin = new Usuario();
+        admin.setNombre("Admin");
+        admin.setApellido("Admin");
+        admin.setUsuario("admin");
+        admin.setContrasenha("admin");
+        admin.setCorreo("admin@gmail.com");
+        admin.setTelefono("12345678");
+        admin.setTipoAccesoID("5");
+        model.insertUsuario(this, admin);
 
         //Agregar cliente 1
         Tarjeta card = new Tarjeta();
@@ -272,7 +314,7 @@ public class MainActivity extends AppCompatActivity{
         Restaurante rest2 = new Restaurante();
         rest2.setNombre(dirRest2.getNombre());
         rest2.setDireccionID("2");
-        rest2.setEncargadoID("4");
+        rest2.setEncargadoID("5");
         rest2.setTelefono("888888888");
         rest2.setCorreo("eats@gmail.com");
 
@@ -335,7 +377,7 @@ public class MainActivity extends AppCompatActivity{
         p1.setCosto("3000");
         p1.setDescripcion("Hamburguesa angus de 1/4 de libre con queso. Hecha a la plancha y servida con queso de la casa y salsa especial");
         p1.setImage("hamburguesa");
-        p1.setTipoComidaID("1");
+        p1.setTipoComidaID("2");
         model.insertPlato(this,p1);
 
         Plato p2 = new Plato();
@@ -343,14 +385,14 @@ public class MainActivity extends AppCompatActivity{
         p2.setCosto("2500");
         p2.setDescripcion("Papas a la francesa, fritas con nuestro aceite especial y servidas con nuestras deliciosas salsas y queso.");
         p2.setImage("papas.png");
-        p2.setTipoComidaID("1");
+        p2.setTipoComidaID("3");
         model.insertPlato(this,p2);
 
         Plato p3 = new Plato();
         p3.setNombre("Quesadilla de la Casa");
         p3.setCosto("3500");
         p3.setImage("quesadilla.jpg");
-        p3.setTipoComidaID("1");
+        p3.setTipoComidaID("2");
         p3.setDescripcion("Quesadilla hecha de una combinacion de quesos especiales y acompañada de una salsa de queso de la casa.");
         model.insertPlato(this,p3);
 

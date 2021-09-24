@@ -25,7 +25,7 @@ public class ConexionSQLite extends SQLiteOpenHelper {
             " UsuarioID INTEGER," +
             " FOREIGN KEY(RestauranteID) REFERENCES Restaurante(id), FOREIGN KEY(UsuarioID) REFERENCES Usuario(id))";
     final String SQL_CREATE_Orden = "CREATE TABLE Orden (id INTEGER PRIMARY KEY AUTOINCREMENT, ClienteID INTEGER," +
-            " RepartidorID INTEGER, RestauranteID INTEGER, DireccionID INTEGER, costoTotal INTEGER, Activo INTEGER ,enCamino INTEGER," +
+            " RepartidorID INTEGER, RestauranteID INTEGER, DireccionID INTEGER, costoTotal INTEGER, enCamino INTEGER, Activo INTEGER, Factura TEXT," +
             " FOREIGN KEY(ClienteID) REFERENCES Usuario(id), FOREIGN KEY(RepartidorID) REFERENCES Usuario(id)," +
             "FOREIGN KEY(RestauranteID) REFERENCES Restaurante(id), FOREIGN KEY(DireccionID) REFERENCES Direccion(id))";
     final String SQL_CREATE_Menu = "CREATE TABLE Menu (id INTEGER PRIMARY KEY AUTOINCREMENT, RestauranteID INTEGER," +
