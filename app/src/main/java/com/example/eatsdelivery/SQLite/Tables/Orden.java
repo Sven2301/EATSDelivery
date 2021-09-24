@@ -4,8 +4,7 @@ import java.util.Date;
 
 public class Orden {
 
-    private String ordenID, clienteID, repartidorID, restauranteID, direccionID, costoTotal, enCamino, factura;
-    private long currentDate;
+    private String ordenID, clienteID, repartidorID, restauranteID, direccionID, costoTotal, enCamino, factura, currentDate, cancelada;
 
     public String getOrdenID() {
         return ordenID;
@@ -67,11 +66,19 @@ public class Orden {
 
     public void setFactura(String factura) { this.factura = factura; }
 
-    public long getCurrentDate() {
+    public String getCurrentDate() {
         return currentDate;
     }
 
-    public void setCurrentDate(long currentDate) {
+    public void setCurrentDate(String currentDate) {
         this.currentDate = currentDate;
+    }
+
+    public String getCancelada() {
+        return cancelada;
+    }
+
+    public void setCancelada(String cancelada) {
+        this.cancelada = cancelada;
     }
 }

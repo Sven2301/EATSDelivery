@@ -19,7 +19,7 @@ import java.util.Date;
 public class CancelOrdenConfirm extends AppCompatActivity {
 
     private Model model = new Model();
-    long orderDate = 0;
+    long orderDate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +30,10 @@ public class CancelOrdenConfirm extends AppCompatActivity {
 
         Object info = getIntent().getStringExtra("detail");
         Object direc = getIntent().getStringExtra("direc");
-        Object ordenid = getIntent().getStringExtra("orden");
+        String ordenid = getIntent().getStringExtra("orden");
         Object repartidorid = getIntent().getStringExtra("repartidor");
-        long orderDate = getIntent().getLongExtra("fechaOrden", 0);
-
+        String orderDateS = getIntent().getStringExtra("fechaOrden");
+        orderDate = Long.parseLong(orderDateS);
 
         detalles.setText(info.toString());
 
@@ -41,15 +41,23 @@ public class CancelOrdenConfirm extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                String clienteid = getIntent().getStringExtra("userID");
+                String ordID = getIntent().getStringExtra("orden");
                  //currentTime
                 long time = Calendar.getInstance().getTime().getTime();
 
                 if (printDifference(orderDate, time)){
                     Toast.makeText(getApplicationContext(), "Cancelado con impuesto", Toast.LENGTH_SHORT).show();
+                    model.updateOrdenActiva(getApplicationContext(), "0", ordID);
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Cancelado sin impuesto", Toast.LENGTH_SHORT).show();
+                    model.updateOrdenActiva(getApplicationContext(), "0", ordID);
                 }
+
+                Intent next = new Intent(getApplicationContext(), MainMenu.class);
+                next.putExtra("userID", clienteid);
+                startActivity(next);
 
             }
         });

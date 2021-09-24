@@ -183,7 +183,7 @@ public  class  Cart extends AppCompatActivity {
                 orden.setRestauranteID(rest.getRestauranteID());
                 orden.setEnCamino("0");
                 long currentTime = Calendar.getInstance().getTime().getTime();
-                orden.setCurrentDate(currentTime);
+                orden.setCurrentDate(String.valueOf(currentTime));
 
                 int status = model.insertOrden(getApplicationContext(), orden);
 
@@ -191,6 +191,7 @@ public  class  Cart extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Orden confirmada", Toast.LENGTH_SHORT).show();
                 }
                 next.putExtra("factura", factura);
+                next.putExtra("userID", client.getUsuarioID());
                 msg = factura;
                 sendEmail();
                 startActivity(next);

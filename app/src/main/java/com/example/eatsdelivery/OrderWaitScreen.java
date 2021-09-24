@@ -14,9 +14,12 @@ public class OrderWaitScreen extends AppCompatActivity {
         setContentView(R.layout.activity_order_wait_screen);
     }
 
-    public void back(View view){
+    public void toMenu(View view){
 
-        Intent next = new Intent(this, RestaurantMenu.class);
+        Object id = getIntent().getStringExtra("userID");
+        Intent next = new Intent(this, MainMenu.class);
+        next.putExtra("userID", id.toString());
         startActivity(next);
     }
+
 }

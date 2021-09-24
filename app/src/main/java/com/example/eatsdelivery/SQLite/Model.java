@@ -108,8 +108,8 @@ public class Model {
 
     public int insertOrden(Context context, Orden o) {
         int res = 0;
-        String sql = "INSERT INTO Orden(ClienteID, RepartidorID, RestauranteID, DireccionID, costoTotal, enCamino, Factura, Time) VALUES ('"+o.getClienteID()+"', '"+o.getRepartidorID()+"', " +
-                "'"+o.getRestauranteID()+"', '"+o.getDireccionID()+"', '"+o.getCostoTotal()+"', '"+o.getEnCamino()+"', '"+o.getFactura()+"', '"+o.getCurrentDate()+"')";
+        String sql = "INSERT INTO Orden(ClienteID, RepartidorID, RestauranteID, DireccionID, costoTotal, enCamino, Factura, Time, Activo) VALUES ('"+o.getClienteID()+"', '"+o.getRepartidorID()+"', " +
+                "'"+o.getRestauranteID()+"', '"+o.getDireccionID()+"', '"+o.getCostoTotal()+"', '"+o.getEnCamino()+"', '"+o.getFactura()+"', '"+o.getCurrentDate()+"', '"+1+"')";
         SQLiteDatabase db = this.getConnWrite(context);
         try {
             db.execSQL(sql);
@@ -322,13 +322,13 @@ public class Model {
 
     public Cursor selectOrdenesPendientes(Context context) {
         SQLiteDatabase db = getConnRead(context);
-        String query = "SELECT * FROM Orden WHERE enCamino < 2";
+        String query = "SELECT * FROM Orden WHERE enCamino < 2 AND Activo = 1";
         return db.rawQuery(query, null);
     }
 
     public Cursor selectOrdenesCancelar(Context context, String id) {
         SQLiteDatabase db = getConnRead(context);
-        String query = "SELECT * FROM Orden WHERE enCamino < 2 AND ClienteID = ?";
+        String query = "SELECT * FROM Orden WHERE enCamino < 2 AND ClienteID = ? AND Activo = 1";
         return db.rawQuery(query, new String[]{id});
     }
 

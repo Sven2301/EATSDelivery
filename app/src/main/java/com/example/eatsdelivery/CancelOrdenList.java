@@ -24,7 +24,7 @@ public class CancelOrdenList extends AppCompatActivity {
     private ArrayList<Orden> ordenes = new ArrayList();
     private ArrayList<Button> listaBotones = new ArrayList();
     private LinearLayout lista;
-    private long dateLong = 0;
+    private String dateLong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,8 @@ public class CancelOrdenList extends AppCompatActivity {
             orden.setOrdenID(String.valueOf(cursor.getInt(index)));
 
             index = cursor.getColumnIndexOrThrow("Time");
-            dateLong = cursor.getInt(index);
+            dateLong = cursor.getString(index);
+            orden.setCurrentDate(dateLong);
 
             ordenes.add(orden);
             cursor.moveToNext();
@@ -112,7 +113,8 @@ public class CancelOrdenList extends AppCompatActivity {
                 next.putExtra("direc", cur.getString(idx));
                 next.putExtra("orden", orden.getOrdenID());
                 next.putExtra("repartidor", repartidor.toString());
-                next.putExtra("fechaOrden", dateLong);
+                next.putExtra("fechaOrden", orden.getCurrentDate());
+                next.putExtra("userID", clienteID.toString());
                 startActivity(next);
             }
         };
