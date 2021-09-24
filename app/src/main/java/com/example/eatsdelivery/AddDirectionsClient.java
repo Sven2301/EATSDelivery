@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.eatsdelivery.SQLite.Tables.Direccion;
 import com.example.eatsdelivery.SQLite.Tables.DireccionXCliente;
-import com.example.eatsdelivery.SQLite.Tables.Usuario;
 
 public class AddDirectionsClient extends AppCompatActivity {
 
@@ -30,9 +29,9 @@ public class AddDirectionsClient extends AppCompatActivity {
 
         userID = getIntent().getStringExtra("userID");
 
-        nameDir = (EditText) findViewById(R.id.dir_name1);
-        descripDir =  (EditText) findViewById(R.id.descripDir);
-        add_dir = (Button) findViewById(R.id.add_dir);
+        nameDir = (EditText) findViewById(R.id.edtTxtNombreDir);
+        descripDir =  (EditText) findViewById(R.id.edtTxtDesc);
+        add_dir = (Button) findViewById(R.id.btnCambiarDir);
 
         add_dir.setOnClickListener(new View.OnClickListener() {
             @Override

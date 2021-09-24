@@ -367,9 +367,7 @@ public class Model {
 
     public Cursor selectPedidosDeRestaurante(Context context, String idRestaurante) {
         SQLiteDatabase db = getConnRead(context);
-        String query =
-                "SELECT lf.*, u.Nombre FROM LineaFactura lf " +
-                "INNER JOIN Orden o ON o.id = lf.OrdenID " +
+        String query = "SELECT o.* FROM Orden o " +
                 "INNER JOIN Usuario u ON u.id = o.ClienteID " +
                 "WHERE o.RestauranteID = ?";
         return db.rawQuery(query, new String[]{idRestaurante});
@@ -396,6 +394,27 @@ public class Model {
         return count;
     }
 
+    public int updateOrdenActiva(Context context, String value, String id){
+
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Activo", value);
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = { id };
+
+        int count = db.update(
+                "Orden",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
     public int updateRestActive(Context context, String value, String id){
 
         SQLiteDatabase db = getConnRead(context);
@@ -403,6 +422,29 @@ public class Model {
         // New value for one column
         ContentValues values = new ContentValues();
         values.put("Activo", value);
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = { id };
+
+        int count = db.update(
+                "Restaurante",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
+    public int updateResInfo(Context context, Restaurante restaurante, String id){
+
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Nombre", restaurante.getNombre());
+        values.put("Telefono", restaurante.getTelefono());
+        values.put("Correo", restaurante.getCorreo());
 
         // Which row to update, based on the title
         String selection = "id = ?";
@@ -510,5 +552,40 @@ public class Model {
                 "SELECT d.* FROM Direccion d " +
                         "WHERE d.id = ?";
         return db.rawQuery(query, new String[]{idDireccion});
+    }
+
+    public int selectIDDirXRes(Context context, String idRes) {
+        SQLiteDatabase db = getConnRead(context);
+        String query = "SELECT DireccionID FROM Restaurante " +
+                "WHERE id = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{idRes});
+        int idDir = -1;
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            int index = cursor.getColumnIndexOrThrow("DireccionID");
+            idDir = Math.max(idDir, cursor.getInt(index));
+        }
+        return idDir;
+    }
+
+    public int updateDirecccion(Context context, Direccion direccion, String id) {
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Nombre", direccion.getNombre());
+        values.put("Descripcion", direccion.getDescripcion());
+
+        // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = {id};
+
+        int count = db.update(
+                "Direccion",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
     }
 }
