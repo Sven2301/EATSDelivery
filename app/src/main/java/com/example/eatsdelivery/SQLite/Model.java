@@ -367,9 +367,7 @@ public class Model {
 
     public Cursor selectPedidosDeRestaurante(Context context, String idRestaurante) {
         SQLiteDatabase db = getConnRead(context);
-        String query =
-                "SELECT lf.*, u.Nombre FROM LineaFactura lf " +
-                "INNER JOIN Orden o ON o.id = lf.OrdenID " +
+        String query = "SELECT o.* FROM Orden o " +
                 "INNER JOIN Usuario u ON u.id = o.ClienteID " +
                 "WHERE o.RestauranteID = ?";
         return db.rawQuery(query, new String[]{idRestaurante});
@@ -384,6 +382,27 @@ public class Model {
         values.put("enCamino", value);
 
     // Which row to update, based on the title
+        String selection = "id = ?";
+        String[] selectionArgs = { id };
+
+        int count = db.update(
+                "Orden",
+                values,
+                selection,
+                selectionArgs);
+
+        return count;
+    }
+
+    public int updateOrdenActiva(Context context, String value, String id){
+
+        SQLiteDatabase db = getConnRead(context);
+
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put("Activo", value);
+
+        // Which row to update, based on the title
         String selection = "id = ?";
         String[] selectionArgs = { id };
 
