@@ -89,7 +89,6 @@ public class ProductInfo extends AppCompatActivity {
                 else{
                     // Agregar producto a carrito
                     Intent next = new Intent(getApplicationContext(), RestaurantMenu.class);
-                    Toast.makeText(getApplicationContext(), "Producto agregado", Toast.LENGTH_SHORT).show();
                     plato.setCant(cant.getText().toString());
 
                     boolean found = false;
@@ -106,14 +105,11 @@ public class ProductInfo extends AppCompatActivity {
                     }
                     next.putExtra("clientID",clientID.toString());
                     next.putExtra("platoID", platoID.toString());
-                    next.putExtra("idRest", restId.toString() );
+                    next.putExtra("idRest", restId.toString());
+                    Toast.makeText(getApplicationContext(), "Producto agregado", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
-
-
 
     }
 

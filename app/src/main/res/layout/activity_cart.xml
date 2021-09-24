@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/price"
+        android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,20 +34,25 @@
 
     <ListView
         android:id="@+id/listViewRests"
-        android:layout_width="365dp"
-        android:layout_height="417dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView29" />
-
-    <ImageView
-        android:id="@+id/imageView29"
-        android:layout_width="321dp"
-        android:layout_height="45dp"
+        android:layout_width="363dp"
+        android:layout_height="450dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/t1" />
+        app:layout_constraintTop_toBottomOf="@+id/slogan_resList4" />
+
+    <TextView
+
+        android:id="@+id/slogan_resList4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Los productos de tu carrito :"
+        android:textAlignment="center"
+        android:textColor="@color/Button"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
